@@ -1,5 +1,7 @@
 import { useColorScheme } from "nativewind";
 
 export const useTheme = () => {
-  return useColorScheme();
+  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
+  return { isDark, toggleColorScheme };
 };

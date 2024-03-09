@@ -1,8 +1,12 @@
 import { StyleSheet } from "react-native";
-import { useFonts } from "expo-font";
+import { useTheme } from "@/hooks/use-theme";
+import { useJetBrainsNerdFont } from "@/hooks/use-fonts";
 
 import RNCodeHighlighter from "react-native-code-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {
+  atomOneDark,
+  atomOneLight,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function CodeHighlighter({
   code,
@@ -11,18 +15,20 @@ export default function CodeHighlighter({
   code: string | string[];
   language: string | undefined;
 }) {
-  useFonts({
-    "Jetbrains-Mono-Nerd": require("@/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf"),
-  });
+  const jetBrainsNerd = useJetBrainsNerdFont();
+  const { isDark } = useTheme();
 
   return (
     <>
       <RNCodeHighlighter
-        textStyle={styles.text}
+        textStyle={{ fontFamily: jetBrainsNerd }}
         codeTagProps={{
-          style: styles.codeTag,
+          style: {
+            ...styles.codeTag,
+            backgroundColor: isDark ? "#282C34" : "#FAFAFA",
+          },
         }}
-        hljsStyle={atomOneDark}
+        hljsStyle={isDark ? atomOneDark : atomOneLight}
         language={language}
         scrollViewProps={{
           style: styles.scrollView,
@@ -36,11 +42,7 @@ export default function CodeHighlighter({
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontFamily: "Jetbrains-Mono-Nerd",
-  },
   codeTag: {
-    backgroundColor: "#282C34",
     width: "95%",
     marginTop: 5,
     marginBottom: 5,
