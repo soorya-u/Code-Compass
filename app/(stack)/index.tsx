@@ -1,12 +1,19 @@
 import { Link } from "expo-router";
-import { ScrollView, Text } from "react-native";
-
+import { ScrollView, Text, FlatList, View } from "react-native";
+import { markdown } from "@/utils/markdown";
 function Home() {
   return (
     <>
-      <ScrollView>
-        <Link href="/md/angular">Go To File</Link>
-      </ScrollView>
+      <FlatList
+        data={markdown}
+        renderItem={({ item }) => (
+          <View className="justify-center items-center my-5">
+            <Link href={`/md/${item.link}`} asChild>
+              <Text>{item.name}</Text>
+            </Link>
+          </View>
+        )}
+      />
     </>
   );
 }

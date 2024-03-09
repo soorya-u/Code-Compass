@@ -9,7 +9,7 @@ function MarkdownContent() {
 
   return (
     <>
-      <MarkdownRenderer content={md.content} />
+      <MarkdownRenderer content={md.content} path={`md/${id}`} />
     </>
   );
 }
