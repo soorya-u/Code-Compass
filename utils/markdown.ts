@@ -1,139 +1,166 @@
-import { content } from "@/content";
+import { content } from "./content";
+import { svg } from "./img";
 
 export const markdown = [
   {
     name: "Angular",
     content: content.angular,
-    link: 'angular'
+    img: svg.angular,
+    link: "angular",
   },
   {
     name: "Bash",
     content: content.bash,
-    link: 'bash'
+    img: svg.bash,
+    link: "bash",
   },
   {
     name: "CSS",
     content: content.css,
-    link: 'css'
+    img: svg.css,
+    link: "css",
   },
   {
     name: "Docker",
     content: content.docker,
-    link: 'docker'
+    img: svg.docker,
+    link: "docker",
   },
   {
     name: "Flask",
     content: content.flask,
-    link: 'flask'
+    img: svg.flask,
+    link: "flask",
+    canInvert: true,
   },
   {
     name: "Git",
     content: content.git,
-    link: 'git'
+    img: svg.git,
+    link: "git",
   },
   {
     name: "GraphQL",
     content: content.graphQL,
-    link: 'graphql'
+    img: svg.graphQL,
+    link: "graphql",
   },
   {
     name: "HTML",
     content: content.html,
-    link: 'html'
+    img: svg.html,
+    link: "html",
   },
   {
     name: "Javascript",
     content: content.javascript,
-    link: 'javascript'
+    img: svg.javascript,
+    link: "javascript",
   },
   {
     name: "LaTeX",
     content: content.latex,
-    link: 'latex'
+    img: svg.latex,
+    link: "latex",
+    canInvert: true,
   },
   {
     name: "Mojo",
     content: content.mojo,
-    link: 'mojo'
+    img: svg.mojo,
+    link: "mojo",
   },
   {
     name: "MongoDB",
     content: content.mongoDB,
-    link: 'mongodb'
+    img: svg.mongoDB,
+    link: "mongodb",
   },
   {
     name: "NextJS",
     content: content.nextJS,
-    link: 'nextjs'
+    img: svg.nextJS,
+    link: "nextjs",
+    canInvert: true,
   },
   {
     name: "Prisma",
-    content: content.primsa,
-    link: 'prisma'
+    content: content.prisma,
+    img: svg.prisma,
+    link: "prisma",
+    canInvert: true,
   },
   {
     name: "Python",
     content: content.python,
-    link: 'python'
+    img: svg.python,
+    link: "python",
   },
   {
     name: "React Native",
     content: content.reactNative,
-    link: 'react-native'
+    img: svg.reactNative,
+    link: "react-native",
+    canInvert: true,
   },
   {
     name: "React",
     content: content.react,
-    link: 'react'
+    img: svg.react,
+    link: "react",
   },
   {
     name: "Redis",
     content: content.redis,
-    link: 'redis'
+    img: svg.redis,
+    link: "redis",
   },
   {
     name: "Rust",
     content: content.rust,
-    link: 'rust'
+    img: svg.rust,
+    link: "rust",
   },
   {
     name: "SCSS",
     content: content.scss,
-    link: 'scss'
+    img: svg.scss,
+    link: "scss",
   },
   {
     name: "SQL",
     content: content.sql,
-    link: 'sql'
+    img: svg.sql,
+    link: "sql",
   },
   {
     name: "Tailwind CSS",
     content: content.tailwindCSS,
-    link: 'tailwind-css'
+    img: svg.tailwindCSS,
+    link: "tailwind-css",
   },
   {
     name: "Tanstack Query",
     content: content.tanstackQuery,
-    link: 'tanstack-query'
+    img: svg.tanstackQuery,
+    link: "tanstack-query",
   },
   {
     name: "Tauri",
     content: content.tauri,
-    link: 'tauri'
-  },
-  {
-    name: "Tkinter",
-    content: content.tkinter,
-    link: 'tkinter'
+    img: svg.tauri,
+    link: "tauri",
   },
   {
     name: "Typescript",
     content: content.typescript,
-    link: 'typescript'
+    img: svg.typescript,
+    link: "typescript",
   },
   {
     name: "Zod",
     content: content.zod,
-    link: 'zod'
+    img: svg.zod,
+    link: "zod",
   },
 ];

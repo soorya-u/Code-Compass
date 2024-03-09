@@ -1,21 +1,32 @@
-import { Link } from "expo-router";
-import { ScrollView, Text, FlatList, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+
+import { usePoppinsFont } from "@/hooks/use-fonts";
 import { markdown } from "@/utils/markdown";
-function Home() {
+
+import MarkdownCard from "@/components/MarkdownCard";
+import FlatListHeader from "@/components/FlatListHeader";
+
+export default function Home() {
+  const { onLayout } = usePoppinsFont();
   return (
-    <>
-      <FlatList
-        data={markdown}
-        renderItem={({ item }) => (
-          <View className="justify-center items-center my-5">
-            <Link href={`/md/${item.link}`} asChild>
-              <Text>{item.name}</Text>
-            </Link>
-          </View>
-        )}
-      />
-    </>
+    <FlatList
+      onLayout={onLayout}
+      data={markdown}
+      renderItem={({ item }) => <MarkdownCard item={item} />}
+      numColumns={2}
+      columnWrapperStyle={styles.columnWrapperStyle}
+      contentContainerStyle={styles.contentContainerStyle}
+    />
   );
 }
 
-export default Home;
+const styles = StyleSheet.create({
+  columnWrapperStyle: {
+    backgroundColor: "#000",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  contentContainerStyle: {
+    backgroundColor: "#000",
+  },
+});
