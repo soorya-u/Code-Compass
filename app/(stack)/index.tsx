@@ -1,16 +1,13 @@
 import { FlatList, StyleSheet } from "react-native";
 
-import { usePoppinsFont } from "@/hooks/use-fonts";
 import { markdown } from "@/utils/markdown";
 
 import MarkdownCard from "@/components/MarkdownCard";
 import FlatListHeader from "@/components/FlatListHeader";
 
 export default function Home() {
-  const { onLayout } = usePoppinsFont();
   return (
     <FlatList
-      onLayout={onLayout}
       data={markdown}
       renderItem={({ item }) => <MarkdownCard item={item} />}
       numColumns={2}

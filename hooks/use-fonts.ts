@@ -1,51 +1,27 @@
 import { useFonts as useFont } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useCallback } from "react";
+import { useEffect } from "react";
 
-export const useJetBrainsNerdFont = () => {
-  SplashScreen.preventAutoHideAsync();
-
-  const [fontsLoaded, fontError] = useFont({
+export const useFonts = () => {
+  const [jetbrainsMonoNerdLoaded] = useFont({
     "Jetbrains-Mono-Nerd": require("@/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf"),
   });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  return { jetBrainsNerd: "Jetbrains-Mono-Nerd", onLayout: onLayoutRootView };
-};
-
-export const usePoppinsFont = () => {
-  SplashScreen.preventAutoHideAsync();
-
-  const [fontsLoaded, fontError] = useFont({
+  const [poppinsLoaded] = useFont({
     Poppins: require("@/assets/fonts/Poppins-Medium.ttf"),
   });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  return { poppins: "Poppins", onLayout: onLayoutRootView };
-};
-
-export const useUbuntuNerdFont = () => {
-  SplashScreen.preventAutoHideAsync();
-
-  const [fontsLoaded, fontError] = useFont({
+  const [ubuntuNerdLoaded] = useFont({
     "Ubuntu-Nerd": require("@/assets/fonts/UbuntuNerdFont-Medium.ttf"),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
+  useEffect(() => {
+    async function init() {
+      await SplashScreen.preventAutoHideAsync();
+      if (jetbrainsMonoNerdLoaded && poppinsLoaded && ubuntuNerdLoaded)
+        await SplashScreen.hideAsync();
     }
-  }, [fontsLoaded, fontError]);
+    init();
+  }, [jetbrainsMonoNerdLoaded, poppinsLoaded, ubuntuNerdLoaded]);
 
-  return { ubuntuNerd: "Ubuntu-Nerd", onLayout: onLayoutRootView };
+  const isLoaded = jetbrainsMonoNerdLoaded && poppinsLoaded && ubuntuNerdLoaded;
+  return [isLoaded];
 };

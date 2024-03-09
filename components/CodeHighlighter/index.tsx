@@ -1,6 +1,5 @@
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@/hooks/use-theme";
-import { useJetBrainsNerdFont } from "@/hooks/use-fonts";
 
 import RNCodeHighlighter from "react-native-code-highlighter";
 import {
@@ -15,7 +14,6 @@ export default function CodeHighlighter({
   code: string | string[];
   language: string | undefined;
 }) {
-  const { jetBrainsNerd, onLayout } = useJetBrainsNerdFont();
   const { isDark } = useTheme();
 
   return (
@@ -24,7 +22,7 @@ export default function CodeHighlighter({
         customStyle={{
           backgroundColor: isDark ? "black" : "white",
         }}
-        textStyle={{ fontFamily: jetBrainsNerd }}
+        textStyle={{ fontFamily: "Jetbrains-Mono-Nerd" }}
         codeTagProps={{
           style: {
             ...styles.codeTag,
@@ -34,9 +32,7 @@ export default function CodeHighlighter({
         hljsStyle={isDark ? atomOneDark : atomOneLight}
         language={language}
         scrollViewProps={{
-          style: styles.scrollView,
           contentContainerStyle: styles.container,
-          onLayout: onLayout,
         }}
       >
         {code}
@@ -58,8 +54,5 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 15,
-  },
-  scrollView: {
-    borderRadius: 5,
   },
 });
