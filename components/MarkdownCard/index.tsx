@@ -24,9 +24,11 @@ function MarkdownCard({ item }: { item: ItemProp }) {
         <Image
           className="w-1/2 h-1/2"
           source={item.img}
-          style={{
-            tintColor: item.canInvert ? (isDark ? "#fff" : "#000") : "",
-          }}
+          style={
+            item.canInvert && {
+              tintColor: isDark ? "#fff" : "#000",
+            }
+          }
         />
         <Text className="font-['Poppins'] text-lg text-black dark:text-white text-center">
           {item.name}
