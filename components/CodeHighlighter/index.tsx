@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useTheme } from "@/hooks/use-theme";
 import { useJetBrainsNerdFont } from "@/hooks/use-fonts";
 
@@ -15,12 +15,15 @@ export default function CodeHighlighter({
   code: string | string[];
   language: string | undefined;
 }) {
-  const jetBrainsNerd = useJetBrainsNerdFont();
+  const { jetBrainsNerd, onLayout } = useJetBrainsNerdFont();
   const { isDark } = useTheme();
 
   return (
     <>
       <RNCodeHighlighter
+        customStyle={{
+          backgroundColor: isDark ? "black" : "white",
+        }}
         textStyle={{ fontFamily: jetBrainsNerd }}
         codeTagProps={{
           style: {
@@ -33,6 +36,7 @@ export default function CodeHighlighter({
         scrollViewProps={{
           style: styles.scrollView,
           contentContainerStyle: styles.container,
+          onLayout: onLayout,
         }}
       >
         {code}
@@ -43,7 +47,7 @@ export default function CodeHighlighter({
 
 const styles = StyleSheet.create({
   codeTag: {
-    width: "95%",
+    width: "92%",
     marginTop: 5,
     marginBottom: 5,
     paddingTop: 10,
