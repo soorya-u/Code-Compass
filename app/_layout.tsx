@@ -1,15 +1,24 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import * as SplashScreen from "expo-splash-screen";
-
+import ThemeToggler from "@/components/ThemeToggler";
 import { useFonts } from "@/hooks/use-fonts";
+import { useTheme } from "@/hooks/use-theme";
 
 function RootLayout() {
   const [fontLoaded] = useFonts();
+  const { isDark } = useTheme();
 
   if (!fontLoaded) return null;
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShadowVisible: true,
+        headerBackgroundContainerStyle: {
+          backgroundColor: isDark ? "#000" : "#fff",
+        },
+        headerRight: () => <ThemeToggler />,
+      }}
+    >
       <Tabs.Screen
         name="(stack)"
         options={{
