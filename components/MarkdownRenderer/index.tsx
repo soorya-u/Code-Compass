@@ -1,7 +1,11 @@
-import Markdown from "react-native-marked";
+import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
+
+import { useTheme } from "@/hooks/use-theme";
 
 import { renderer } from "./Renderer";
 import { styles, theme } from "./styles";
+import { FlatList } from "react-native";
+import { ReactElement, memo } from "react";
 
 function MarkdownRenderer({
   content,
@@ -10,15 +14,29 @@ function MarkdownRenderer({
   content: string;
   path: string;
 }) {
+  const { isDark } = useTheme();
+
+  const options: useMarkdownHookOptions = {
+    colorScheme: isDark ? "dark" : "light",
+    renderer: renderer,
+    styles: styles,
+    theme: theme,
+    baseUrl: path,
+  };
+
+  const mdElements = useMarkdown(content, options);
+
   return (
-    <Markdown
-      theme={theme}
-      baseUrl={path}
-      value={content}
-      renderer={renderer}
-      styles={styles}
+    <FlatList
+      data={mdElements}
+      renderItem={({ item }) => item as ReactElement}
+      maxToRenderPerBatch={8}
+      initialNumToRender={8}
+      style={{
+        backgroundColor: isDark ? "#000" : "#fff",
+      }}
     />
   );
 }
 
-export default MarkdownRenderer;
+export default memo(MarkdownRenderer);
