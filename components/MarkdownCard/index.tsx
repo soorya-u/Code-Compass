@@ -16,7 +16,7 @@ function MarkdownCard({ item }: { item: ItemProp }) {
 
   return (
     <TouchableOpacity
-      className="aspect-square m-3 p-4 bg-slate-50 dark:bg-[#1b1b1b] shadow-sm shadow-neutral-400 w-[40%] flex-col justify-center items-center rounded-xl"
+      className="aspect-square m-3 p-4 bg-[#f1f1f1] dark:bg-[#1b1b1b] shadow-sm shadow-neutral-500 dark:shadow-neutral-400 w-[40%] flex-col justify-center items-center rounded-xl"
       // @ts-ignore Experimental Static Links
       onPress={() => push(`md/${item.link}`)}
     >
