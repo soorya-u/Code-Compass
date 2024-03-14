@@ -12,9 +12,7 @@ function RootLayout() {
     <Tabs
       screenOptions={{
         headerShadowVisible: true,
-        headerBackgroundContainerStyle: {
-          backgroundColor: isDark ? "#000" : "#fff",
-        },
+        headerTintColor: isDark ? "black" : "white",
       }}
     >
       <Tabs.Screen

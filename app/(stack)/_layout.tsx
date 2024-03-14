@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Stack, useGlobalSearchParams } from "expo-router";
 import { markdown } from "@/utils/markdown";
+import { useTheme } from "@/hooks/use-theme";
 
 function StackLayout() {
   const { file: id } = useGlobalSearchParams<{ file: string }>();
@@ -9,8 +10,15 @@ function StackLayout() {
     [id]
   );
 
+  const { isDark } = useTheme();
+
   return (
-    <Stack screenOptions={{}}>
+    <Stack
+      screenOptions={{
+        headerShadowVisible: true,
+        headerTintColor: isDark ? "black" : "white",
+      }}
+    >
       <Stack.Screen
         name="index"
         options={{
