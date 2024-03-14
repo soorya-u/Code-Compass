@@ -32,6 +32,7 @@ function MarkdownRenderer({
       renderItem={({ item }) => item as ReactElement}
       maxToRenderPerBatch={8}
       initialNumToRender={8}
+      keyExtractor={(_, idx) => idx.toString()}
       style={{
         backgroundColor: isDark ? "#000" : "#fff",
       }}

@@ -1,9 +1,52 @@
-import { Children, ReactNode } from "react";
-import { View, Text, type ViewStyle, type TextStyle } from "react-native";
+import { ListRenderItem, StyleSheet } from "react-native";
+import { ReactElement, ReactNode } from "react";
+import {
+  View,
+  Text,
+  type ViewStyle,
+  type TextStyle,
+  FlatList,
+} from "react-native";
 import { Renderer, type RendererInterface } from "react-native-marked";
 import CodeHighlighter from "../CodeHighlighter";
 
 class CustomRenderer extends Renderer implements RendererInterface {
+  heading(
+    text: string | ReactNode[],
+    styles?: TextStyle | undefined
+  ): ReactNode {
+    return (
+      <View className="w-full my-3 justify-center">
+        <Text className="font-['Poppins'] text-white text-[23px] px-3 mb-1">
+          {text}
+        </Text>
+        <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#3e4248] rounded-md"></View>
+      </View>
+    );
+  }
+
+  paragraph(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
+    return (
+      <View className="px-3 my-3">
+        {children.map((elem, idx) => (
+          <Text key={idx} className="font-['Ubuntu-Nerd']">
+            {elem}
+          </Text>
+        ))}
+      </View>
+    );
+  }
+
+  listItem(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
+    return (
+      <FlatList
+        keyExtractor={(_, idx) => idx.toString()}
+        data={children}
+        renderItem={({ item }) => item as ReactElement}
+      />
+    );
+  }
+
   code(
     text: string,
     _language?: string | undefined,
@@ -11,6 +54,12 @@ class CustomRenderer extends Renderer implements RendererInterface {
     textStyle?: TextStyle | undefined
   ): ReactNode {
     return <CodeHighlighter code={text} language={_language} />;
+  }
+
+  hr(styles?: ViewStyle | undefined): ReactNode {
+    return (
+      <View className="w-[98%] mx-auto h-1 my-3 bg-[#3e4248] rounded-md"></View>
+    );
   }
 }
 
