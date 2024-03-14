@@ -1,6 +1,5 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import ThemeToggler from "@/components/ThemeToggler";
 import { useFonts } from "@/hooks/use-fonts";
 import { useTheme } from "@/hooks/use-theme";
 
@@ -16,7 +15,6 @@ function RootLayout() {
         headerBackgroundContainerStyle: {
           backgroundColor: isDark ? "#000" : "#fff",
         },
-        headerRight: () => <ThemeToggler />,
       }}
     >
       <Tabs.Screen

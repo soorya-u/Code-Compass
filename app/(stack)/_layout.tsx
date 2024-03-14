@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Stack, useGlobalSearchParams } from "expo-router";
 import { markdown } from "@/utils/markdown";
-import ThemeToggler from "@/components/ThemeToggler";
 
 function StackLayout() {
   const { file: id } = useGlobalSearchParams<{ file: string }>();
@@ -11,11 +10,7 @@ function StackLayout() {
   );
 
   return (
-    <Stack
-      screenOptions={{
-        headerRight: () => <ThemeToggler />,
-      }}
-    >
+    <Stack screenOptions={{}}>
       <Stack.Screen
         name="index"
         options={{
