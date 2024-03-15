@@ -29,6 +29,7 @@ function MarkdownCard({ item }: { item: ItemProp }) {
               tintColor: isDark ? "#fff" : "#000",
             }
           }
+          alt={item.name}
         />
         <Text className="font-['Poppins'] text-lg text-black dark:text-white text-center">
           {item.name}

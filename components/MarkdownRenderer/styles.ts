@@ -15,9 +15,9 @@ const spacing: Record<SpacingKeysType, number> = {
 };
 
 const colors: ColorsPropType = {
-  border: "skyblue",
+  border: "#3e4248",
   code: "transparent",
-  link: "skyblue",
+  link: "#469CF9",
   text: "white",
 };
 
