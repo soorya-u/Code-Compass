@@ -9,6 +9,7 @@ export default function Home() {
   const { isDark } = useTheme();
   return (
     <FlatList
+      contentInsetAdjustmentBehavior="automatic"
       data={markdown}
       renderItem={({ item }) => <MarkdownCard item={item} />}
       numColumns={2}

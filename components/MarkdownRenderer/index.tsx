@@ -2,6 +2,7 @@ import { ColorSchemeName, FlatList } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { useTheme } from "@/hooks/use-theme";
+import { randomUUID } from "crypto";
 
 import { renderer } from "./Renderer";
 import { styles, theme } from "./styles";
@@ -28,6 +29,7 @@ function MarkdownRenderer({
 
   return (
     <FlatList
+      contentInsetAdjustmentBehavior="automatic"
       data={mdElements}
       renderItem={({ item }) => item as ReactElement}
       maxToRenderPerBatch={8}

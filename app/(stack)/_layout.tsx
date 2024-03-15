@@ -18,17 +18,21 @@ function StackLayout() {
   return (
     <Stack
       screenOptions={{
+        headerLargeTitle: true,
+        headerShadowVisible: false,
         headerStyle: {
           backgroundColor: backgroundColor,
         },
         headerTintColor: foregroundColor,
-        headerShadowVisible: false,
       }}
     >
       <Stack.Screen
         name="index"
         options={{
           headerTitle: "Home",
+          headerSearchBarOptions: {
+            placeholder: "Search",
+          },
         }}
       />
       <Stack.Screen

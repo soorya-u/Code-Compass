@@ -41,8 +41,8 @@ function RootLayout() {
           name="about"
           options={{
             headerTitle: "About",
-            tabBarIcon: ({ color }) => (
-              <MaterialIcons name="info" size={32} color={color} />
+            tabBarIcon: ({ size, color }) => (
+              <MaterialIcons name="info" size={size} color={color} />
             ),
           }}
         />
@@ -50,8 +50,8 @@ function RootLayout() {
           name="settings"
           options={{
             headerTitle: "Settings",
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="cog" size={32} color={color} />
+            tabBarIcon: ({ size, color }) => (
+              <Ionicons name="cog" size={size} color={color} />
             ),
           }}
         />
