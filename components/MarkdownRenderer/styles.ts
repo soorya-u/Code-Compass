@@ -14,14 +14,26 @@ const spacing: Record<SpacingKeysType, number> = {
   l: 32,
 };
 
-const colors: ColorsPropType = {
+const lightColors: ColorsPropType =  {
+  border: "#a3acb9",
+  code: "transparent",
+  link: "#469CF9",
+  text: "black"
+}
+
+const darkColors: ColorsPropType =  {
   border: "#3e4248",
   code: "transparent",
   link: "#469CF9",
-  text: "white",
+  text: "white"
+}
+
+export const lightTheme: UserTheme = {
+  spacing,
+  colors: lightColors,
 };
 
-export const theme: UserTheme = {
+export const darkTheme: UserTheme = {
   spacing,
-  colors,
+  colors: darkColors,
 };

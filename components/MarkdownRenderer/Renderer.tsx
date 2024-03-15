@@ -16,20 +16,23 @@ class CustomRenderer extends Renderer implements RendererInterface {
     styles?: TextStyle | undefined
   ): ReactNode {
     return (
-      <View className="w-full my-3 justify-center">
-        <Text className="font-['Poppins'] text-white text-[23px] px-3 mb-1">
+      <View className="w-full justify-center">
+        <Text className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1">
           {text}
         </Text>
-        <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#3e4248] rounded-md"></View>
+        <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
       </View>
     );
   }
 
   paragraph(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View className="px-3 my-3">
+      <View className="px-3">
         {children.map((elem, idx) => (
-          <Text key={idx} className="font-['Ubuntu-Nerd']">
+          <Text
+            key={idx}
+            className="font-['Ubuntu-Nerd'] text-black dark:text-white"
+          >
             {elem}
           </Text>
         ))}
@@ -58,7 +61,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
 
   hr(styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View className="w-[98%] mx-auto h-1 my-3 bg-[#3e4248] rounded-md"></View>
+      <View className="w-[98%] mx-auto h-1 bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
     );
   }
 }
