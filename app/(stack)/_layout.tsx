@@ -10,13 +10,19 @@ function StackLayout() {
     [id]
   );
 
-  const { isDark } = useTheme();
+  const { setTheme } = useTheme();
+
+  const backgroundColor = setTheme("black", "white");
+  const foregroundColor = setTheme("white", "black");
 
   return (
     <Stack
       screenOptions={{
-        headerShadowVisible: true,
-        headerTintColor: isDark ? "black" : "white",
+        headerStyle: {
+          backgroundColor: backgroundColor,
+        },
+        headerTintColor: foregroundColor,
+        headerShadowVisible: false,
       }}
     >
       <Stack.Screen
