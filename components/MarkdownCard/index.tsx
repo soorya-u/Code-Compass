@@ -11,7 +11,7 @@ type ItemProp = {
 };
 
 function MarkdownCard({ item }: { item: ItemProp }) {
-  const { isDark } = useTheme();
+  const { setTheme } = useTheme();
   const { push } = useRouter();
 
   return (
@@ -26,7 +26,7 @@ function MarkdownCard({ item }: { item: ItemProp }) {
           source={item.img}
           style={
             item.canInvert && {
-              tintColor: isDark ? "#fff" : "#000",
+              tintColor: setTheme('white', 'black'),
             }
           }
           alt={item.name}

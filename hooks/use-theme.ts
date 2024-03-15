@@ -4,7 +4,7 @@ export const useTheme = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
 
-  const setTheme = (darkSetting: string, lightSetting: string) =>
+  const setTheme = <T>(darkSetting: T, lightSetting: T) =>
     isDark ? darkSetting : lightSetting;
 
   return { isDark, toggleColorScheme, setTheme };

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { useTheme } from "@/hooks/use-theme";
 
 import RNCodeHighlighter from "react-native-code-highlighter";
@@ -14,22 +14,22 @@ export default function CodeHighlighter({
   code: string | string[];
   language: string | undefined;
 }) {
-  const { isDark } = useTheme();
+  const { setTheme } = useTheme();
 
   return (
     <>
       <RNCodeHighlighter
         customStyle={{
-          backgroundColor: isDark ? "black" : "white",
+          backgroundColor: setTheme("black", "white"),
         }}
         textStyle={{ fontFamily: "Jetbrains-Mono-Nerd" }}
         codeTagProps={{
           style: {
             ...styles.codeTag,
-            backgroundColor: isDark ? "#282C34" : "#FAFAFA",
+            backgroundColor: setTheme("#282C34", "#FAFAFA"),
           },
         }}
-        hljsStyle={isDark ? atomOneDark : atomOneLight}
+        hljsStyle={setTheme(atomOneDark, atomOneLight)}
         language={language}
         scrollViewProps={{
           contentContainerStyle: styles.container,

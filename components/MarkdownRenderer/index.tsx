@@ -1,10 +1,10 @@
+import { ColorSchemeName, FlatList } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { useTheme } from "@/hooks/use-theme";
 
 import { renderer } from "./Renderer";
 import { styles, theme } from "./styles";
-import { FlatList } from "react-native";
 import { ReactElement, memo } from "react";
 
 function MarkdownRenderer({
@@ -14,10 +14,10 @@ function MarkdownRenderer({
   content: string;
   path: string;
 }) {
-  const { isDark } = useTheme();
+  const { setTheme } = useTheme();
 
   const options: useMarkdownHookOptions = {
-    colorScheme: isDark ? "dark" : "light",
+    colorScheme: setTheme("dark", "light") as ColorSchemeName,
     renderer: renderer,
     styles: styles,
     theme: theme,
@@ -34,7 +34,7 @@ function MarkdownRenderer({
       initialNumToRender={8}
       keyExtractor={(_, idx) => idx.toString()}
       style={{
-        backgroundColor: isDark ? "#000" : "#fff",
+        backgroundColor: setTheme("black", "white"),
       }}
     />
   );
