@@ -2,7 +2,7 @@ import { ColorSchemeName, FlatList } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { useTheme } from "@/hooks/use-theme";
-import { randomUUID } from "crypto";
+import { getRandomBytes } from "expo-crypto";
 
 import { renderer } from "./Renderer";
 import { styles, theme } from "./styles";
@@ -34,7 +34,11 @@ function MarkdownRenderer({
       renderItem={({ item }) => item as ReactElement}
       maxToRenderPerBatch={8}
       initialNumToRender={8}
-      keyExtractor={(_, idx) => idx.toString()}
+      keyExtractor={(_, idx) => {
+        const r = `${getRandomBytes(2)}, ${idx}`;
+        console.log(r);
+        return r;
+      }}
       style={{
         backgroundColor: setTheme("black", "white"),
       }}
