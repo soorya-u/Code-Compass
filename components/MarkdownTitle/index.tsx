@@ -1,6 +1,7 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 import { useTheme } from "@/hooks/use-theme";
+import { Ionicons } from "@expo/vector-icons";
 
 type ItemProp = {
   name: string;
@@ -10,33 +11,34 @@ type ItemProp = {
   canInvert?: boolean;
 };
 
-function MarkdownCard({ item }: { item: ItemProp }) {
+function MarkdownTitle({ item }: { item: ItemProp }) {
   const { setTheme } = useTheme();
   const { push } = useRouter();
 
   return (
     <TouchableOpacity
-      className="aspect-square m-3 p-4 bg-[#f1f1f1] dark:bg-[#1b1b1b] shadow-sm shadow-neutral-500 dark:shadow-neutral-400 w-[40%] flex-col justify-center items-center rounded-xl"
+      className="bg-[#f1f1f1] dark:bg-neutral-800 rounded-[10px]"
       // @ts-ignore Experimental Static Links
       onPress={() => push(`md/${item.link}`)}
     >
-      <View className="aspect-square w-full flex-col justify-center items-center rounded-xl divide-y-8">
+      <View className="flex-row items-center p-[10] gap-[10]">
         <Image
-          className="w-1/2 h-1/2"
+          className="w-[35px] h-[35px]"
           source={item.img}
           style={
             item.canInvert && {
-              tintColor: setTheme('white', 'black'),
+              tintColor: setTheme("white", "black"),
             }
           }
           alt={item.name}
         />
-        <Text className="font-['Poppins'] text-lg text-black dark:text-white text-center">
+        <Text className="text-[18px] flex-1 text-black dark:text-white font-['Poppins']">
           {item.name}
         </Text>
+        <Ionicons name="chevron-forward" size={20} color={"rgb(82 82 82)"} />
       </View>
     </TouchableOpacity>
   );
 }
 
-export default MarkdownCard;
+export default MarkdownTitle;

@@ -1,27 +1,20 @@
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, View, ScrollView } from "react-native";
 
-import { useTheme } from "@/hooks/use-theme";
 import { markdown } from "@/utils/markdown";
 
-import MarkdownCard from "@/components/MarkdownCard";
+import MarkdownTitle from "@/components/MarkdownTitle";
 
 export default function Home() {
-  const { isDark } = useTheme();
   return (
-    <FlatList
-      contentInsetAdjustmentBehavior="automatic"
-      data={markdown}
-      renderItem={({ item }) => <MarkdownCard item={item} />}
-      numColumns={2}
-      columnWrapperStyle={styles.columnWrapperStyle}
-      contentContainerStyle={{ backgroundColor: isDark ? "#000" : "#fff" }}
-    />
+    <ScrollView className="" contentInsetAdjustmentBehavior="automatic">
+      <View className="bg-neutral-800 rounded-[10px] m-3">
+        <FlatList
+          ItemSeparatorComponent={() => <View className="h-[0.5px] bg-neutral-600 w-[85%] self-end" />}
+          data={markdown}
+          scrollEnabled={false}
+          renderItem={({ item }) => <MarkdownTitle item={item} />}
+        />
+      </View>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  columnWrapperStyle: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
