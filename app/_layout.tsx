@@ -40,7 +40,7 @@ function RootLayout() {
         <Tabs.Screen
           name="about"
           options={{
-            headerTitle: "About",
+            headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <MaterialIcons name="info" size={size} color={color} />
             ),
