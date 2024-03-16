@@ -16,7 +16,9 @@ function RootLayout() {
   return (
     <>
       <StatusBar style={setTheme("light", "dark") as StatusBarStyle} />
-      <Tabs
+      <Tabs sceneContainerStyle={{
+        backgroundColor: 'black'
+      }}
         screenOptions={{
           tabBarStyle: {
             backgroundColor: backgroundColor,

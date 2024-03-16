@@ -24,6 +24,9 @@ function StackLayout() {
           backgroundColor: backgroundColor,
         },
         headerTintColor: foregroundColor,
+        contentStyle: {
+          backgroundColor: "black",
+        },
       }}
     >
       <Stack.Screen
