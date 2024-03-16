@@ -4,21 +4,20 @@ import { Stack } from "expo-router";
 function StackLayout() {
   const { setTheme } = useTheme();
 
-  const backgroundColor = setTheme("black", "white");
-  const foregroundColor = setTheme("white", "black");
+  const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
+  const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
 
   return (
     <Stack
       screenOptions={{
+        headerTransparent: true,
         headerLargeTitle: true,
         headerShadowVisible: false,
-        headerStyle: {
-          backgroundColor: backgroundColor,
-        },
         headerTintColor: foregroundColor,
         contentStyle: {
-          backgroundColor: "black",
+          backgroundColor: backgroundColor,
         },
+        headerBlurEffect: setTheme("dark", "light"),
       }}
     >
       <Stack.Screen

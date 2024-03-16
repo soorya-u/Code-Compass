@@ -61,7 +61,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
 
   hr(styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View className="w-[98%] mx-auto h-1 bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
+      <View className="w-[98%] mx-auto h-1 bg-[#a3acb9] dark:bg-[#33373b] rounded-md"></View>
     );
   }
 }

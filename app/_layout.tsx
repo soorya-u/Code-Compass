@@ -9,16 +9,17 @@ function RootLayout() {
   const [fontLoaded] = useFonts();
   const { setTheme } = useTheme();
 
-  const backgroundColor = setTheme("black", "white");
-  const foregroundColor = setTheme("white", "black");
+  const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
+  const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
 
   if (!fontLoaded) return null;
   return (
     <>
-      <StatusBar style={setTheme("light", "dark") as StatusBarStyle} />
-      <Tabs sceneContainerStyle={{
-        backgroundColor: 'black'
-      }}
+      <StatusBar style={setTheme("light", "dark")} />
+      <Tabs
+        sceneContainerStyle={{
+          backgroundColor: backgroundColor,
+        }}
         screenOptions={{
           tabBarStyle: {
             backgroundColor: backgroundColor,
@@ -26,9 +27,6 @@ function RootLayout() {
           tabBarActiveTintColor: foregroundColor,
           tabBarActiveBackgroundColor: backgroundColor,
           tabBarInactiveBackgroundColor: backgroundColor,
-          headerStyle: {
-            backgroundColor: backgroundColor,
-          },
           headerTintColor: foregroundColor,
           headerShadowVisible: false,
         }}

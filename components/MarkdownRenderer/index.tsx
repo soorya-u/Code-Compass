@@ -6,7 +6,14 @@ import { getRandomBytes } from "expo-crypto";
 
 import { renderer } from "./Renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
-import { ReactElement, memo } from "react";
+import { ReactElement, memo, Fragment } from "react";
+
+const generateUniqueId = (() => {
+  let id = 0;
+  return () => {
+    return id++;
+  };
+})();
 
 function MarkdownRenderer({
   content,
@@ -31,13 +38,15 @@ function MarkdownRenderer({
     <FlatList
       contentInsetAdjustmentBehavior="automatic"
       data={mdElements}
-      renderItem={({ item }) => item as ReactElement}
-      ItemSeparatorComponent={() => <View className="my-3" />}
-      maxToRenderPerBatch={8}
-      initialNumToRender={8}
-      keyExtractor={(_, idx) => `${getRandomBytes(2)}, ${idx}`}
+      renderItem={({ item }) => <Fragment>{item}</Fragment>}
+      ItemSeparatorComponent={({}) => (
+        <View key={`${Math.random()}`} className="my-3" />
+      )}
+      maxToRenderPerBatch={16}
+      initialNumToRender={16}
+      keyExtractor={() => `${Math.random()}`}
       style={{
-        backgroundColor: setTheme("black", "white"),
+        backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
       }}
     />
   );

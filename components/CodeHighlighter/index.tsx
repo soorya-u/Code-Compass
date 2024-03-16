@@ -20,7 +20,7 @@ export default function CodeHighlighter({
     <>
       <RNCodeHighlighter
         customStyle={{
-          backgroundColor: setTheme("black", "white"),
+          backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
         }}
         textStyle={{ fontFamily: "Jetbrains-Mono-Nerd" }}
         codeTagProps={{

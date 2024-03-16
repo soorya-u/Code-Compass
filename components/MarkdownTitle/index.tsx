@@ -17,7 +17,7 @@ function MarkdownTitle({ item }: { item: ItemProp }) {
 
   return (
     <TouchableOpacity
-      className="bg-[#f1f1f1] dark:bg-neutral-800 rounded-[10px]"
+      className="bg-neutral-50 dark:bg-[rgb(30_30_30)] rounded-[10px]"
       // @ts-ignore Experimental Static Links
       onPress={() => push(`md/${item.link}`)}
     >
@@ -32,10 +32,14 @@ function MarkdownTitle({ item }: { item: ItemProp }) {
           }
           alt={item.name}
         />
-        <Text className="text-[18px] flex-1 text-black dark:text-white font-['Poppins']">
+        <Text className="text-[16px] pl-1 flex-1 text-black dark:text-white font-['Poppins']">
           {item.name}
         </Text>
-        <Ionicons name="chevron-forward" size={20} color={"rgb(82 82 82)"} />
+        <Ionicons
+          name="chevron-forward"
+          size={20}
+          color={setTheme("rgb(82 82 82)", "rgb(214 211 209)")}
+        />
       </View>
     </TouchableOpacity>
   );
