@@ -1,4 +1,4 @@
-import { StatusBar, StatusBarStyle } from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import { Tabs } from "expo-router";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
@@ -35,6 +35,13 @@ function RootLayout() {
           name="(stack)"
           options={{
             headerShown: false,
+            tabBarIcon: ({ size, color }) => (
+              <Ionicons
+                name="file-tray-full-outline"
+                size={size}
+                color={color}
+              />
+            ),
           }}
         />
         <Tabs.Screen
@@ -43,6 +50,16 @@ function RootLayout() {
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <MaterialIcons name="info" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            headerTitle: "Profile",
+            headerShown: false,
+            tabBarIcon: ({ size, color }) => (
+              <MaterialIcons name="person" size={size} color={color} />
             ),
           }}
         />
