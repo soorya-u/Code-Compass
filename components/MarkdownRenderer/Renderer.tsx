@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 import {
   View,
   Text,
@@ -16,12 +16,26 @@ class CustomRenderer extends Renderer implements RendererInterface {
   ): ReactNode {
     return (
       <View className="w-full justify-center">
-        <Text
-          style={styles}
-          className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
-        >
-          {text}
-        </Text>
+        {!Array.isArray(text) ? (
+          <Text
+            style={styles}
+            className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
+          >
+            {text}
+          </Text>
+        ) : (
+          <>
+            {text.map((elem, idx) => (
+              <Text
+                style={styles}
+                key={`${Math.random()}-${Math.random()}-${idx}`}
+                className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
+              >
+                {elem}
+              </Text>
+            ))}
+          </>
+        )}
         {styles?.fontSize && styles?.fontSize > 25 && (
           <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
         )}
@@ -34,8 +48,8 @@ class CustomRenderer extends Renderer implements RendererInterface {
       <View className="px-3">
         {children.map((elem, idx) => (
           <Text
-            key={idx}
-            className="font-['Ubuntu-Nerd'] text-black dark:text-white flex-shrink-[1]"
+            key={`${Math.random()}-${Math.random()}-${idx}`}
+            className="font-['Ubuntu-Nerd'] text-black dark:text-white"
           >
             {elem}
           </Text>
@@ -49,7 +63,9 @@ class CustomRenderer extends Renderer implements RendererInterface {
       <FlatList
         keyExtractor={(_, idx) => `${Math.random()}-${Math.random()}-${idx}`}
         data={children}
-        renderItem={({ item }) => item as ReactElement}
+        renderItem={({ item }) => (
+          <View className="mr-3 w-full max-w-[320px]">{item}</View>
+        )}
       />
     );
   }

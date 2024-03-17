@@ -34,6 +34,7 @@ function RootLayout() {
         <Tabs.Screen
           name="(stack)"
           options={{
+            tabBarLabel: 'Home',
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <Ionicons
@@ -47,6 +48,7 @@ function RootLayout() {
         <Tabs.Screen
           name="about"
           options={{
+            tabBarLabel: 'About',
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <MaterialIcons name="info" size={size} color={color} />
@@ -56,6 +58,7 @@ function RootLayout() {
         <Tabs.Screen
           name="profile"
           options={{
+            tabBarLabel: 'Profile',
             headerTitle: "Profile",
             headerShown: false,
             tabBarIcon: ({ size, color }) => (

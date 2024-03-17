@@ -5,7 +5,6 @@ import { useTheme } from "@/hooks/use-theme";
 
 import { renderer } from "./Renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
-import { Fragment, memo } from "react";
 
 function MarkdownRenderer({
   content,
@@ -28,9 +27,6 @@ function MarkdownRenderer({
 
   return (
     <FlatList
-      CellRendererComponent={({ index, children }) => (
-        <Fragment key={index}>{children}</Fragment>
-      )}
       contentInsetAdjustmentBehavior="automatic"
       data={mdElements}
       renderItem={({ item }) => item as React.ReactElement}
@@ -45,4 +41,4 @@ function MarkdownRenderer({
   );
 }
 
-export default memo(MarkdownRenderer);
+export default MarkdownRenderer;
