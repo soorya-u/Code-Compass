@@ -1,19 +1,11 @@
-import { ColorSchemeName, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { useTheme } from "@/hooks/use-theme";
-import { getRandomBytes } from "expo-crypto";
 
 import { renderer } from "./Renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
-import { ReactElement, memo, Fragment } from "react";
-
-const generateUniqueId = (() => {
-  let id = 0;
-  return () => {
-    return id++;
-  };
-})();
+import { Fragment, memo } from "react";
 
 function MarkdownRenderer({
   content,
@@ -25,7 +17,7 @@ function MarkdownRenderer({
   const { setTheme } = useTheme();
 
   const options: useMarkdownHookOptions = {
-    colorScheme: setTheme("dark", "light") as ColorSchemeName,
+    colorScheme: setTheme("dark", "light"),
     renderer: renderer,
     styles: styles,
     theme: setTheme(darkTheme, lightTheme),
@@ -36,15 +28,16 @@ function MarkdownRenderer({
 
   return (
     <FlatList
+      CellRendererComponent={({ index, children }) => (
+        <Fragment key={index}>{children}</Fragment>
+      )}
       contentInsetAdjustmentBehavior="automatic"
       data={mdElements}
-      renderItem={({ item }) => <Fragment>{item}</Fragment>}
-      ItemSeparatorComponent={({}) => (
-        <View key={`${Math.random()}`} className="my-3" />
-      )}
+      renderItem={({ item }) => item as React.ReactElement}
+      ItemSeparatorComponent={() => <View className="my-3" />}
       maxToRenderPerBatch={16}
       initialNumToRender={16}
-      keyExtractor={() => `${Math.random()}`}
+      keyExtractor={() => `${Math.random()}-${Math.random()}`}
       style={{
         backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
       }}
