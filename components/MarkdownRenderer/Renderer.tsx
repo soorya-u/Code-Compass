@@ -35,7 +35,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
         {children.map((elem, idx) => (
           <Text
             key={idx}
-            className="font-['Ubuntu-Nerd'] text-black dark:text-white"
+            className="font-['Ubuntu-Nerd'] text-black dark:text-white flex-shrink-[1]"
           >
             {elem}
           </Text>
@@ -47,7 +47,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
   listItem(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
       <FlatList
-        keyExtractor={(_, idx) => idx.toString()}
+        keyExtractor={(_, idx) => `${Math.random()}-${Math.random()}-${idx}`}
         data={children}
         renderItem={({ item }) => item as ReactElement}
       />

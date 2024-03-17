@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Image } from "react-native";
 
 import { Link, Stack, useGlobalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,8 +9,8 @@ import { useTheme } from "@/hooks/use-theme";
 
 function StackLayout() {
   const { file: id } = useGlobalSearchParams<{ file: string }>();
-  const title: string = useMemo(
-    () => markdown.filter((file) => file.link === id)[0]?.name,
+  const md = useMemo(
+    () => markdown.filter((file) => file.link === id)[0],
     [id]
   );
 
@@ -54,7 +53,23 @@ function StackLayout() {
       <Stack.Screen
         name="md/[file]"
         options={{
-          headerTitle: title,
+          headerTitle: md?.name,
+          headerRight: ({ tintColor }) => (
+            <Link href={"/(stack)/"} asChild>
+              <TouchableOpacity>
+                <Image
+                  className="w-[30px] h-[30px]"
+                  source={md?.img}
+                  style={
+                    md?.canInvert && {
+                      tintColor: setTheme("white", "black"),
+                    }
+                  }
+                  alt={md?.name}
+                />
+              </TouchableOpacity>
+            </Link>
+          ),
         }}
       />
       <Stack.Screen
