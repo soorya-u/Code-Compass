@@ -12,6 +12,9 @@ export const useFonts = () => {
   const [ubuntuNerdLoaded] = useFont({
     "Ubuntu-Nerd": require("@/assets/fonts/UbuntuNerdFont-Medium.ttf"),
   });
+  const [inderLoaded] = useFont({
+    Inder: require("@/assets/fonts/Inder-Regular.ttf"),
+  });
 
   useEffect(() => {
     async function init() {
@@ -20,8 +23,9 @@ export const useFonts = () => {
         await SplashScreen.hideAsync();
     }
     init();
-  }, [jetbrainsMonoNerdLoaded, poppinsLoaded, ubuntuNerdLoaded]);
+  }, [jetbrainsMonoNerdLoaded, poppinsLoaded, ubuntuNerdLoaded, inderLoaded]);
 
-  const isLoaded = jetbrainsMonoNerdLoaded && poppinsLoaded && ubuntuNerdLoaded;
+  const isLoaded =
+    jetbrainsMonoNerdLoaded && poppinsLoaded && ubuntuNerdLoaded && inderLoaded;
   return [isLoaded];
 };
