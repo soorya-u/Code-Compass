@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
-import { useTheme } from "@/hooks/use-theme";
-
-import RNCodeHighlighter from "react-native-code-highlighter";
+import RNH from "./RNSyntaxHighlighter";
 import {
-  atomOneDark,
-  atomOneLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import { useTheme } from "@/hooks/use-theme";
 
 export default function CodeHighlighter({
   code,
@@ -17,41 +17,18 @@ export default function CodeHighlighter({
   const { setTheme } = useTheme();
 
   return (
-    <>
-      <RNCodeHighlighter
-        customStyle={{
-          backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
-        }}
-        textStyle={{ fontFamily: "Jetbrains-Mono-Nerd" }}
-        codeTagProps={{
-          style: {
-            ...styles.codeTag,
-            backgroundColor: setTheme("#282C34", "#FAFAFA"),
-          },
-        }}
-        hljsStyle={setTheme(atomOneDark, atomOneLight)}
-        language={language}
-        scrollViewProps={{
-          contentContainerStyle: styles.container,
-        }}
-      >
-        {code}
-      </RNCodeHighlighter>
-    </>
+    <RNH
+      language={language}
+      style={setTheme(oneDark, oneLight)}
+      highlighter="prism"
+      fontFamily="Jetbrains-Mono-Nerd"
+    >
+      {code}
+    </RNH>
   );
 }
 
 const styles = StyleSheet.create({
-  codeTag: {
-    width: "92%",
-    marginTop: 5,
-    marginBottom: 5,
-    paddingTop: 10,
-    paddingBottom: 10,
-    justifyContent: "center",
-    alignSelf: "center",
-    borderRadius: 5,
-  },
   container: {
     paddingHorizontal: 15,
   },

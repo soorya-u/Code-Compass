@@ -1,4 +1,3 @@
-import { ListRenderItem, StyleSheet } from "react-native";
 import { ReactElement, ReactNode } from "react";
 import {
   View,
@@ -56,7 +55,9 @@ class CustomRenderer extends Renderer implements RendererInterface {
     containerStyle?: ViewStyle | undefined,
     textStyle?: TextStyle | undefined
   ): ReactNode {
-    return <CodeHighlighter code={text} language={_language} />;
+    return (
+        <CodeHighlighter code={text} language={_language} />
+    );
   }
 
   hr(styles?: ViewStyle | undefined): ReactNode {
