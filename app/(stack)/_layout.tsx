@@ -1,5 +1,10 @@
 import { useMemo } from "react";
-import { Stack, useGlobalSearchParams } from "expo-router";
+
+import { TouchableOpacity } from "react-native";
+
+import { Link, Stack, useGlobalSearchParams } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+
 import { markdown } from "@/utils/markdown";
 import { useTheme } from "@/hooks/use-theme";
 
@@ -37,12 +42,34 @@ function StackLayout() {
             barTintColor: setTheme("rgb(20 20 20)", "rgb(248 250 252)"),
             textColor: foregroundColor,
           },
+          headerRight: ({ tintColor }) => (
+            <Link href={"/(stack)/settings"} asChild>
+              <TouchableOpacity>
+                <Ionicons name="cog" size={30} color={tintColor} />
+              </TouchableOpacity>
+            </Link>
+          ),
         }}
       />
       <Stack.Screen
         name="md/[file]"
         options={{
           headerTitle: title,
+        }}
+      />
+      <Stack.Screen
+        name="settings"
+        options={{
+          presentation: "formSheet",
+          headerTitle: "Settings",
+          headerLargeTitle: false,
+          headerLeft: ({ tintColor }) => (
+            <Link href={"/(stack)/"} asChild>
+              <TouchableOpacity>
+                <Ionicons name="chevron-back" size={25} color={tintColor} />
+              </TouchableOpacity>
+            </Link>
+          ),
         }}
       />
     </Stack>

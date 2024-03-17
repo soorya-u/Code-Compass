@@ -63,15 +63,6 @@ function RootLayout() {
             ),
           }}
         />
-        <Tabs.Screen
-          name="settings"
-          options={{
-            headerTitle: "Settings",
-            tabBarIcon: ({ size, color }) => (
-              <Ionicons name="cog" size={size} color={color} />
-            ),
-          }}
-        />
       </Tabs>
     </>
   );
