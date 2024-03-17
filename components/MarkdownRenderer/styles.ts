@@ -5,28 +5,58 @@ import {
 import { type ColorsPropType } from "react-native-marked/src/theme/colors";
 import { type SpacingKeysType } from "react-native-marked/src/theme/spacing";
 
-export const styles: MarkedStyles = {};
-
-const spacing: Record<SpacingKeysType, number> = {
-  xs: 4,
-  s: 8,
-  m: 16,
-  l: 32,
+export const styles: MarkedStyles = {
+  h1: {
+    display: "none",
+  },
+  h2: {
+    fontSize: 28,
+    fontFamily: "Poppins",
+  },
+  h3: {
+    fontSize: 24,
+    fontFamily: "Poppins",
+  },
+  h4: {
+    fontSize: 18,
+    fontFamily: "Poppins",
+  },
+  link: {
+    fontStyle: "normal",
+    fontFamily: "Inder",
+  },
+  em: {
+    fontFamily: "Ubuntu-Nerd",
+    fontStyle: "italic",
+  },
+  li: {
+    fontFamily: "Ubuntu-Nerd",
+  },
+  text: {
+    fontFamily: "Ubuntu-Nerd",
+  },
 };
 
-const lightColors: ColorsPropType =  {
+const spacing: Record<SpacingKeysType, number> = {
+  xs: 0,
+  s: 0,
+  m: 0,
+  l: 0,
+};
+
+const lightColors: ColorsPropType = {
   border: "#a3acb9",
   code: "transparent",
   link: "#469CF9",
-  text: "black"
-}
+  text: "black",
+};
 
-const darkColors: ColorsPropType =  {
+const darkColors: ColorsPropType = {
   border: "#3e4248",
   code: "transparent",
   link: "#469CF9",
-  text: "white"
-}
+  text: "white",
+};
 
 export const lightTheme: UserTheme = {
   spacing,

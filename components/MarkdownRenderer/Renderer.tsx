@@ -16,10 +16,15 @@ class CustomRenderer extends Renderer implements RendererInterface {
   ): ReactNode {
     return (
       <View className="w-full justify-center">
-        <Text className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1">
+        <Text
+          style={styles}
+          className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
+        >
           {text}
         </Text>
-        <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
+        {styles?.fontSize && styles?.fontSize > 25 && (
+          <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
+        )}
       </View>
     );
   }
@@ -55,9 +60,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
     containerStyle?: ViewStyle | undefined,
     textStyle?: TextStyle | undefined
   ): ReactNode {
-    return (
-        <CodeHighlighter code={text} language={_language} />
-    );
+    return <CodeHighlighter code={text} language={_language} />;
   }
 
   hr(styles?: ViewStyle | undefined): ReactNode {
