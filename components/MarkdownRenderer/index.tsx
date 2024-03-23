@@ -33,7 +33,6 @@ function MarkdownRenderer({
       ItemSeparatorComponent={() => <View className="my-3" />}
       maxToRenderPerBatch={16}
       initialNumToRender={16}
-      keyExtractor={() => `${Math.random()}-${Math.random()}`}
       style={{
         backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
       }}

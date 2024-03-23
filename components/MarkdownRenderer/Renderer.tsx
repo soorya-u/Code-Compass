@@ -6,6 +6,7 @@ import {
   type TextStyle,
   FlatList,
 } from "react-native";
+import { randomUUID } from "expo-crypto";
 import { Renderer, type RendererInterface } from "react-native-marked";
 import CodeHighlighter from "../CodeHighlighter";
 
@@ -15,7 +16,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
     styles?: TextStyle | undefined
   ): ReactNode {
     return (
-      <View className="w-full justify-center">
+      <View key={randomUUID()} className="w-full justify-center">
         {!Array.isArray(text) ? (
           <Text
             style={styles}
@@ -28,7 +29,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
             {text.map((elem, idx) => (
               <Text
                 style={styles}
-                key={`${Math.random()}-${Math.random()}-${idx}`}
+                key={idx}
                 className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
               >
                 {elem}
@@ -45,10 +46,10 @@ class CustomRenderer extends Renderer implements RendererInterface {
 
   paragraph(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View className="px-3">
+      <View key={randomUUID()} className="px-3">
         {children.map((elem, idx) => (
           <Text
-            key={`${Math.random()}-${Math.random()}-${idx}`}
+            key={idx}
             className="font-['Ubuntu-Nerd'] text-black dark:text-white"
           >
             {elem}
@@ -61,7 +62,7 @@ class CustomRenderer extends Renderer implements RendererInterface {
   listItem(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
       <FlatList
-        keyExtractor={(_, idx) => `${Math.random()}-${Math.random()}-${idx}`}
+        key={randomUUID()}
         data={children}
         renderItem={({ item }) => (
           <View className="mr-3 w-full max-w-[320px]">{item}</View>
@@ -76,7 +77,9 @@ class CustomRenderer extends Renderer implements RendererInterface {
     containerStyle?: ViewStyle | undefined,
     textStyle?: TextStyle | undefined
   ): ReactNode {
-    return <CodeHighlighter code={text} language={_language} />;
+    return (
+      <CodeHighlighter key={randomUUID()} code={text} language={_language} />
+    );
   }
 
   hr(styles?: ViewStyle | undefined): ReactNode {
