@@ -39,6 +39,3 @@ yarn-error.*
 
 expo-env.d.ts
 # @end expo-cli
-*.d.ts
-content/*
-assets/img/*
