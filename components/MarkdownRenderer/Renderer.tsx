@@ -17,26 +17,12 @@ class CustomRenderer extends Renderer implements RendererInterface {
   ): ReactNode {
     return (
       <View key={randomUUID()} className="w-full justify-center">
-        {!Array.isArray(text) ? (
-          <Text
-            style={styles}
-            className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
-          >
-            {text}
-          </Text>
-        ) : (
-          <>
-            {text.map((elem, idx) => (
-              <Text
-                style={styles}
-                key={idx}
-                className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
-              >
-                {elem}
-              </Text>
-            ))}
-          </>
-        )}
+        <Text
+          style={styles}
+          className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
+        >
+          {text}
+        </Text>
         {styles?.fontSize && styles?.fontSize > 25 && (
           <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
         )}
@@ -85,6 +71,18 @@ class CustomRenderer extends Renderer implements RendererInterface {
   hr(styles?: ViewStyle | undefined): ReactNode {
     return (
       <View className="w-[98%] mx-auto h-1 bg-[#a3acb9] dark:bg-[#33373b] rounded-md"></View>
+    );
+  }
+
+  link(
+    children: string | ReactNode[],
+    href: string,
+    styles?: TextStyle | undefined
+  ): ReactNode {
+    return (
+      <Text key={randomUUID()} style={styles}>
+        {children}
+      </Text>
     );
   }
 }

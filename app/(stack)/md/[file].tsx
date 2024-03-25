@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { SafeAreaView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { markdown } from "@/utils/markdown";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -11,7 +10,7 @@ function MarkdownContent() {
     [id]
   );
 
-  return <MarkdownRenderer content={md.content} path={`md/${id}`} />;
+  return <MarkdownRenderer content={md.content} />;
 }
 
 export default MarkdownContent;

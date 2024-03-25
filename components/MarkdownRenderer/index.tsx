@@ -6,13 +6,7 @@ import { useTheme } from "@/hooks/use-theme";
 import { renderer } from "./Renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
 
-function MarkdownRenderer({
-  content,
-  path,
-}: {
-  content: string;
-  path: string;
-}) {
+function MarkdownRenderer({ content }: { content: string }) {
   const { setTheme } = useTheme();
 
   const options: useMarkdownHookOptions = {
@@ -20,7 +14,6 @@ function MarkdownRenderer({
     renderer: renderer,
     styles: styles,
     theme: setTheme(darkTheme, lightTheme),
-    baseUrl: path,
   };
 
   const mdElements = useMarkdown(content, options);

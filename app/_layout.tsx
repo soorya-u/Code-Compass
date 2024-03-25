@@ -23,6 +23,7 @@ function RootLayout() {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: backgroundColor,
+            borderTopColor: setTheme("#33373b", "#a3acb9"),
           },
           tabBarActiveTintColor: foregroundColor,
           tabBarActiveBackgroundColor: backgroundColor,
@@ -34,7 +35,7 @@ function RootLayout() {
         <Tabs.Screen
           name="(stack)"
           options={{
-            tabBarLabel: 'Home',
+            tabBarLabel: "Home",
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <Ionicons
@@ -48,7 +49,7 @@ function RootLayout() {
         <Tabs.Screen
           name="about"
           options={{
-            tabBarLabel: 'About',
+            tabBarLabel: "About",
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
               <MaterialIcons name="info" size={size} color={color} />
@@ -58,7 +59,7 @@ function RootLayout() {
         <Tabs.Screen
           name="profile"
           options={{
-            tabBarLabel: 'Profile',
+            tabBarLabel: "Profile",
             headerTitle: "Profile",
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
