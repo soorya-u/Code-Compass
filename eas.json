@@ -17,6 +17,16 @@
       "ios": {
         "image": "latest"
       }
+    },
+    "simulator": {
+      "ios": {
+        "simulator": true
+      }
+    },
+    "androidapk": {
+      "android": {
+        "buildType": "apk"
+      }
     }
   },
   "submit": {
