@@ -265,7 +265,7 @@ function NativeSyntaxHighlighter({
 }
 
 NativeSyntaxHighlighter.defaultProps = {
-  fontFamily: Platform.OS === "ios" ? "Menlo-Regular" : "monospace",
+  fontFamily: "Jetbrains-Mono-Nerd",
   fontSize: 12,
   PreTag: ScrollView,
   CodeTag: View,

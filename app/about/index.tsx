@@ -1,10 +1,12 @@
-import { ScrollView, Text } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
 
 function About() {
   return (
-    <ScrollView>
-      <Text>About Page</Text>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <Text className="text-black dark:text-white">About Page</Text>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
