@@ -5,26 +5,42 @@ import {
   type ViewStyle,
   type TextStyle,
   FlatList,
+  Platform,
+  TouchableOpacity,
+  Linking,
 } from "react-native";
 import { randomUUID } from "expo-crypto";
 import { Renderer, type RendererInterface } from "react-native-marked";
 import CodeHighlighter from "../CodeHighlighter";
 
-class CustomRenderer extends Renderer implements RendererInterface {
+export class CustomRenderer extends Renderer implements RendererInterface {
+  private flatListRef: React.RefObject<FlatList<React.ReactNode>>;
+
+  constructor(flatListRef: React.RefObject<FlatList<React.ReactNode>>) {
+    super();
+    this.flatListRef = flatListRef;
+  }
+
   heading(
     text: string | ReactNode[],
     styles?: TextStyle | undefined
   ): ReactNode {
+    const id =
+      typeof text === "string" && text.toLowerCase().split(" ").join("-");
     return (
-      <View key={randomUUID()} className="w-full justify-center">
+      <View
+        id={id as string}
+        key={randomUUID()}
+        className="w-full justify-center"
+      >
         <Text
           style={styles}
           className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
         >
           {text}
         </Text>
-        {styles?.fontSize && styles?.fontSize > 25 && (
-          <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md"></View>
+        {styles?.fontSize && styles?.fontSize > 25 && Platform.OS === "ios" && (
+          <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md" />
         )}
       </View>
     );
@@ -79,12 +95,32 @@ class CustomRenderer extends Renderer implements RendererInterface {
     href: string,
     styles?: TextStyle | undefined
   ): ReactNode {
+    const relativeLink = href.startsWith("/#") && href.replace("/#", "");
     return (
-      <Text key={randomUUID()} style={styles}>
-        {children}
-      </Text>
+      <TouchableOpacity
+        key={randomUUID()}
+        onPress={() => {
+          if (relativeLink) {
+            const flatListData =
+              this.flatListRef.current && this.flatListRef.current.props.data;
+            const actualData = flatListData && Array.from(flatListData);
+            const item = actualData?.find((node) => {
+              const elem = node as React.ReactElement;
+              const { id }: { id: string | undefined } = elem.props;
+              if (id === relativeLink) return node;
+            });
+            this.flatListRef.current?.scrollToItem({
+              animated: true,
+              item,
+              viewOffset: Platform.OS === "ios" ? 75 : 0,
+            });
+          } else {
+            Linking.openURL(href);
+          }
+        }}
+      >
+        <Text style={styles}>{children}</Text>
+      </TouchableOpacity>
     );
   }
 }
-
-export const renderer = new CustomRenderer();

@@ -1,17 +1,21 @@
+import { forwardRef } from "react";
 import { FlatList, View } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { useTheme } from "@/hooks/use-theme";
 
-import { renderer } from "./Renderer";
+import { CustomRenderer } from "./Renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
 
-function MarkdownRenderer({ content }: { content: string }) {
+const MarkdownRenderer = forwardRef(function MarkdownRenderer(
+  { content }: { content: string },
+  ref: any
+) {
   const { setTheme } = useTheme();
 
   const options: useMarkdownHookOptions = {
     colorScheme: setTheme("dark", "light"),
-    renderer: renderer,
+    renderer: new CustomRenderer(ref),
     styles: styles,
     theme: setTheme(darkTheme, lightTheme),
   };
@@ -19,18 +23,27 @@ function MarkdownRenderer({ content }: { content: string }) {
   const mdElements = useMarkdown(content, options);
 
   return (
-    <FlatList
-      contentInsetAdjustmentBehavior="automatic"
-      data={mdElements}
-      renderItem={({ item }) => item as React.ReactElement}
-      ItemSeparatorComponent={() => <View className="my-3" />}
-      maxToRenderPerBatch={16}
-      initialNumToRender={16}
-      style={{
-        backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
-      }}
-    />
+    <>
+      <FlatList
+        ref={ref}
+        contentInsetAdjustmentBehavior="automatic"
+        data={mdElements}
+        renderItem={({ item }) => item as React.ReactElement}
+        ItemSeparatorComponent={() => <View className="my-3" />}
+        maxToRenderPerBatch={32}
+        initialNumToRender={32}
+        style={{
+          backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
+        }}
+        onScrollToIndexFailed={() => {
+          ref.current?.scrollToIndex({
+            animated: true,
+            index: 0,
+          });
+        }}
+      />
+    </>
   );
-}
+});
 
 export default MarkdownRenderer;
