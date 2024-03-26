@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity, Image, Platform } from "react-native";
 
 import { Link, Stack, useGlobalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { markdown } from "@/utils/markdown";
 import { useTheme } from "@/hooks/use-theme";
+import { usePlatform } from "@/hooks/use-platform";
 
 function StackLayout() {
   const { file: id } = useGlobalSearchParams<{ file: string }>();
@@ -22,12 +23,15 @@ function StackLayout() {
   return (
     <Stack
       screenOptions={{
-        headerTransparent: true,
+        headerTransparent: usePlatform(true, false),
         headerLargeTitle: true,
         headerShadowVisible: false,
         headerTintColor: foregroundColor,
         contentStyle: {
           backgroundColor: backgroundColor,
+        },
+        headerStyle: {
+          backgroundColor: usePlatform(undefined, backgroundColor),
         },
         headerBlurEffect: setTheme("dark", "light"),
       }}
@@ -62,7 +66,7 @@ function StackLayout() {
                   source={md?.img}
                   style={
                     md?.canInvert && {
-                      tintColor: setTheme("white", "black"),
+                      tintColor,
                     }
                   }
                   alt={md?.name}

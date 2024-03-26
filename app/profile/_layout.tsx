@@ -1,5 +1,6 @@
-import { useTheme } from "@/hooks/use-theme";
 import { Stack } from "expo-router";
+import { usePlatform } from "@/hooks/use-platform";
+import { useTheme } from "@/hooks/use-theme";
 
 function StackLayout() {
   const { setTheme } = useTheme();
@@ -10,12 +11,15 @@ function StackLayout() {
   return (
     <Stack
       screenOptions={{
-        headerTransparent: true,
+        headerTransparent: usePlatform(true, false),
         headerLargeTitle: true,
         headerShadowVisible: false,
         headerTintColor: foregroundColor,
         contentStyle: {
           backgroundColor: backgroundColor,
+        },
+        headerStyle: {
+          backgroundColor: usePlatform(undefined, backgroundColor),
         },
         headerBlurEffect: setTheme("dark", "light"),
       }}
