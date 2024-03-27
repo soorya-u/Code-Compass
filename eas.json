@@ -18,14 +18,15 @@
         "image": "latest"
       }
     },
-    "simulator": {
+    "simulator-build": {
       "ios": {
         "simulator": true
       }
     },
-    "androidapk": {
+    "apk-build": {
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "image": "latest"
       }
     }
   },
