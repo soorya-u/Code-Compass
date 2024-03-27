@@ -1,7 +1,8 @@
 import { content } from "./content";
 import { svg } from "./img";
+import { Markdown } from "@/types/markdown";
 
-export const markdown = [
+export const markdown: Markdown[] = [
   {
     name: "Angular",
     content: content.angular,
