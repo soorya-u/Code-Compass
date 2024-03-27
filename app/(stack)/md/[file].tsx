@@ -1,22 +1,55 @@
 import { useMemo, useRef } from "react";
-import { type FlatList, TouchableOpacity } from "react-native";
+import { type FlatList, TouchableOpacity, Image } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { markdown } from "@/utils/markdown";
 import { useTheme } from "@/hooks/use-theme";
+import { useScreenOptions } from "@/hooks/use-screen-options";
+import { Markdown } from "@/types/markdown";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 
+function HeaderIcon({
+  tintColor,
+  md,
+}: {
+  tintColor: string | undefined;
+  md: Markdown;
+}) {
+  return (
+    <TouchableOpacity>
+      <Image
+        className="w-[30px] h-[30px]"
+        source={md.img}
+        style={
+          md.canInvert && {
+            tintColor,
+          }
+        }
+        alt={md.name}
+      />
+    </TouchableOpacity>
+  );
+}
+
 function MarkdownContent() {
+  const { setTheme } = useTheme();
+
+  const flatListRef = useRef<FlatList<React.ReactNode>>(null);
+
   const { file: id } = useLocalSearchParams<{ file: string }>();
+
   const md = useMemo(
     () => markdown.filter((file) => file.link === id)[0],
     [id]
   );
-  const { setTheme } = useTheme();
 
-  const flatListRef = useRef<FlatList<React.ReactNode>>(null);
+  useScreenOptions({
+    headerTitle: md.name,
+    headerRight: ({ tintColor }: { tintColor: string | undefined }) =>
+      HeaderIcon({ tintColor, md }),
+  });
 
   return (
     <>
@@ -31,7 +64,7 @@ function MarkdownContent() {
         }}
       >
         <Ionicons
-          name="caret-up-outline"
+          name="chevron-up-outline"
           size={35}
           color={setTheme("white", "black")}
         />
