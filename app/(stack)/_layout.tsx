@@ -59,20 +59,18 @@ function StackLayout() {
         options={{
           headerTitle: md?.name,
           headerRight: ({ tintColor }) => (
-            <Link href={"/(stack)/"} asChild>
-              <TouchableOpacity>
-                <Image
-                  className="w-[30px] h-[30px]"
-                  source={md?.img}
-                  style={
-                    md?.canInvert && {
-                      tintColor,
-                    }
+            <TouchableOpacity>
+              <Image
+                className="w-[30px] h-[30px]"
+                source={md?.img}
+                style={
+                  md?.canInvert && {
+                    tintColor,
                   }
-                  alt={md?.name}
-                />
-              </TouchableOpacity>
-            </Link>
+                }
+                alt={md?.name}
+              />
+            </TouchableOpacity>
           ),
         }}
       />
