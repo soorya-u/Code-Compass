@@ -250,6 +250,7 @@ function NativeSyntaxHighlighter({
       codeTagProps={{
         style: {
           paddingRight: 20,
+          width: "100%",
         },
       }}
       renderer={nativeRenderer({
