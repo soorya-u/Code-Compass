@@ -80,7 +80,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     textStyle?: TextStyle | undefined
   ): ReactNode {
     return (
-      <CodeHighlighter key={randomUUID()} code={text} language={_language} />
+      <CodeHighlighter key={randomUUID()} code={text} ext={_language} />
     );
   }
 

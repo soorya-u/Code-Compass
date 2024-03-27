@@ -6,19 +6,20 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { useTheme } from "@/hooks/use-theme";
+import { extentionLanguagesMapper } from "@/utils/exLangMapper";
 
 export default function CodeHighlighter({
   code,
-  language,
+  ext,
 }: {
   code: string | string[];
-  language: string | undefined;
+  ext: string | undefined;
 }) {
   const { setTheme } = useTheme();
 
   return (
     <RNH
-      language={language}
+      language={extentionLanguagesMapper(ext ?? "")}
       style={setTheme(oneDark, oneLight)}
       highlighter="prism"
       fontFamily="Jetbrains-Mono-Nerd"
