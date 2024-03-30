@@ -1,12 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 import {
   FlatList,
   View,
   ScrollView,
   TouchableOpacity,
-  type NativeSyntheticEvent,
-  type TextInputFocusEventData,
-  Platform,
+  // type NativeSyntheticEvent,
+  // type TextInputFocusEventData,
+  // Platform,
 } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -26,7 +26,7 @@ const HeaderIcon = ({ tintColor }: { tintColor: string | undefined }) => (
 );
 
 export default function Home() {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const { setTheme } = useTheme();
 
   useScreenOptions({

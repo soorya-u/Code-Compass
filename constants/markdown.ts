@@ -1,6 +1,18 @@
 import { content } from "./content";
 import { svg } from "./img";
-import { Markdown } from "@/types/markdown";
+import { Markdown, TechType } from "@/types/markdown";
+
+export const techTypeHeadings = new Map<TechType, string>([
+  [TechType.markUpLang, "MarkUp Languages"],
+  [TechType.styleSheet, "Stylesheet Languages and Frameworks"],
+  [TechType.programmingLang, "Programming Languages"],
+  [TechType.devOps, "Dev Ops"],
+  [TechType.webDev, "Web Development Frameworks"],
+  [TechType.database, "Databases and ORMs"],
+  [TechType.mobileDev, "Mobile Development Frameworks"],
+  [TechType.desktopDev, "Desktop Development Frameworks"],
+  [TechType.others, "Other Technologies"],
+]);
 
 export const markdown: Markdown[] = [
   {
@@ -8,24 +20,28 @@ export const markdown: Markdown[] = [
     content: content.angular,
     img: svg.angular,
     link: "angular",
+    type: TechType.webDev,
   },
   {
     name: "Bash",
     content: content.bash,
     img: svg.bash,
     link: "bash",
+    type: TechType.programmingLang,
   },
   {
     name: "CSS",
     content: content.css,
     img: svg.css,
     link: "css",
+    type: TechType.styleSheet,
   },
   {
     name: "Docker",
     content: content.docker,
     img: svg.docker,
     link: "docker",
+    type: TechType.devOps,
   },
   {
     name: "Flask",
@@ -33,30 +49,35 @@ export const markdown: Markdown[] = [
     img: svg.flask,
     link: "flask",
     canInvert: true,
+    type: TechType.webDev,
   },
   {
     name: "Git",
     content: content.git,
     img: svg.git,
     link: "git",
+    type: TechType.devOps,
   },
   {
     name: "GraphQL",
     content: content.graphQL,
     img: svg.graphQL,
     link: "graphql",
+    type: TechType.others,
   },
   {
     name: "HTML",
     content: content.html,
     img: svg.html,
     link: "html",
+    type: TechType.markUpLang,
   },
   {
     name: "Javascript",
     content: content.javascript,
     img: svg.javascript,
     link: "javascript",
+    type: TechType.programmingLang,
   },
   {
     name: "LaTeX",
@@ -64,18 +85,21 @@ export const markdown: Markdown[] = [
     img: svg.latex,
     link: "latex",
     canInvert: true,
+    type: TechType.markUpLang,
   },
   {
     name: "Mojo",
     content: content.mojo,
     img: svg.mojo,
     link: "mojo",
+    type: TechType.programmingLang,
   },
   {
     name: "MongoDB",
     content: content.mongoDB,
     img: svg.mongoDB,
     link: "mongodb",
+    type: TechType.database,
   },
   {
     name: "NextJS",
@@ -83,6 +107,7 @@ export const markdown: Markdown[] = [
     img: svg.nextJS,
     link: "nextjs",
     canInvert: true,
+    type: TechType.webDev,
   },
   {
     name: "Prisma",
@@ -90,12 +115,14 @@ export const markdown: Markdown[] = [
     img: svg.prisma,
     link: "prisma",
     canInvert: true,
+    type: TechType.database,
   },
   {
     name: "Python",
     content: content.python,
     img: svg.python,
     link: "python",
+    type: TechType.programmingLang,
   },
   {
     name: "React Native",
@@ -103,65 +130,76 @@ export const markdown: Markdown[] = [
     img: svg.reactNative,
     link: "react-native",
     canInvert: true,
+    type: TechType.mobileDev,
   },
   {
     name: "React",
     content: content.react,
     img: svg.react,
     link: "react",
+    type: TechType.webDev,
   },
   {
     name: "Redis",
     content: content.redis,
     img: svg.redis,
     link: "redis",
+    type: TechType.database,
   },
   {
     name: "Rust",
     content: content.rust,
     img: svg.rust,
     link: "rust",
+    type: TechType.programmingLang,
   },
   {
     name: "SCSS",
     content: content.scss,
     img: svg.scss,
     link: "scss",
+    type: TechType.styleSheet,
   },
   {
     name: "SQL",
     content: content.sql,
     img: svg.sql,
     link: "sql",
+    type: TechType.database,
   },
   {
     name: "Tailwind CSS",
     content: content.tailwindCSS,
     img: svg.tailwindCSS,
     link: "tailwind-css",
+    type: TechType.styleSheet,
   },
   {
     name: "Tanstack Query",
     content: content.tanstackQuery,
     img: svg.tanstackQuery,
     link: "tanstack-query",
+    type: TechType.others,
   },
   {
     name: "Tauri",
     content: content.tauri,
     img: svg.tauri,
     link: "tauri",
+    type: TechType.desktopDev,
   },
   {
     name: "Typescript",
     content: content.typescript,
     img: svg.typescript,
     link: "typescript",
+    type: TechType.programmingLang,
   },
   {
     name: "Zod",
     content: content.zod,
     img: svg.zod,
     link: "zod",
+    type: TechType.others,
   },
 ];
