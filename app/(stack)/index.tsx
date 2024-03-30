@@ -11,7 +11,7 @@ import {
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import { markdown } from "@/utils/markdown";
+import { markdown } from "@/constants/markdown";
 import { useTheme } from "@/hooks/use-theme";
 import { useScreenOptions } from "@/hooks/use-screen-options";
 
