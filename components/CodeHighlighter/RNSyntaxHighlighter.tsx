@@ -1,7 +1,6 @@
 import {
   Text,
   ScrollView,
-  Platform,
   StyleProp,
   TextStyle,
   View,
@@ -249,7 +248,6 @@ function NativeSyntaxHighlighter({
       horizontal={true}
       codeTagProps={{
         style: {
-          paddingRight: 20,
           width: "100%",
         },
       }}
@@ -267,7 +265,7 @@ function NativeSyntaxHighlighter({
 
 NativeSyntaxHighlighter.defaultProps = {
   fontFamily: "Jetbrains-Mono-Nerd",
-  fontSize: 12,
+  fontSize: 13,
   PreTag: ScrollView,
   CodeTag: View,
 };
