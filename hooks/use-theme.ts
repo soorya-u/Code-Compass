@@ -16,3 +16,11 @@ export const useTheme = () => {
 
   return { isDark, toggleColorScheme, setTheme };
 };
+
+export const useConstantTheme = () => {
+  const { setTheme } = useTheme();
+  const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
+  const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
+
+  return { backgroundColor, foregroundColor };
+};
