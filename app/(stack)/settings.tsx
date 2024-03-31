@@ -26,7 +26,7 @@ function Settings() {
     presentation: "formSheet",
     headerTitle: "Settings",
     headerLargeTitle: false,
-    headerLeft: HeaderIcon,
+    headerLeft: ({ tintColor }) => <HeaderIcon tintColor={tintColor} />,
   });
 
   return (

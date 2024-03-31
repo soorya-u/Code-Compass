@@ -47,8 +47,7 @@ function MarkdownContent() {
 
   useScreenOptions({
     headerTitle: md.name,
-    headerRight: ({ tintColor }: { tintColor: string | undefined }) =>
-      HeaderIcon({ tintColor, md }),
+    headerRight: ({ tintColor }) => HeaderIcon({ tintColor, md }),
   });
 
   return (

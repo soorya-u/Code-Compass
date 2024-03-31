@@ -40,7 +40,7 @@ export default function Home() {
       // onChangeText: (e: NativeSyntheticEvent<TextInputFocusEventData>) =>
       //   setSearch(e.nativeEvent.text),
     },
-    headerRight: HeaderIcon,
+    headerRight: ({ tintColor }) => <HeaderIcon tintColor={tintColor} />,
   });
 
   return (
