@@ -1,29 +1,12 @@
 import { Stack } from "expo-router";
-import { usePlatform } from "@/hooks/use-platform";
-import { useTheme } from "@/hooks/use-theme";
+
+import { useConstantStackOptions } from "@/hooks/use-screen-options";
 
 function StackLayout() {
-  const { setTheme } = useTheme();
-
-  const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
-  const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
+  const stackOptions = useConstantStackOptions();
 
   return (
-    <Stack
-      screenOptions={{
-        headerTransparent: usePlatform(true, false),
-        headerLargeTitle: true,
-        headerShadowVisible: false,
-        headerTintColor: foregroundColor,
-        contentStyle: {
-          backgroundColor: backgroundColor,
-        },
-        headerStyle: {
-          backgroundColor: usePlatform(undefined, backgroundColor),
-        },
-        headerBlurEffect: setTheme("dark", "light"),
-      }}
-    >
+    <Stack screenOptions={stackOptions}>
       <Stack.Screen
         name="index"
         options={{
