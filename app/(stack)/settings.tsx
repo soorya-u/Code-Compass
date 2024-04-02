@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Switch,
   SafeAreaView,
@@ -9,9 +10,12 @@ import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useTheme } from "@/hooks/use-theme";
-import { useScreenOptions } from "@/hooks/use-screen-options";
 
-const HeaderIcon = ({ tintColor }: { tintColor: string | undefined }) => (
+export const HeaderIcon = ({
+  tintColor,
+}: {
+  tintColor: string | undefined;
+}) => (
   <Link href={"/(stack)/"} asChild>
     <TouchableOpacity>
       <Ionicons name="chevron-back" size={25} color={tintColor} />
@@ -19,15 +23,9 @@ const HeaderIcon = ({ tintColor }: { tintColor: string | undefined }) => (
   </Link>
 );
 
-function Settings() {
+export default function Settings() {
   const { isDark, toggleColorScheme } = useTheme();
-
-  useScreenOptions({
-    presentation: "formSheet",
-    headerTitle: "Settings",
-    headerLargeTitle: false,
-    headerLeft: ({ tintColor }) => <HeaderIcon tintColor={tintColor} />,
-  });
+  const [switchVar, setSwitchVar] = useState(isDark);
 
   return (
     <SafeAreaView className="h-full p-4 items-center">
@@ -35,10 +33,14 @@ function Settings() {
         <Text className="text-base text-black dark:text-white">
           Switch Mode
         </Text>
-        <Switch value={isDark} onValueChange={() => toggleColorScheme()} />
+        <Switch
+          value={switchVar}
+          onValueChange={() => {
+            setSwitchVar((prev) => !prev);
+            toggleColorScheme();
+          }}
+        />
       </View>
     </SafeAreaView>
   );
 }
-
-export default Settings;

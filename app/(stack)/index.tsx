@@ -1,23 +1,19 @@
 // import { useState } from "react";
-import {
-  FlatList,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  // type NativeSyntheticEvent,
-  // type TextInputFocusEventData,
-  // Platform,
-} from "react-native";
+import { FlatList, View, ScrollView, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { markdown } from "@/constants/markdown";
-import { useTheme } from "@/hooks/use-theme";
 import { useScreenOptions } from "@/hooks/use-screen-options";
+import { useConstantTheme } from "@/hooks/use-theme";
 
 import MarkdownTitle from "@/components/MarkdownTitle";
 
-const HeaderIcon = ({ tintColor }: { tintColor: string | undefined }) => (
+export const HeaderIcon = ({
+  tintColor,
+}: {
+  tintColor: string | undefined;
+}) => (
   <Link href={"/(stack)/settings"} asChild>
     <TouchableOpacity>
       <Ionicons name="cog" size={30} color={tintColor} />
@@ -26,21 +22,19 @@ const HeaderIcon = ({ tintColor }: { tintColor: string | undefined }) => (
 );
 
 export default function Home() {
+  const { foregroundColor } = useConstantTheme();
   // const [search, setSearch] = useState("");
-  const { setTheme } = useTheme();
-
   useScreenOptions({
-    headerTitle: "Home",
     headerSearchBarOptions: {
+      textColor: foregroundColor,
+      headerIconColor: foregroundColor,
+      tintColor: foregroundColor,
+      hintTextColor: foregroundColor,
       placeholder: "Search",
-      barTintColor: setTheme("rgb(20 20 20)", "rgb(248 250 252)"),
-      textColor: setTheme("rgb(229 231 235)", "rgb(10 10 10)"),
       // TODO
-      // headerIconColor:
-      // onChangeText: (e: NativeSyntheticEvent<TextInputFocusEventData>) =>
+      // onChangeText: (e) =>
       //   setSearch(e.nativeEvent.text),
     },
-    headerRight: ({ tintColor }) => <HeaderIcon tintColor={tintColor} />,
   });
 
   return (
