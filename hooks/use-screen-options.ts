@@ -9,10 +9,11 @@ import { type StyleProp, type ViewStyle } from "react-native";
 
 export const useScreenOptions = (options: NativeStackNavigationOptions) => {
   const navigate = useNavigation();
+  const { isDark } = useTheme();
 
   useEffect(() => {
     navigate.setOptions(options);
-  }, [navigate]);
+  }, [navigate, isDark]);
 };
 
 export const useConstantStackOptions = () => {
@@ -40,7 +41,6 @@ export const useConstantStackOptions = () => {
 export const useConstantTabOptions = () => {
   const { backgroundColor, foregroundColor } = useConstantTheme();
   const { setTheme } = useTheme();
-  const { setPlatformSettings } = usePlatform();
 
   const tabOptions: BottomTabNavigationOptions = {
     headerShown: false,

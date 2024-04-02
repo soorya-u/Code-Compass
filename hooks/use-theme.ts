@@ -1,17 +1,22 @@
-import { useColorScheme } from "nativewind";
+import { useState, useEffect } from "react";
 import { Appearance } from "react-native";
+import { useColorScheme } from "nativewind";
 
 export const useTheme = () => {
   const { colorScheme, toggleColorScheme: nwtoggleColorScheme } =
     useColorScheme();
-  const isDark = colorScheme === "dark";
+  const [isDark, setIsDark] = useState(colorScheme === "dark");
+
+  useEffect(() => {
+    setIsDark(colorScheme === "dark");
+  }, [colorScheme]);
 
   const setTheme = <T>(darkSetting: T, lightSetting: T) =>
     isDark ? darkSetting : lightSetting;
 
   const toggleColorScheme = () => {
     nwtoggleColorScheme();
-    Appearance.setColorScheme(colorScheme);
+    setIsDark(colorScheme === "dark");
   };
 
   return { isDark, toggleColorScheme, setTheme };
