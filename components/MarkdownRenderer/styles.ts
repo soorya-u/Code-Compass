@@ -24,6 +24,8 @@ export const styles: MarkedStyles = {
   link: {
     fontStyle: "normal",
     fontFamily: "Inder",
+    fontSize: 17,
+    marginTop: 3,
   },
   em: {
     fontFamily: "Ubuntu-Nerd",
