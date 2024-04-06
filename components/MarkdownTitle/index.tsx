@@ -2,16 +2,9 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { useTheme } from "@/hooks/use-theme";
 import { Ionicons } from "@expo/vector-icons";
+import { Markdown } from "@/types/markdown";
 
-type ItemProp = {
-  name: string;
-  content: string;
-  img: any;
-  link: string;
-  canInvert?: boolean;
-};
-
-function MarkdownTitle({ item }: { item: ItemProp }) {
+function MarkdownTitle({ item }: { item: Markdown }) {
   const { setTheme } = useTheme();
 
   return (
@@ -34,7 +27,7 @@ function MarkdownTitle({ item }: { item: ItemProp }) {
             }
             alt={item.name}
           />
-          <Text className="text-[16px] pl-1 flex-1 text-black dark:text-white font-['Poppins']">
+          <Text className="text-[16px] pl-1 flex-1 text-black dark:text-white font-['Inder']">
             {item.name}
           </Text>
           <Ionicons
