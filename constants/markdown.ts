@@ -2,17 +2,17 @@ import { content } from "./content";
 import { svg } from "./img";
 import { Markdown, TechType } from "@/types/markdown";
 
-export const techTypeHeadings = new Map<TechType, string>([
-  [TechType.markUpLang, "MarkUp Languages"],
-  [TechType.styleSheet, "Stylesheet Languages and Frameworks"],
-  [TechType.programmingLang, "Programming Languages"],
-  [TechType.devOps, "Dev Ops"],
-  [TechType.webDev, "Web Development Frameworks"],
-  [TechType.database, "Databases and ORMs"],
-  [TechType.mobileDev, "Mobile Development Frameworks"],
-  [TechType.desktopDev, "Desktop Development Frameworks"],
-  [TechType.others, "Other Technologies"],
-]);
+export const techTypeHeadings: Record<TechType, string> = {
+  [TechType.markUpLang]: "MarkUp Languages",
+  [TechType.styleSheet]: "Stylesheet Languages and Frameworks",
+  [TechType.programmingLang]: "Programming Languages",
+  [TechType.devOps]: "Dev Ops",
+  [TechType.webDev]: "Web Development Frameworks",
+  [TechType.database]: "Databases and ORMs",
+  [TechType.mobileDev]: "Mobile Development Frameworks",
+  [TechType.desktopDev]: "Desktop Development Frameworks",
+  [TechType.others]: "Other Technologies",
+};
 
 export const markdown: Markdown[] = [
   {
