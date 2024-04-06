@@ -12,7 +12,7 @@ type MarkdownListProps = {
 
 export default function MarkdownList(props: MarkdownListProps) {
   return (
-    <View className="flex-1 justify-center">
+    <View className="gap-y-2">
       <Text className="pl-5 text-lg text-black font-['Poppins'] dark:text-white">
         {techTypeHeadings[props.iterativeKeys]}
       </Text>
