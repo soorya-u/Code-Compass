@@ -1,13 +1,13 @@
 // import { useState } from "react";
-import { FlatList, View, ScrollView, TouchableOpacity } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import { markdown } from "@/constants/markdown";
 import { useScreenOptions } from "@/hooks/use-screen-options";
 import { useConstantTheme } from "@/hooks/use-theme";
-
-import MarkdownTitle from "@/components/MarkdownTitle";
+import { markdown } from "@/constants/markdown";
+import { markdownSorter } from "@/utils/markdownSorter";
+import MarkdownList from "@/components/MarkdownList";
 
 export const HeaderIcon = ({
   tintColor,
@@ -37,18 +37,18 @@ export default function Home() {
     },
   });
 
+  const { sortedMd, keys } = markdownSorter(markdown);
+
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View className="bg-neutral-50 dark:bg-[rgb(30_30_30)] rounded-[10px] m-4">
-        <FlatList
-          ItemSeparatorComponent={() => (
-            <View className="h-[0.5px] bg-stone-300 dark:bg-neutral-600 w-[85%] self-end" />
-          )}
-          data={markdown}
-          scrollEnabled={false}
-          renderItem={({ item }) => <MarkdownTitle item={item} />}
-        />
-      </View>
-    </ScrollView>
+    <FlatList
+      contentInsetAdjustmentBehavior="automatic"
+      data={keys}
+      renderItem={({ item }) => (
+        <MarkdownList data={sortedMd} iterativeKeys={item} />
+      )}
+      ListHeaderComponent={() => <View className="h-4" />}
+      ListFooterComponent={() => <View className="h-4" />}
+      ItemSeparatorComponent={() => <View className="h-4" />}
+    />
   );
 }
