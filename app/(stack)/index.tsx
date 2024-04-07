@@ -1,13 +1,17 @@
-// import { useState } from "react";
-import { FlatList, TouchableOpacity, View } from "react-native";
+import { useEffect, useState } from "react";
+import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useScreenOptions } from "@/hooks/use-screen-options";
 import { useConstantTheme } from "@/hooks/use-theme";
 import { markdown } from "@/constants/markdown";
-import { markdownSorter } from "@/utils/markdownSorter";
+import {
+  markdownSorter,
+  markdownSearcher,
+} from "@/utils/markdownSorterAndSearcher";
 import MarkdownList from "@/components/MarkdownList";
+import { Markdown } from "@/types/markdown";
 
 export const HeaderIcon = ({
   tintColor,
@@ -23,7 +27,16 @@ export const HeaderIcon = ({
 
 export default function Home() {
   const { foregroundColor } = useConstantTheme();
-  // const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+
+  const [filteredList, setFilteredList] = useState<Markdown[]>([]);
+
+  useEffect(() => {
+    if (searchText) {
+      setFilteredList(markdownSearcher(markdown, searchText));
+    }
+  }, [searchText]);
+
   useScreenOptions({
     headerSearchBarOptions: {
       textColor: foregroundColor,
@@ -31,15 +44,13 @@ export default function Home() {
       tintColor: foregroundColor,
       hintTextColor: foregroundColor,
       placeholder: "Search",
-      // TODO
-      // onChangeText: (e) =>
-      //   setSearch(e.nativeEvent.text),
+      onChangeText: (e) => setSearchText(e.nativeEvent.text),
     },
   });
 
   const { sortedMd, keys } = markdownSorter(markdown);
 
-  return (
+  return !searchText ? (
     <FlatList
       contentInsetAdjustmentBehavior="automatic"
       data={keys}
@@ -50,5 +61,9 @@ export default function Home() {
       ListFooterComponent={() => <View className="h-4" />}
       ItemSeparatorComponent={() => <View className="h-4" />}
     />
+  ) : (
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <MarkdownList data={filteredList} />
+    </ScrollView>
   );
 }
