@@ -11,3 +11,8 @@ export const markdownSorter = (markdown: Markdown[]) => {
 
   return { sortedMd, keys };
 };
+
+export const markdownSearcher = (markdown: Markdown[], searchText: string) =>
+  markdown.filter((md) =>
+    md.name.toLowerCase().includes(searchText.toLowerCase())
+  );
