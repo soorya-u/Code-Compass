@@ -1,14 +1,13 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams } from "expo-router";
 import { useMemo, useRef } from "react";
 import { type FlatList, TouchableOpacity, Image } from "react-native";
-import { useLocalSearchParams } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-
-import { markdown } from "@/constants/markdown";
-import { useTheme } from "@/hooks/use-theme";
-import { useScreenOptions } from "@/hooks/use-screen-options";
-import { Markdown } from "@/types/markdown";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { markdown } from "@/constants/markdown";
+import { useScreenOptions } from "@/hooks/use-screen-options";
+import { useTheme } from "@/hooks/use-theme";
+import { Markdown } from "@/types/markdown";
 
 function HeaderIcon({
   tintColor,
@@ -20,7 +19,7 @@ function HeaderIcon({
   return (
     <TouchableOpacity>
       <Image
-        className="w-[30px] h-[30px]"
+        className="h-[30px] w-[30px]"
         source={md.img}
         style={
           md.canInvert && {
@@ -42,7 +41,7 @@ function MarkdownContent() {
 
   const md = useMemo(
     () => markdown.filter((file) => file.link === id)[0],
-    [id]
+    [id],
   );
 
   useScreenOptions({
@@ -54,7 +53,7 @@ function MarkdownContent() {
     <>
       <MarkdownRenderer content={md.content} ref={flatListRef} />
       <TouchableOpacity
-        className="border-[#a3acb9] dark:border-[#3e4248] bg-[#ffffffd7] dark:bg-[#000000cf] border h-12 w-12 absolute right-5 bottom-5 justify-center items-center rounded-full"
+        className="absolute bottom-5 right-5 h-12 w-12 items-center justify-center rounded-full border border-[#a3acb9] bg-[#ffffffd7] dark:border-[#3e4248] dark:bg-[#000000cf]"
         onPress={() => {
           flatListRef.current?.scrollToIndex({
             animated: true,

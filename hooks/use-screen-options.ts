@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useNavigation } from "expo-router";
-import { type NativeStackNavigationOptions } from "@react-navigation/native-stack/src/types";
 import { type BottomTabNavigationOptions } from "@react-navigation/bottom-tabs/src/types";
-
-import { useConstantTheme, useTheme } from "./use-theme";
-import { usePlatform } from "./use-platform";
+import { type NativeStackNavigationOptions } from "@react-navigation/native-stack/src/types";
+import { useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { type StyleProp, type ViewStyle } from "react-native";
+
+import { usePlatform } from "./use-platform";
+import { useConstantTheme, useTheme } from "./use-theme";
 
 export const useScreenOptions = (options: NativeStackNavigationOptions) => {
   const navigate = useNavigation();
@@ -27,7 +27,7 @@ export const useConstantStackOptions = () => {
     headerShadowVisible: false,
     headerTintColor: foregroundColor,
     contentStyle: {
-      backgroundColor: backgroundColor,
+      backgroundColor,
     },
     headerStyle: {
       backgroundColor: setPlatformSettings({ android: backgroundColor }),
@@ -45,7 +45,7 @@ export const useConstantTabOptions = () => {
   const tabOptions: BottomTabNavigationOptions = {
     headerShown: false,
     tabBarStyle: {
-      backgroundColor: backgroundColor,
+      backgroundColor,
       borderTopColor: setTheme("#33373b", "#a3acb9"),
     },
     tabBarActiveTintColor: foregroundColor,
@@ -56,7 +56,7 @@ export const useConstantTabOptions = () => {
   };
 
   const tabContainerStyle: StyleProp<ViewStyle> = {
-    backgroundColor: backgroundColor,
+    backgroundColor,
   };
 
   return { tabOptions, tabContainerStyle };

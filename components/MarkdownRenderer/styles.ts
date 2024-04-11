@@ -1,9 +1,9 @@
+import { type ColorsPropType } from "react-native-marked/src/theme/colors";
+import { type SpacingKeysType } from "react-native-marked/src/theme/spacing";
 import {
   type MarkedStyles,
   type UserTheme,
 } from "react-native-marked/src/theme/types";
-import { type ColorsPropType } from "react-native-marked/src/theme/colors";
-import { type SpacingKeysType } from "react-native-marked/src/theme/spacing";
 
 export const styles: MarkedStyles = {
   h1: {

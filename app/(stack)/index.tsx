@@ -1,24 +1,24 @@
+import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
-import { Link } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
+import MarkdownList from "@/components/MarkdownList";
+import { markdown } from "@/constants/markdown";
 import { useScreenOptions } from "@/hooks/use-screen-options";
 import { useConstantTheme } from "@/hooks/use-theme";
-import { markdown } from "@/constants/markdown";
+import { Markdown } from "@/types/markdown";
 import {
   markdownSorter,
   markdownSearcher,
 } from "@/utils/markdownSorterAndSearcher";
-import MarkdownList from "@/components/MarkdownList";
-import { Markdown } from "@/types/markdown";
 
 export const HeaderIcon = ({
   tintColor,
 }: {
   tintColor: string | undefined;
 }) => (
-  <Link href={"/(stack)/settings"} asChild>
+  <Link href="/(stack)/settings" asChild>
     <TouchableOpacity>
       <Ionicons name="cog" size={30} color={tintColor} />
     </TouchableOpacity>

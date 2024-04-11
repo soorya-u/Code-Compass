@@ -1,8 +1,9 @@
 import { Stack } from "expo-router";
 
-import { useConstantStackOptions } from "@/hooks/use-screen-options";
-import { HeaderIcon as SettingHeaderIcon } from "./settings";
 import { HeaderIcon as HomeHeaderIcon } from "./index";
+import { HeaderIcon as SettingHeaderIcon } from "./settings";
+
+import { useConstantStackOptions } from "@/hooks/use-screen-options";
 
 function StackLayout() {
   const stackOptions = useConstantStackOptions();

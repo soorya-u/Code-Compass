@@ -1,10 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { Tabs } from "expo-router";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 import { useFonts } from "@/hooks/use-fonts";
-import { useTheme } from "@/hooks/use-theme";
 import { useConstantTabOptions } from "@/hooks/use-screen-options";
+import { useTheme } from "@/hooks/use-theme";
 
 function RootLayout() {
   const [fontLoaded] = useFonts();

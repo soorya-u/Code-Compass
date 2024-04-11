@@ -1,3 +1,4 @@
+import { randomUUID } from "expo-crypto";
 import { ReactNode } from "react";
 import {
   View,
@@ -9,8 +10,8 @@ import {
   TouchableOpacity,
   Linking,
 } from "react-native";
-import { randomUUID } from "expo-crypto";
 import { Renderer, type RendererInterface } from "react-native-marked";
+
 import CodeHighlighter from "../CodeHighlighter";
 
 export class CustomRenderer extends Renderer implements RendererInterface {
@@ -23,7 +24,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
 
   heading(
     text: string | ReactNode[],
-    styles?: TextStyle | undefined
+    styles?: TextStyle | undefined,
   ): ReactNode {
     const id =
       typeof text === "string" && text.toLowerCase().split(" ").join("-");
@@ -35,12 +36,12 @@ export class CustomRenderer extends Renderer implements RendererInterface {
       >
         <Text
           style={styles}
-          className="font-['Poppins'] text-black dark:text-white text-[23px] px-3 mb-1"
+          className="mb-1 px-3 font-['Poppins'] text-[23px] text-black dark:text-white"
         >
           {text}
         </Text>
         {styles?.fontSize && styles?.fontSize > 25 && Platform.OS === "ios" && (
-          <View className="w-[95%] mx-auto self-center px-2 h-[1px] bg-[#a3acb9] dark:bg-[#3e4248] rounded-md" />
+          <View className="mx-auto h-[1px] w-[95%] self-center rounded-md bg-[#a3acb9] px-2 dark:bg-[#3e4248]" />
         )}
       </View>
     );
@@ -77,21 +78,21 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     text: string,
     _language?: string | undefined,
     containerStyle?: ViewStyle | undefined,
-    textStyle?: TextStyle | undefined
+    textStyle?: TextStyle | undefined,
   ): ReactNode {
     return <CodeHighlighter key={randomUUID()} code={text} ext={_language} />;
   }
 
   hr(styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View className="w-[98%] mx-auto h-1 bg-[#a3acb9] dark:bg-[#33373b] rounded-md"></View>
+      <View className="mx-auto h-1 w-[98%] rounded-md bg-[#a3acb9] dark:bg-[#33373b]" />
     );
   }
 
   link(
     children: string | ReactNode[],
     href: string,
-    styles?: TextStyle | undefined
+    styles?: TextStyle | undefined,
   ): ReactNode {
     const relativeLink = href.startsWith("/#") && href.replace("/#", "");
     return (

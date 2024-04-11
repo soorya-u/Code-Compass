@@ -1,7 +1,8 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import { Link } from "expo-router";
-import { useTheme } from "@/hooks/use-theme";
 import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
+import { Text, View, Image, TouchableOpacity } from "react-native";
+
+import { useTheme } from "@/hooks/use-theme";
 import { Markdown } from "@/types/markdown";
 
 function MarkdownTitle({ item }: { item: Markdown }) {
@@ -13,12 +14,11 @@ function MarkdownTitle({ item }: { item: Markdown }) {
         pathname: "/(stack)/md/[file]",
         params: { file: item.link },
       }}
-      asChild
-    >
-      <TouchableOpacity className="bg-neutral-50 dark:bg-[rgb(30_30_30)] rounded-[10px]">
-        <View className="flex-row items-center p-[10] gap-[10]">
+      asChild>
+      <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
+        <View className="flex-row items-center gap-[10] p-[10]">
           <Image
-            className="w-[35px] h-[35px]"
+            className="h-[35px] w-[35px]"
             source={item.img}
             style={
               item.canInvert && {
@@ -27,7 +27,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
             }
             alt={item.name}
           />
-          <Text className="text-[16px] pl-1 flex-1 text-black dark:text-white font-['Inder']">
+          <Text className="flex-1 pl-1 font-['Inder'] text-[16px] text-black dark:text-white">
             {item.name}
           </Text>
           <Ionicons

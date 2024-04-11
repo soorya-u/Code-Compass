@@ -1,4 +1,4 @@
-import angular from '../content/Angular.md'
+import angular from "../content/Angular.md";
 import bash from "../content/Bash.md";
 import css from "../content/CSS.md";
 import docker from "../content/Docker.md";

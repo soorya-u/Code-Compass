@@ -1,5 +1,3 @@
+/* eslint-disable prettier/prettier */
 declare module "*.mdx";
-declare module "*.md" {
-  const content: string;
-  export default content;
-}
+declare module "*.md";

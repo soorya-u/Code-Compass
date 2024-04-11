@@ -1,28 +1,15 @@
+import { MaterialIcons } from "@expo/vector-icons";
+import * as Clipboard from "expo-clipboard";
 import { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import * as Clipboard from "expo-clipboard";
-import { MaterialIcons } from "@expo/vector-icons";
-
-import {
-  oneDark,
-  oneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
-
-import { useTheme } from "@/hooks/use-theme";
-import {
-  extensionLanguagesMapper,
-  extensionHeadingMapper,
-} from "@/utils/exLangMapper";
+import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import RNH from "./RNSyntaxHighlighter";
 
-export default function CodeHighlighter({
-  code,
-  ext,
-}: {
-  code: string;
-  ext: string | undefined;
-}) {
+import { useTheme } from "@/hooks/use-theme";
+import { extensionLanguagesMapper, extensionHeadingMapper } from "@/utils/exLangMapper";
+
+export default function CodeHighlighter({ code, ext }: { code: string; ext: string | undefined }) {
   const { setTheme } = useTheme();
 
   const [showCopied, setShowCopied] = useState(false);
@@ -32,19 +19,19 @@ export default function CodeHighlighter({
   }, [showCopied]);
 
   return (
-    <View className="justify-center w-[95%] self-center bg-[#FAFAFA] dark:bg-[#282C34] rounded-[4px]">
-      <View className="w-full h-10 self-center flex-row justify-between items-center px-5 border-b border-b-[#4f50576d] dark:border-b-[#9aa0ac8a]">
-        <View className="flex-row justify-start items-center">
-          <Text className="font-['Ubuntu-Nerd'] text-2xl text-[#000000b1] dark:text-[#ffffffa8] mr-1">
+    <View className="w-[95%] justify-center self-center rounded-[4px] bg-[#FAFAFA] dark:bg-[#282C34]">
+      <View className="h-10 w-full flex-row items-center justify-between self-center border-b border-b-[#4f50576d] px-5 dark:border-b-[#9aa0ac8a]">
+        <View className="flex-row items-center justify-start">
+          <Text className="mr-1 font-['Ubuntu-Nerd'] text-2xl text-[#000000b1] dark:text-[#ffffffa8]">
             {extensionHeadingMapper(ext!)?.headingIcon}
           </Text>
-          <Text className="text-[#000000b1] text-base font-['Poppins'] dark:text-[#ffffffa8]">
+          <Text className="font-['Poppins'] text-base text-[#000000b1] dark:text-[#ffffffa8]">
             {extensionHeadingMapper(ext!)?.headingName}
           </Text>
         </View>
         <View className="relative">
           {showCopied && (
-            <View className="absolute w-[110px] h-8 -top-12 -left-[70px] bg-[#FAFAFA] dark:bg-[#282C34] items-center justify-center rounded-md border border-[#4F5057] dark:border-[#9AA0AC] opacity-75">
+            <View className="absolute -left-[70px] -top-12 h-8 w-[110px] items-center justify-center rounded-md border border-[#4F5057] bg-[#FAFAFA] opacity-75 dark:border-[#9AA0AC] dark:bg-[#282C34]">
               <Text className="font-['Inder'] text-base text-black dark:text-white">
                 Code Copied
               </Text>
@@ -52,11 +39,8 @@ export default function CodeHighlighter({
           )}
           <TouchableOpacity
             onPress={async () =>
-              await Clipboard.setStringAsync(code.toString()).then(() =>
-                setShowCopied(true)
-              )
-            }
-          >
+              await Clipboard.setStringAsync(code.toString()).then(() => setShowCopied(true))
+            }>
             <MaterialIcons
               name="content-copy"
               size={20}
@@ -65,13 +49,12 @@ export default function CodeHighlighter({
           </TouchableOpacity>
         </View>
       </View>
-      <View className="flex-row m-0 p-0">
-        <View className="w-9 items-center justify-center border-r border-r-[#4f50576d] dark:border-r-[#9aa0ac8a] gap-y-[0.5px]">
+      <View className="m-0 flex-row p-0">
+        <View className="w-9 items-center justify-center gap-y-[0.5px] border-r border-r-[#4f50576d] dark:border-r-[#9aa0ac8a]">
           {code.split("\n").map((_, idx) => (
             <Text
-              className="text-[13px] font-['Jetbrains-Mono-Nerd'] text-right text-[#3F434C] dark:text-[#A7ADB8]"
-              key={idx}
-            >
+              className="text-right font-['Jetbrains-Mono-Nerd'] text-[13px] text-[#3F434C] dark:text-[#A7ADB8]"
+              key={idx}>
               {idx + 1}
             </Text>
           ))}
@@ -80,8 +63,7 @@ export default function CodeHighlighter({
           language={extensionLanguagesMapper(ext!)}
           style={setTheme(oneDark, oneLight)}
           highlighter="prism"
-          fontFamily="Jetbrains-Mono-Nerd"
-        >
+          fontFamily="Jetbrains-Mono-Nerd">
           {code}
         </RNH>
       </View>

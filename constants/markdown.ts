@@ -1,5 +1,6 @@
 import { content } from "./content";
 import { svg } from "./img";
+
 import { Markdown, TechType } from "@/types/markdown";
 
 export const techTypeHeadings: Record<TechType, string> = {

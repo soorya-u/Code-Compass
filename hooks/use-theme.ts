@@ -1,6 +1,6 @@
+import { useColorScheme } from "nativewind";
 import { useState, useEffect } from "react";
 import { Appearance } from "react-native";
-import { useColorScheme } from "nativewind";
 
 export const useTheme = () => {
   const { colorScheme, toggleColorScheme: nwtoggleColorScheme } =

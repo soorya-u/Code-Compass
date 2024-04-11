@@ -1,15 +1,12 @@
-import {
-  Text,
-  ScrollView,
-  StyleProp,
-  TextStyle,
-  View,
-} from "react-native";
+import { Text, ScrollView, StyleProp, TextStyle, View } from "react-native";
 import "@/prism-config";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { Prism as SyntaxHighlighterPrism } from "react-syntax-highlighter";
-import { defaultStyle } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { gradientDark as prismDefaultStyle } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SyntaxHighlighter, {
+  Prism as SyntaxHighlighterPrism,
+} from "react-syntax-highlighter/dist/esm/index";
+import {
+  defaultStyle,
+  gradientDark as prismDefaultStyle,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { StyleObject, HighlighterType } from "@/types/syntax-highlighter";
 
@@ -40,7 +37,7 @@ const topLevelPropertiesToRemove = [
 function createStyleObject(
   classNames: string[],
   elementStyle = {},
-  stylesheet: any
+  stylesheet: any,
 ) {
   return classNames.reduce((styleObject: any, className: string) => {
     return { ...styleObject, ...stylesheet[className] };
@@ -81,11 +78,11 @@ function generateNewStylesheet({
 
           return newStyle;
         },
-        {}
+        {},
       );
       return newStylesheet;
     },
-    {}
+    {},
   );
   const topLevel =
     highlighter === "prism"
@@ -138,7 +135,7 @@ function createChildren({
         defaultColor,
         fontSize,
         fontFamily,
-      })
+      }),
     );
   };
 }
@@ -182,11 +179,11 @@ function createNativeElement({
     const style = createStyleObject(
       properties.className,
       Object.assign({ color: defaultColor }, properties.style, startingStyle),
-      stylesheet
+      stylesheet,
     );
     const children = childrenCreator(
       node.children,
-      style.color || defaultColor
+      style.color || defaultColor,
     );
     return (
       <Text key={key} style={style}>
@@ -214,7 +211,7 @@ function nativeRenderer({
         defaultColor,
         fontFamily,
         fontSize,
-      })
+      }),
     );
 }
 
@@ -245,7 +242,7 @@ function NativeSyntaxHighlighter({
     <Highlighter
       language={language}
       style={transformedStyle}
-      horizontal={true}
+      horizontal
       codeTagProps={{
         style: {
           width: "100%",
