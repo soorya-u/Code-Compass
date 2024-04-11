@@ -1,8 +1,8 @@
 import { Text, ScrollView, StyleProp, TextStyle, View } from "react-native";
-import "@/prism-config";
+import "@/../prism-config";
 import SyntaxHighlighter, {
   Prism as SyntaxHighlighterPrism,
-} from "react-syntax-highlighter/dist/esm/index";
+} from "react-syntax-highlighter";
 import {
   defaultStyle,
   gradientDark as prismDefaultStyle,

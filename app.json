@@ -6,10 +6,10 @@
     "version": "1.0.0",
     "scheme": "code-compass",
     "orientation": "portrait",
-    "icon": "./assets/icons/icon.png",
+    "icon": "./src/assets/icons/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/icons/splash.png",
+      "image": "./src/assets/icons/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#555555"
     },
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icons/adaptive-icon.png",
         "backgroundColor": "#555555"
       },
       "package": "dev.soorya_u.code_compass"
@@ -28,7 +28,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/icons/favicon.png"
+      "favicon": "./src/assets/icons/favicon.png"
     },
     "plugins": ["expo-router"],
     "experiments": {

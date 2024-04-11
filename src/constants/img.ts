@@ -1,4 +1,4 @@
-export const svg = {
+export const img = {
   angular: require("../assets/img/angular.png"),
   bash: require("../assets/img/bash.png"),
   css: require("../assets/img/css.png"),
