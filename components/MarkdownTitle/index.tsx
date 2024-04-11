@@ -14,7 +14,8 @@ function MarkdownTitle({ item }: { item: Markdown }) {
         pathname: "/(stack)/md/[file]",
         params: { file: item.link },
       }}
-      asChild>
+      asChild
+    >
       <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
         <View className="flex-row items-center gap-[10] p-[10]">
           <Image

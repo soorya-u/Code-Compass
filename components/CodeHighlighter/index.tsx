@@ -2,14 +2,26 @@ import { MaterialIcons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import RNH from "./RNSyntaxHighlighter";
 
 import { useTheme } from "@/hooks/use-theme";
-import { extensionLanguagesMapper, extensionHeadingMapper } from "@/utils/exLangMapper";
+import {
+  extensionLanguagesMapper,
+  extensionHeadingMapper,
+} from "@/utils/exLangMapper";
 
-export default function CodeHighlighter({ code, ext }: { code: string; ext: string | undefined }) {
+export default function CodeHighlighter({
+  code,
+  ext,
+}: {
+  code: string;
+  ext: string | undefined;
+}) {
   const { setTheme } = useTheme();
 
   const [showCopied, setShowCopied] = useState(false);
@@ -39,8 +51,11 @@ export default function CodeHighlighter({ code, ext }: { code: string; ext: stri
           )}
           <TouchableOpacity
             onPress={async () =>
-              await Clipboard.setStringAsync(code.toString()).then(() => setShowCopied(true))
-            }>
+              await Clipboard.setStringAsync(code.toString()).then(() =>
+                setShowCopied(true),
+              )
+            }
+          >
             <MaterialIcons
               name="content-copy"
               size={20}
@@ -54,7 +69,8 @@ export default function CodeHighlighter({ code, ext }: { code: string; ext: stri
           {code.split("\n").map((_, idx) => (
             <Text
               className="text-right font-['Jetbrains-Mono-Nerd'] text-[13px] text-[#3F434C] dark:text-[#A7ADB8]"
-              key={idx}>
+              key={idx}
+            >
               {idx + 1}
             </Text>
           ))}
@@ -63,7 +79,8 @@ export default function CodeHighlighter({ code, ext }: { code: string; ext: stri
           language={extensionLanguagesMapper(ext!)}
           style={setTheme(oneDark, oneLight)}
           highlighter="prism"
-          fontFamily="Jetbrains-Mono-Nerd">
+          fontFamily="Jetbrains-Mono-Nerd"
+        >
           {code}
         </RNH>
       </View>

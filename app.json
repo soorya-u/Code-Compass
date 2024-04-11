@@ -1,39 +1,48 @@
 {
   "expo": {
-    "name": "code-compass",
+    "name": "Code Compass",
     "slug": "code-compass",
+    "description": "Code Compass is your comprehensive companion for all things programming, offering a rich repository of references and cheat sheets for various programming languages, tech stacks, and frameworks. Whether you're a seasoned developer seeking quick refreshers or a novice looking to dive into the world of coding, DevGuide provides the essential resources you need at your fingertips.",
     "version": "1.0.0",
-
     "scheme": "code-compass",
+    "orientation": "portrait",
+    "icon": "./assets/icons/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/icons/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#555555"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "dev.soorya-u.code-compass"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#555555"
+      },
+      "package": "dev.soorya_u.code_compass"
+    },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/favicon.png"
     },
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fc808edb-dd8f-4b3a-941c-fcd48d5a60ff"
       }
-    }
+    },
+    "owner": "soorya-u"
   }
 }
