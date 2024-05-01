@@ -1,27 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
 import { useState } from "react";
-import {
-  Switch,
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { Switch, SafeAreaView, View, Text } from "react-native";
 
 import { useTheme } from "@/hooks/use-theme";
-
-export const HeaderIcon = ({
-  tintColor,
-}: {
-  tintColor: string | undefined;
-}) => (
-  <Link href="/(tabs)/home/" asChild>
-    <TouchableOpacity>
-      <Ionicons name="chevron-back" size={25} color={tintColor} />
-    </TouchableOpacity>
-  </Link>
-);
 
 export default function Settings() {
   const { isDark, toggleColorScheme } = useTheme();

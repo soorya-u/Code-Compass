@@ -9,38 +9,29 @@ export default function TabsLayout() {
   return (
     <Tabs sceneContainerStyle={tabContainerStyle} screenOptions={tabOptions}>
       <Tabs.Screen
-        name="home"
+        name="browse"
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Browse",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="file-tray-full-outline" size={size} color={color} />
+            <Ionicons name="compass" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="about"
+        name="library"
         options={{
-          tabBarLabel: "About",
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="info" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="bookmark"
-        options={{
-          tabBarLabel: "Bookmarks",
+          tabBarLabel: "Library",
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons name="bookmark" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="upload"
+        name="downloads"
         options={{
-          tabBarLabel: "Upload",
+          tabBarLabel: "Downloads",
           tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="upload" size={size} color={color} />
+            <MaterialIcons name="download" size={size} color={color} />
           ),
         }}
       />

@@ -1,49 +1,52 @@
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { Drawer } from "expo-router/drawer";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { useConstantTabOptions } from "@/hooks/use-screen-options";
-
-export default function TabsLayout() {
-  const { tabContainerStyle, tabOptions } = useConstantTabOptions();
-
+export default function DrawerLayout() {
   return (
-    <Tabs sceneContainerStyle={tabContainerStyle} screenOptions={tabOptions}>
-      <Tabs.Screen
-        name="home"
-        options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ size, color }) => (
-            <Ionicons name="file-tray-full-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="about"
-        options={{
-          tabBarLabel: "About",
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="info" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="bookmark"
-        options={{
-          tabBarLabel: "Bookmarks",
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="bookmark" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="upload"
-        options={{
-          tabBarLabel: "Upload",
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="upload" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="(stack)"
+          options={{
+            drawerLabel: "Home",
+            headerTitle: "Home",
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="upload"
+          options={{
+            drawerLabel: "Upload",
+            headerTitle: "Upload",
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="cloud-upload" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="profile"
+          options={{
+            drawerLabel: "Profile",
+            headerTitle: "Profile",
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="person" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="about"
+          options={{
+            drawerLabel: "About",
+            headerTitle: "About",
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="information-circle" color={color} size={size} />
+            ),
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
   );
 }

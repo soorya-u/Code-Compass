@@ -30,7 +30,7 @@ export default function Root() {
           </View>
         </View>
         <View className="w-[90%] items-center justify-end gap-y-2">
-          <Link href="/(tabs)/home" asChild>
+          <Link href="/(drawer)/(stack)/(tabs)/browse" asChild>
             <TouchableOpacity
               className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
               style={styles.btnBg}
@@ -44,7 +44,7 @@ export default function Root() {
               </Text>
             </TouchableOpacity>
           </Link>
-          <Link href="/(tabs)/home" asChild>
+          <Link href="/(drawer)/(stack)/(tabs)/browse" asChild>
             <TouchableOpacity
               style={styles.btnBg}
               className="w-full flex-row items-center justify-center gap-3 rounded-xl bg-black py-4 dark:bg-white"

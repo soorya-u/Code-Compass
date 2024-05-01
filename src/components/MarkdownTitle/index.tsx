@@ -11,7 +11,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
   return (
     <Link
       href={{
-        pathname: "/(tabs)/home/md/[file]",
+        pathname: "/(drawer)/(stack)/[file]",
         params: { file: item.link },
       }}
       asChild
