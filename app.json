@@ -11,7 +11,7 @@
     "splash": {
       "image": "./src/assets/icons/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#555555"
+      "backgroundColor": "#111111"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -21,7 +21,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/adaptive-icon.png",
-        "backgroundColor": "#555555"
+        "backgroundColor": "#111111"
       },
       "package": "dev.soorya_u.code_compass"
     },

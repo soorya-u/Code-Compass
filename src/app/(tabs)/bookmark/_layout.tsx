@@ -10,7 +10,7 @@ function StackLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Profile",
+          headerTitle: "Faviorites",
         }}
       />
     </Stack>

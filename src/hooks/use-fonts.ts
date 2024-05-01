@@ -8,6 +8,7 @@ export const useFonts = () => {
     Poppins: require("@/assets/fonts/Poppins-Medium.ttf"),
     "Ubuntu-Nerd": require("@/assets/fonts/UbuntuNerdFont-Medium.ttf"),
     Inder: require("@/assets/fonts/Inder-Regular.ttf"),
+    Jersey: require("@/assets/fonts/Jersey20-Regular.ttf"),
   });
 
   useEffect(() => {

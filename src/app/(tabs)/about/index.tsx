@@ -4,7 +4,7 @@ function About() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text className="text-black dark:text-white">About Page</Text>
+        <Text className="text-primary">About Page</Text>
       </ScrollView>
     </SafeAreaView>
   );

@@ -16,7 +16,7 @@ export const HeaderIcon = ({
 }: {
   tintColor: string | undefined;
 }) => (
-  <Link href="/(stack)/" asChild>
+  <Link href="/(tabs)/home/" asChild>
     <TouchableOpacity>
       <Ionicons name="chevron-back" size={25} color={tintColor} />
     </TouchableOpacity>
