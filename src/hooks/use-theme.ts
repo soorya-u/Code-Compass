@@ -1,5 +1,6 @@
 import { useColorScheme } from "nativewind";
 import { useState, useEffect } from "react";
+import { StyleSheet } from "react-native";
 
 export const useTheme = () => {
   const { colorScheme, toggleColorScheme: nwtoggleColorScheme } =
@@ -26,5 +27,20 @@ export const useConstantTheme = () => {
   const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
   const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
 
-  return { backgroundColor, foregroundColor };
+  const styles = StyleSheet.create({
+    bg: {
+      backgroundColor,
+    },
+    fg: {
+      color: foregroundColor,
+    },
+    btnBg: {
+      backgroundColor: foregroundColor,
+    },
+    btnText: {
+      color: backgroundColor,
+    },
+  });
+
+  return { backgroundColor, foregroundColor, styles };
 };
