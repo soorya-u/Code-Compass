@@ -1,13 +1,11 @@
 import { SafeAreaView, ScrollView, Text } from "react-native";
 
-function About() {
+export default function DownloadScreen() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text className="text-primary">About Page</Text>
+        <Text className="text-black dark:text-white">Download Screen</Text>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-export default About;

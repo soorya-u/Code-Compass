@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 
 import { useConstantStackOptions } from "@/hooks/use-screen-options";
 
-function StackLayout() {
+export default function ProfileLayout() {
   const stackOptions = useConstantStackOptions();
 
   return (
@@ -10,11 +10,9 @@ function StackLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "About",
+          headerTitle: "Profile",
         }}
       />
     </Stack>
   );
 }
-
-export default StackLayout;

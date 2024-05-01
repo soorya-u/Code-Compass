@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 
 import { useConstantStackOptions } from "@/hooks/use-screen-options";
 
-function StackLayout() {
+export default function DownloadLayout() {
   const stackOptions = useConstantStackOptions();
 
   return (
@@ -16,5 +16,3 @@ function StackLayout() {
     </Stack>
   );
 }
-
-export default StackLayout;
