@@ -11,9 +11,15 @@ function StackLayout() {
         name="(tabs)"
         options={{
           headerShown: false,
+          headerTitle: "Home",
         }}
       />
-      <Stack.Screen name="[file]" />
+      <Stack.Screen
+        name="[file]"
+        options={{
+          headerLeft: undefined,
+        }}
+      />
     </Stack>
   );
 }

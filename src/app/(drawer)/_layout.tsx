@@ -2,12 +2,39 @@ import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+import { useConstantTheme } from "@/hooks/use-theme";
+import { usePlatform } from "@/hooks/use-platform";
+
+import DrawerContent from "@/components/DrawerContent";
+
 export default function DrawerLayout() {
+  const { activeBackground, backgroundColor, foregroundColor } =
+    useConstantTheme();
+  const { setPlatformSettings } = usePlatform();
+
+  const bgColor = setPlatformSettings({
+    ios: activeBackground,
+    android: backgroundColor,
+  });
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+        drawerContent={DrawerContent}
         screenOptions={{
           headerShown: false,
+          drawerInactiveBackgroundColor: bgColor,
+          drawerInactiveTintColor: foregroundColor,
+          drawerActiveBackgroundColor: foregroundColor,
+          drawerActiveTintColor: bgColor,
+          drawerContentContainerStyle: {
+            flex: 1,
+          },
+          drawerLabelStyle: {
+            marginLeft: -20,
+            fontSize: 18,
+            fontFamily: "Inder",
+          },
         }}
       >
         <Drawer.Screen

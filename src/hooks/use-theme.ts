@@ -26,6 +26,7 @@ export const useConstantTheme = () => {
   const { setTheme } = useTheme();
   const backgroundColor = setTheme("rgb(10 10 10)", "rgb(229 231 235)");
   const foregroundColor = setTheme("rgb(229 231 235)", "rgb(10 10 10)");
+  const activeBackground = setTheme("rgb(30 30 30)", "rgb(250 250 250)");
 
   const styles = StyleSheet.create({
     bg: {
@@ -42,5 +43,5 @@ export const useConstantTheme = () => {
     },
   });
 
-  return { backgroundColor, foregroundColor, styles };
+  return { backgroundColor, foregroundColor, styles, activeBackground };
 };
