@@ -20,7 +20,7 @@ function HeaderIcon({
     <TouchableOpacity>
       <Image
         className="h-[30px] w-[30px]"
-        source={md.img}
+        source={{ uri: md.uri }}
         style={
           md.canInvert && {
             tintColor,
@@ -40,7 +40,7 @@ function MarkdownContent() {
   const { file: id } = useLocalSearchParams<{ file: string }>();
 
   const md = useMemo(
-    () => markdown.filter((file) => file.link === id)[0],
+    () => markdown.filter((file) => file.route === id)[0],
     [id],
   );
 

@@ -7,23 +7,20 @@ import { styles, lightTheme, darkTheme } from "./styles";
 
 import { useTheme } from "@/hooks/use-theme";
 
-const MarkdownRenderer = forwardRef(function MarkdownRenderer(
-  { content }: { content: string },
-  ref: any,
-) {
-  const { setTheme } = useTheme();
+const MarkdownRenderer = forwardRef(
+  ({ content }: { content: string }, ref: any) => {
+    const { setTheme } = useTheme();
 
-  const options: useMarkdownHookOptions = {
-    colorScheme: setTheme("dark", "light"),
-    renderer: new CustomRenderer(ref),
-    styles,
-    theme: setTheme(darkTheme, lightTheme),
-  };
+    const options: useMarkdownHookOptions = {
+      colorScheme: setTheme("dark", "light"),
+      renderer: new CustomRenderer(ref),
+      styles,
+      theme: setTheme(darkTheme, lightTheme),
+    };
 
-  const mdElements = useMarkdown(content, options);
+    const mdElements = useMarkdown(content, options);
 
-  return (
-    <>
+    return (
       <FlatList
         ref={ref}
         contentInsetAdjustmentBehavior="automatic"
@@ -42,8 +39,8 @@ const MarkdownRenderer = forwardRef(function MarkdownRenderer(
           });
         }}
       />
-    </>
-  );
-});
+    );
+  },
+);
 
 export default MarkdownRenderer;

@@ -11,8 +11,8 @@ function MarkdownTitle({ item }: { item: Markdown }) {
   return (
     <Link
       href={{
-        pathname: "/(stack)/md/[file]",
-        params: { file: item.link },
+        pathname: "/(drawer)/(stack)/[file]",
+        params: { file: item.route },
       }}
       asChild
     >
@@ -20,7 +20,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
         <View className="flex-row items-center gap-[10] p-[10]">
           <Image
             className="h-[35px] w-[35px]"
-            source={item.img}
+            source={{ uri: item.uri }}
             style={
               item.canInvert && {
                 tintColor: setTheme("white", "black"),

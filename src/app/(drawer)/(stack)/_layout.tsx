@@ -8,9 +8,16 @@ function StackLayout() {
   return (
     <Stack screenOptions={stackOptions}>
       <Stack.Screen
-        name="index"
+        name="(tabs)"
         options={{
-          headerTitle: "About",
+          headerShown: false,
+          headerTitle: "Home",
+        }}
+      />
+      <Stack.Screen
+        name="[file]"
+        options={{
+          headerLeft: undefined,
         }}
       />
     </Stack>

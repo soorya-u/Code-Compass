@@ -1,7 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
+import { FlatList, ScrollView, View } from "react-native";
 
 import MarkdownList from "@/components/MarkdownList";
 import { markdown } from "@/constants/markdown";
@@ -13,19 +11,7 @@ import {
   markdownSearcher,
 } from "@/utils/markdownSorterAndSearcher";
 
-export const HeaderIcon = ({
-  tintColor,
-}: {
-  tintColor: string | undefined;
-}) => (
-  <Link href="/(stack)/settings" asChild>
-    <TouchableOpacity>
-      <Ionicons name="cog" size={30} color={tintColor} />
-    </TouchableOpacity>
-  </Link>
-);
-
-export default function Home() {
+export default function BrowseScreen() {
   const { foregroundColor } = useConstantTheme();
   const [searchText, setSearchText] = useState("");
 
