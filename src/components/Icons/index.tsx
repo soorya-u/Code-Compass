@@ -14,7 +14,7 @@ export function DrawerIcon(props: IconProps) {
     <TouchableOpacity
       onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
     >
-      <MaterialIcons name="clear-all" color={props.color} size={30} />
+      <MaterialIcons className="pr-[10px]" name="clear-all" color={props.color} size={30} />
     </TouchableOpacity>
   );
 }
