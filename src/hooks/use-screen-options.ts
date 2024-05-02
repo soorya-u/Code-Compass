@@ -7,6 +7,8 @@ import { type StyleProp, type ViewStyle } from "react-native";
 import { usePlatform } from "./use-platform";
 import { useConstantTheme, useTheme } from "./use-theme";
 
+import { DrawerIcon } from "@/components/Icons";
+
 export const useScreenOptions = (options: NativeStackNavigationOptions) => {
   const navigate = useNavigation();
   const { isDark } = useTheme();
@@ -22,6 +24,7 @@ export const useConstantStackOptions = () => {
   const { setPlatformSettings } = usePlatform();
 
   const stackOptions: NativeStackNavigationOptions = {
+    headerLeft: ({ tintColor: color }) => DrawerIcon({ color }),
     headerTransparent: setPlatformSettings({ ios: true }),
     headerLargeTitle: true,
     headerShadowVisible: false,

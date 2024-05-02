@@ -14,12 +14,6 @@ function StackLayout() {
         }}
       />
       <Stack.Screen name="[file]" />
-      <Stack.Screen
-        name="settings"
-        options={{
-          headerTitle: "Settings",
-        }}
-      />
     </Stack>
   );
 }
