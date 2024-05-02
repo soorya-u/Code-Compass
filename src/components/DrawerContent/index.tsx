@@ -7,7 +7,9 @@ import { useConstantTheme } from "@/hooks/use-theme";
 import { usePlatform } from "@/hooks/use-platform";
 import { Image, Text, View } from "react-native";
 
-const logo = require("@/assets/icons/icon.png");
+import logo from "@/assets/icons/icon.png";
+
+const uri = Image.resolveAssetSource(logo).uri;
 
 export default function DrawerContent(props: any) {
   const { activeBackground, backgroundColor, foregroundColor } =
@@ -32,7 +34,7 @@ export default function DrawerContent(props: any) {
             tintColor: foregroundColor,
           }}
           className="aspect-square h-[65px] w-[65px]"
-          source={logo}
+          source={{ uri }}
           alt="logo"
         />
         <View className="">
@@ -44,7 +46,7 @@ export default function DrawerContent(props: any) {
           </Text>
         </View>
       </View>
-      <View className="my-8 h-[2px] w-[95%] rounded-md mx-auto bg-stone-300 dark:bg-neutral-600" />
+      <View className="mx-auto my-8 h-[2px] w-[95%] rounded-md bg-stone-300 dark:bg-neutral-600" />
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
   );
