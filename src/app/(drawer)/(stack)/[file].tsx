@@ -20,7 +20,7 @@ function HeaderIcon({
     <TouchableOpacity>
       <Image
         className="size-[30px]"
-        source={{ uri: md.uri }}
+        src={md.uri}
         style={
           md.canInvert && {
             tintColor,

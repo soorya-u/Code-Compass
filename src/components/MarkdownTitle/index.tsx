@@ -20,7 +20,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
         <View className="flex-row items-center gap-[10] p-[10]">
           <Image
             className="size-[35px]"
-            source={{ uri: item.uri }}
+            src={item.uri}
             style={
               item.canInvert && {
                 tintColor: setTheme("white", "black"),
