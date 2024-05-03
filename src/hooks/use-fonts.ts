@@ -9,6 +9,8 @@ export const useFonts = () => {
     "Ubuntu-Nerd": require("@/assets/fonts/UbuntuNerdFont-Medium.ttf"),
     Inder: require("@/assets/fonts/Inder-Regular.ttf"),
     Jersey: require("@/assets/fonts/Jersey20-Regular.ttf"),
+    "Chakra-Petch": require("@/assets/fonts/ChakraPetch-Medium.ttf"),
+    Audiowide: require("@/assets/fonts/Audiowide-Regular.ttf"),
   });
 
   useEffect(() => {

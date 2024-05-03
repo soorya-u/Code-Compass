@@ -73,7 +73,7 @@ export default function Root() {
           />
           <View
             style={{ top: height / 2 - 50 }}
-            className="absolute flex-row gap-2"
+            className="absolute flex-row items-center gap-2"
           >
             {carouselContent.map((_, idx) => (
               <View
@@ -82,9 +82,10 @@ export default function Root() {
                   styles.btnBg,
                   {
                     opacity: currentSlideIndex === idx ? 1 : 0.25,
+                    width: currentSlideIndex === idx ? 10 : 8,
                   },
                 ]}
-                className="size-3 rounded-full"
+                className="aspect-square rounded-full"
               />
             ))}
           </View>

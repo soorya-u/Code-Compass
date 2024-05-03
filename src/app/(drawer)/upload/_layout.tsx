@@ -10,7 +10,7 @@ export default function UploadLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Profile",
+          headerTitle: "Upload",
         }}
       />
     </Stack>
