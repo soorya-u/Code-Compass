@@ -19,7 +19,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
       <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
         <View className="flex-row items-center gap-[10] p-[10]">
           <Image
-            className="h-[35px] w-[35px]"
+            className="size-[35px]"
             source={{ uri: item.uri }}
             style={
               item.canInvert && {

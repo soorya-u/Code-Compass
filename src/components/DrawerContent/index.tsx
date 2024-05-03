@@ -33,7 +33,7 @@ export default function DrawerContent(props: any) {
           style={{
             tintColor: foregroundColor,
           }}
-          className="aspect-square h-[65px] w-[65px]"
+          className="aspect-square size-[65px]"
           source={{ uri }}
           alt="logo"
         />
