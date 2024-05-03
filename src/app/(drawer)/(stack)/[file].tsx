@@ -53,7 +53,7 @@ function MarkdownContent() {
     <>
       <MarkdownRenderer content={md.content} ref={flatListRef} />
       <TouchableOpacity
-        className="absolute bottom-5 right-5 h-12 w-12 items-center justify-center rounded-full border border-[#a3acb9] bg-[#ffffffd7] dark:border-[#3e4248] dark:bg-[#000000cf]"
+        className="absolute bottom-10 right-10 size-12 items-center justify-center rounded-full bg-black opacity-85 dark:bg-white"
         onPress={() => {
           flatListRef.current?.scrollToIndex({
             animated: true,
@@ -62,9 +62,9 @@ function MarkdownContent() {
         }}
       >
         <Ionicons
-          name="chevron-up-outline"
+          name="caret-up"
           size={35}
-          color={setTheme("white", "black")}
+          color={setTheme("black", "white")}
         />
       </TouchableOpacity>
     </>

@@ -10,7 +10,7 @@ export default function DownloadLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Faviorites",
+          headerTitle: "Downloads",
         }}
       />
     </Stack>

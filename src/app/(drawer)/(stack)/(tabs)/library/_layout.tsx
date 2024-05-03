@@ -10,7 +10,7 @@ export default function LibraryLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Faviorites",
+          headerTitle: "Library",
         }}
       />
     </Stack>
