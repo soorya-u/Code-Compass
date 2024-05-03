@@ -48,6 +48,8 @@ export default function About() {
           src={uri}
           className="size-16"
           style={[styles.monochromeImage, animatedImageStyle]}
+          alt="logo"
+          sharedTransitionTag="logo"
         />
         <Text className="font-['Jersey'] text-5xl text-black dark:text-white">
           Code Compass

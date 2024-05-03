@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { Text, View, Image, TouchableOpacity } from "react-native";
+import Animated from "react-native-reanimated";
 
 import { useTheme } from "@/hooks/use-theme";
 import { Markdown } from "@/types/markdown";
@@ -18,7 +19,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
     >
       <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
         <View className="flex-row items-center gap-[10] p-[10]">
-          <Image
+          <Animated.Image
             className="size-[35px]"
             src={item.uri}
             style={
@@ -27,6 +28,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
               }
             }
             alt={item.name}
+            sharedTransitionTag={item.name}
           />
           <Text className="flex-1 pl-1 font-['Inder'] text-[16px] text-black dark:text-white">
             {item.name}

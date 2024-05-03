@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import { useMemo, useRef } from "react";
 import { type FlatList, TouchableOpacity, Image } from "react-native";
+import Animated from "react-native-reanimated";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { markdown } from "@/constants/markdown";
@@ -18,7 +19,7 @@ function HeaderIcon({
 }) {
   return (
     <TouchableOpacity>
-      <Image
+      <Animated.Image
         className="size-[30px]"
         src={md.uri}
         style={
@@ -27,6 +28,7 @@ function HeaderIcon({
           }
         }
         alt={md.name}
+        sharedTransitionTag={md.name}
       />
     </TouchableOpacity>
   );

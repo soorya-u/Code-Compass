@@ -1,11 +1,12 @@
+import { Image, Text, View } from "react-native";
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import Animated from "react-native-reanimated";
 
 import { useConstantTheme } from "@/hooks/use-theme";
 import { usePlatform } from "@/hooks/use-platform";
-import { Image, Text, View } from "react-native";
 
 import logo from "@/assets/icons/icon.png";
 
@@ -29,13 +30,14 @@ export default function DrawerContent(props: any) {
       {...props}
     >
       <View className="mt-10 flex-row items-center justify-start gap-4 pl-4">
-        <Image
+        <Animated.Image
           style={{
             tintColor: foregroundColor,
           }}
           className="aspect-square size-[65px]"
           source={{ uri }}
           alt="logo"
+          sharedTransitionTag="logo"
         />
         <View className="">
           <Text className="font-['Jersey'] text-[40px] text-black dark:text-white">
