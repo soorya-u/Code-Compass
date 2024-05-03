@@ -1,15 +1,42 @@
 import { Image, ScrollView, Text, View } from "react-native";
 import { Link } from "expo-router";
 
+import Animated, {
+  Easing,
+  FadeInLeft,
+  FadeOutLeft,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from "react-native-reanimated";
+
 import { useConstantTheme } from "@/hooks/use-theme";
+import { projects, sections } from "@/constants/about";
 
 import logo from "@/assets/icons/icon.png";
-import { projects, sections } from "@/constants/about";
+import { useEffect } from "react";
 
 const uri = Image.resolveAssetSource(logo).uri;
 
 export default function About() {
   const { styles } = useConstantTheme();
+
+  const rotation = useSharedValue<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      rotation.value += 10;
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const animatedImageStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${rotation.value}deg` }],
+  }));
 
   return (
     <ScrollView
@@ -17,7 +44,11 @@ export default function About() {
       contentInsetAdjustmentBehavior="automatic"
     >
       <View className="flex-row items-center justify-center gap-3">
-        <Image src={uri} className="size-16" style={styles.monochromeImage} />
+        <Animated.Image
+          src={uri}
+          className="size-16"
+          style={[styles.monochromeImage, animatedImageStyle]}
+        />
         <Text className="font-['Jersey'] text-5xl text-black dark:text-white">
           Code Compass
         </Text>
@@ -38,12 +69,15 @@ export default function About() {
         </Text>
         {projects.map((project, idx) => (
           <Link key={idx} href={project.url} asChild>
-            <View className="flex-row items-center gap-3 pl-4">
+            <Animated.View
+              entering={FadeInLeft.duration(500).delay(500 * idx)}
+              className="flex-row items-center gap-3 pl-4"
+            >
               <Image src={`${project.url}/logo.png`} className="size-8" />
               <Text style={project.style.text} className="text-3xl">
                 {project.name}
               </Text>
-            </View>
+            </Animated.View>
           </Link>
         ))}
       </View>
