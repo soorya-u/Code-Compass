@@ -41,6 +41,9 @@ export const useConstantTheme = () => {
     btnText: {
       color: backgroundColor,
     },
+    monochromeImage: {
+      tintColor: foregroundColor,
+    },
   });
 
   return { backgroundColor, foregroundColor, styles, activeBackground };
