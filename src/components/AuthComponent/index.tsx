@@ -13,15 +13,14 @@ export default function AuthComponent() {
   const url = Linking.useURL();
   if (url) createSessionFromUrl(url);
 
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>();
 
   useEffect(() => {
     const getUser = async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-
-      if (user) setUser(user);
+      setUser(user);
     };
 
     getUser();
@@ -31,6 +30,7 @@ export default function AuthComponent() {
     <View className="w-[90%] items-center justify-center gap-y-2">
       {user ? (
         <UserButtons
+          afterSignOut={() => setUser(null)}
           name={user.user_metadata["name"]}
           image={user.user_metadata["avatar_url"]}
         />

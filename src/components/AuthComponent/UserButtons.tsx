@@ -8,9 +8,14 @@ import { SignOut } from "@/supabase/auth/sign-out";
 type UserButtonProps = {
   name: string;
   image: string;
+  afterSignOut: () => void;
 };
 
-export default function UserButtons({ name, image }: UserButtonProps) {
+export default function UserButtons({
+  afterSignOut,
+  name,
+  image,
+}: UserButtonProps) {
   const { styles, backgroundColor } = useConstantTheme();
 
   return (
@@ -34,7 +39,7 @@ export default function UserButtons({ name, image }: UserButtonProps) {
         </TouchableOpacity>
       </Link>
       <TouchableOpacity
-        onPress={async () => await SignOut()}
+        onPress={async () => await SignOut().then(afterSignOut)}
         className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
         style={styles.btnBg}
       >
