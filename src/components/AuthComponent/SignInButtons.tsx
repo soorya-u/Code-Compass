@@ -18,7 +18,7 @@ export default function SignInButtons() {
         <TouchableOpacity
           onPress={async () =>
             await signIn(elem.toLowerCase() as IProviders).then(() =>
-              router.replace("/(drawer)/(stack)/(tabs)/browse")
+              router.replace("/(drawer)/(stack)/(tabs)/browse"),
             )
           }
           key={idx}

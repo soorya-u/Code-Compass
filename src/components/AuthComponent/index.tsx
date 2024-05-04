@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState, useTransition } from "react";
 import { View } from "react-native";
 import * as Linking from "expo-linking";
 import { User } from "@supabase/supabase-js";
@@ -15,7 +15,7 @@ export default function AuthComponent() {
 
   const [user, setUser] = useState<User | null>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const getUser = async () => {
       const {
         data: { user },
