@@ -36,7 +36,7 @@ export default function DrawerContent(props: any) {
       <DrawerItem
         onPress={() => router.replace("/")}
         label={() => (
-          <View className="mt-10 flex-row items-center justify-start gap-4 pl-4">
+          <View className="mt-10 flex-row items-center justify-start gap-4 pl-2">
             <Animated.Image
               style={{
                 tintColor: foregroundColor,
