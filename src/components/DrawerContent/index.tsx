@@ -4,14 +4,13 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
 import Animated from "react-native-reanimated";
 
 import { useConstantTheme } from "@/hooks/use-theme";
 import { usePlatform } from "@/hooks/use-platform";
 
 import logo from "@/assets/icons/icon.png";
-import { Link } from "expo-router";
-import { useRouter } from "expo-router";
 
 const uri = Image.resolveAssetSource(logo).uri;
 
