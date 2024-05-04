@@ -13,6 +13,7 @@ import {
 import { Renderer, type RendererInterface } from "react-native-marked";
 
 import CodeHighlighter from "../CodeHighlighter";
+import { openLink } from "@/utils/markdownLinks";
 
 export class CustomRenderer extends Renderer implements RendererInterface {
   private flatListRef: React.RefObject<FlatList<React.ReactNode>>;
@@ -94,29 +95,10 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     href: string,
     styles?: TextStyle | undefined,
   ): ReactNode {
-    const relativeLink = href.startsWith("/#") && href.replace("/#", "");
     return (
       <TouchableOpacity
         key={randomUUID()}
-        onPress={() => {
-          if (relativeLink) {
-            const flatListData =
-              this.flatListRef.current && this.flatListRef.current.props.data;
-            const actualData = flatListData && Array.from(flatListData);
-            const item = actualData?.find((node) => {
-              const elem = node as React.ReactElement;
-              const { id }: { id: string | undefined } = elem.props;
-              if (id === relativeLink) return node;
-            });
-            this.flatListRef.current?.scrollToItem({
-              animated: true,
-              item,
-              viewOffset: Platform.OS === "ios" ? 75 : 0,
-            });
-          } else {
-            Linking.openURL(href);
-          }
-        }}
+        onPress={() => openLink(href, this.flatListRef)}
       >
         <Text style={styles}>{children}</Text>
       </TouchableOpacity>
