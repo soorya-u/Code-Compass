@@ -1,48 +1,42 @@
-import { Linking, Text, TouchableOpacity, View } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
+import * as Linking from "expo-linking";
+import { User } from "@supabase/supabase-js";
 
-import { useConstantTheme } from "@/hooks/use-theme";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/supabase";
+import { createSessionFromUrl } from "@/supabase/auth/sign-in";
 
-type IProviders = "google" | "github";
-
-const providers = ["Google", "Github"];
-
-const handlePress = async (provider: IProviders) => {
-  let { data, error } = await supabase.auth.signInWithOAuth({
-    provider,
-  });
-
-  if (!error && data.url) Linking.openURL(data.url);
-};
+import UserButtons from "./UserButtons";
+import SignInButtons from "./SignInButtons";
 
 export default function AuthComponent() {
-  const { styles, backgroundColor } = useConstantTheme();
+  const url = Linking.useURL();
+  if (url) createSessionFromUrl(url);
+
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) setUser(user);
+    };
+
+    getUser();
+  }, []);
 
   return (
     <View className="w-[90%] items-center justify-center gap-y-2">
-      {providers.map((elem, idx) => (
-        <TouchableOpacity
-          onPress={async () =>
-            await handlePress(elem.toLowerCase() as IProviders)
-          }
-          key={idx}
-          className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
-          style={styles.btnBg}
-        >
-          <FontAwesome
-            name={elem.toLowerCase() as IProviders}
-            color={backgroundColor}
-            size={25}
-          />
-          <Text
-            style={styles.btnText}
-            className="text-center font-['Poppins'] text-xl"
-          >
-            Login with {elem}
-          </Text>
-        </TouchableOpacity>
-      ))}
+      {user ? (
+        <UserButtons
+          name={user.user_metadata["name"]}
+          image={user.user_metadata["avatar_url"]}
+        />
+      ) : (
+        <SignInButtons />
+      )}
     </View>
   );
 }
