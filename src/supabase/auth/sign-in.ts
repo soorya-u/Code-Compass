@@ -24,7 +24,6 @@ export const createSessionFromUrl = async (url: string) => {
 };
 
 export const signIn = async (provider: IProviders) => {
-
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {
