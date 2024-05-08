@@ -18,66 +18,64 @@ export default function DrawerLayout() {
   });
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer
-        drawerContent={DrawerContent}
-        screenOptions={{
-          headerShown: false,
-          drawerInactiveBackgroundColor: bgColor,
-          drawerInactiveTintColor: foregroundColor,
-          drawerActiveBackgroundColor: foregroundColor,
-          drawerActiveTintColor: bgColor,
-          drawerContentContainerStyle: {
-            flex: 1,
-          },
-          drawerLabelStyle: {
-            marginLeft: -20,
-            fontSize: 18,
-            fontFamily: "Inder",
-          },
+    <Drawer
+      drawerContent={DrawerContent}
+      screenOptions={{
+        headerShown: false,
+        drawerInactiveBackgroundColor: bgColor,
+        drawerInactiveTintColor: foregroundColor,
+        drawerActiveBackgroundColor: foregroundColor,
+        drawerActiveTintColor: bgColor,
+        drawerContentContainerStyle: {
+          flex: 1,
+        },
+        drawerLabelStyle: {
+          marginLeft: -20,
+          fontSize: 18,
+          fontFamily: "Inder",
+        },
+      }}
+    >
+      <Drawer.Screen
+        name="(stack)"
+        options={{
+          drawerLabel: "Home",
+          headerTitle: "Home",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home" color={color} size={size} />
+          ),
         }}
-      >
-        <Drawer.Screen
-          name="(stack)"
-          options={{
-            drawerLabel: "Home",
-            headerTitle: "Home",
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="home" color={color} size={size} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="upload"
-          options={{
-            drawerLabel: "Upload",
-            headerTitle: "Upload",
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="cloud-upload" color={color} size={size} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="profile"
-          options={{
-            drawerLabel: "Profile",
-            headerTitle: "Profile",
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="person" color={color} size={size} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="about"
-          options={{
-            drawerLabel: "About",
-            headerTitle: "About",
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name="information-circle" color={color} size={size} />
-            ),
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+      />
+      <Drawer.Screen
+        name="upload"
+        options={{
+          drawerLabel: "Upload",
+          headerTitle: "Upload",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="cloud-upload" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="profile"
+        options={{
+          drawerLabel: "Profile",
+          headerTitle: "Profile",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="about"
+        options={{
+          drawerLabel: "About",
+          headerTitle: "About",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="information-circle" color={color} size={size} />
+          ),
+        }}
+      />
+    </Drawer>
   );
 }
