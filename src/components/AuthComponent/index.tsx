@@ -1,42 +1,43 @@
-import { useLayoutEffect, useState, useTransition } from "react";
-import { View } from "react-native";
-import * as Linking from "expo-linking";
-import { User } from "@supabase/supabase-js";
+import { Text, TouchableOpacity, View } from "react-native";
 
-import { supabase } from "@/supabase";
-import { createSessionFromUrl } from "@/supabase/auth/sign-in";
+import { signIn } from "@/supabase/auth/sign-in";
+import { useConstantTheme } from "@/hooks/use-theme";
+import { IProviders } from "@/types/auth";
+import { FontAwesome } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
-import UserButtons from "./UserButtons";
-import SignInButtons from "./SignInButtons";
+const providers = ["Google", "Github"];
 
-export default function AuthComponent() {
-  const url = Linking.useURL();
-  if (url) createSessionFromUrl(url);
-
-  const [user, setUser] = useState<User | null>();
-
-  useLayoutEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-    };
-
-    getUser();
-  }, []);
+export default function SignInButtons() {
+  const { styles, backgroundColor } = useConstantTheme();
+  const router = useRouter();
 
   return (
     <View className="w-[90%] items-center justify-center gap-y-2">
-      {user ? (
-        <UserButtons
-          afterSignOut={() => setUser(null)}
-          name={user.user_metadata["name"]}
-          image={user.user_metadata["avatar_url"]}
-        />
-      ) : (
-        <SignInButtons />
-      )}
+      {providers.map((elem, idx) => (
+        <TouchableOpacity
+          onPress={async () =>
+            await signIn(elem.toLowerCase() as IProviders).then(() =>
+              router.replace("/(drawer)/(stack)/(tabs)/browse"),
+            )
+          }
+          key={idx}
+          className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
+          style={styles.btnBg}
+        >
+          <FontAwesome
+            name={elem.toLowerCase() as IProviders}
+            color={backgroundColor}
+            size={25}
+          />
+          <Text
+            style={styles.btnText}
+            className="text-center font-['Poppins'] text-xl"
+          >
+            Login with {elem}
+          </Text>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 }

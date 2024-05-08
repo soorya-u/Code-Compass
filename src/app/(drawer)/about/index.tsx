@@ -2,15 +2,9 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { Link } from "expo-router";
 
 import Animated, {
-  Easing,
   FadeInLeft,
-  FadeOutLeft,
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
-  withRepeat,
-  withSequence,
-  withTiming,
 } from "react-native-reanimated";
 
 import { useConstantTheme } from "@/hooks/use-theme";
