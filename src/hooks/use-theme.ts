@@ -45,7 +45,7 @@ export const useConstantTheme = () => {
       backgroundColor: "transparent",
       borderWidth: 2,
       borderColor: foregroundColor,
-      opacity: 0.8,
+      opacity: 0.85,
     },
     btnOutlineText: {
       color: foregroundColor,

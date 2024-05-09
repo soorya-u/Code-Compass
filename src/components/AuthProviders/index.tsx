@@ -8,7 +8,7 @@ import { useRouter } from "expo-router";
 
 const providers = ["Google", "Github"];
 
-export default function SignInButtons() {
+export default function AuthProviders() {
   const { styles, backgroundColor } = useConstantTheme();
   const router = useRouter();
 
@@ -34,7 +34,7 @@ export default function SignInButtons() {
             style={styles.btnText}
             className="text-center font-['Poppins'] text-xl"
           >
-            Login with {elem}
+            Continue with {elem}
           </Text>
         </TouchableOpacity>
       ))}
