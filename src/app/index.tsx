@@ -10,7 +10,7 @@ export default function Root() {
   return (
     <View
       style={styles.bg}
-      className="h-full w-full items-center justify-between py-[48]"
+      className="h-full w-full items-center justify-between py-[30]"
     >
       <View className="gap-3">
         <Text

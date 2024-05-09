@@ -1,3 +1,4 @@
+import { SafeAreaView, useWindowDimensions } from "react-native";
 import { withLayoutContext } from "expo-router";
 
 import {
@@ -7,8 +8,8 @@ import {
 } from "@react-navigation/material-top-tabs";
 import { ParamListBase, TabNavigationState } from "@react-navigation/native";
 
-import { useConstantTheme } from "@/hooks/use-theme";
-import { SafeAreaView, ScrollView, useWindowDimensions } from "react-native";
+import { useConstantTheme, useTheme } from "@/hooks/use-theme";
+import { usePlatform } from "@/hooks/use-platform";
 
 const { Navigator } = createMaterialTopTabNavigator();
 
@@ -20,11 +21,14 @@ export const MaterialTopTabs = withLayoutContext<
 >(Navigator);
 
 export default function AuthLayout() {
-  const { foregroundColor } = useConstantTheme();
+  const { setPlatformSettings } = usePlatform();
+  const { setTheme } = useTheme();
+  const { foregroundColor, backgroundColor, activeBackground } =
+    useConstantTheme();
   const { width } = useWindowDimensions();
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 bg-neutral-400">
       <MaterialTopTabs
         screenOptions={{
           tabBarActiveTintColor: foregroundColor,
@@ -40,7 +44,10 @@ export default function AuthLayout() {
             borderRadius: 15,
           },
           tabBarIndicatorContainerStyle: {
-            backgroundColor: "rgb(23 23 23)",
+            backgroundColor: setPlatformSettings({
+              ios: setTheme(activeBackground, "rgb(245 245 245)"),
+              android: setTheme("#000", backgroundColor),
+            }),
           },
           tabBarContentContainerStyle: {
             height: 50,

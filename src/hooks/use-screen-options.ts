@@ -19,7 +19,8 @@ export const useScreenOptions = (options: NativeStackNavigationOptions) => {
 };
 
 export const useConstantStackOptions = () => {
-  const { backgroundColor, foregroundColor } = useConstantTheme();
+  const { backgroundColor, foregroundColor, activeBackground } =
+    useConstantTheme();
   const { setTheme } = useTheme();
   const { setPlatformSettings } = usePlatform();
 
@@ -33,7 +34,10 @@ export const useConstantStackOptions = () => {
       backgroundColor,
     },
     headerStyle: {
-      backgroundColor: setPlatformSettings({ android: backgroundColor }),
+      backgroundColor: setPlatformSettings({
+        ios: setTheme(activeBackground, "rgb(245 245 245)"),
+        android: setTheme("#000", backgroundColor),
+      }),
     },
     headerBlurEffect: setTheme("dark", "light"),
   };
