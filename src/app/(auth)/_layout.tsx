@@ -8,7 +8,7 @@ import {
 import { ParamListBase, TabNavigationState } from "@react-navigation/native";
 
 import { useConstantTheme } from "@/hooks/use-theme";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, ScrollView, useWindowDimensions } from "react-native";
 
 const { Navigator } = createMaterialTopTabNavigator();
 
@@ -20,7 +20,8 @@ export const MaterialTopTabs = withLayoutContext<
 >(Navigator);
 
 export default function AuthLayout() {
-  const { foregroundColor, activeBackground } = useConstantTheme();
+  const { foregroundColor } = useConstantTheme();
+  const { width } = useWindowDimensions();
 
   return (
     <SafeAreaView className="flex-1">
@@ -30,21 +31,22 @@ export default function AuthLayout() {
           tabBarLabelStyle: {
             fontWeight: "bold",
             textTransform: "capitalize",
-            fontSize: 16,
+            fontSize: 17,
           },
           tabBarIndicatorStyle: {
             backgroundColor: foregroundColor,
-            height: 3,
+            height: 4,
+            width: width / 2,
+            borderRadius: 15,
           },
           tabBarIndicatorContainerStyle: {
-            backgroundColor: activeBackground,
+            backgroundColor: "rgb(23 23 23)",
           },
           tabBarContentContainerStyle: {
-            flex: 1,
-            height: 45,
+            height: 50,
           },
           tabBarItemStyle: {
-            paddingHorizontal: 35,
+            width: width / 2,
           },
         }}
       >

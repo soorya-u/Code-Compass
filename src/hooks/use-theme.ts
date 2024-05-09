@@ -55,5 +55,10 @@ export const useConstantTheme = () => {
     },
   });
 
-  return { backgroundColor, foregroundColor, styles, activeBackground };
+  return {
+    backgroundColor,
+    foregroundColor,
+    styles,
+    activeBackground,
+  };
 };

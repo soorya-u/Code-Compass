@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Image, Text, View, useWindowDimensions } from "react-native";
+import { Text, View, useWindowDimensions } from "react-native";
 import CarouselElement from "react-native-reanimated-carousel";
 
 import { carouselContent } from "@/constants/carousel";
 import { useConstantTheme } from "@/hooks/use-theme";
+import Animated from "react-native-reanimated";
 
 export default function Carousel() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -24,7 +25,7 @@ export default function Carousel() {
         data={carouselContent}
         renderItem={({ item }) => (
           <View className="w-full flex-1 items-center justify-center gap-4">
-            <Image
+            <Animated.Image
               className="size-[60px]"
               style={styles.monochromeImage}
               src={item.image}

@@ -1,38 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import { useMemo, useRef } from "react";
-import { type FlatList, TouchableOpacity, Image } from "react-native";
-import Animated from "react-native-reanimated";
+import { type FlatList, TouchableOpacity } from "react-native";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { markdown } from "@/constants/markdown";
 import { useScreenOptions } from "@/hooks/use-screen-options";
 import { useTheme } from "@/hooks/use-theme";
-import { Markdown } from "@/types/markdown";
-
-function HeaderIcon({
-  tintColor,
-  md,
-}: {
-  tintColor: string | undefined;
-  md: Markdown;
-}) {
-  return (
-    <TouchableOpacity>
-      <Animated.Image
-        className="size-[30px]"
-        src={md.uri}
-        style={
-          md.canInvert && {
-            tintColor,
-          }
-        }
-        alt={md.name}
-        sharedTransitionTag={md.name}
-      />
-    </TouchableOpacity>
-  );
-}
+import { MarkdownIcon } from "@/components/Icons";
 
 function MarkdownContent() {
   const { setTheme } = useTheme();
@@ -48,7 +23,7 @@ function MarkdownContent() {
 
   useScreenOptions({
     headerTitle: md.name,
-    headerRight: ({ tintColor }) => HeaderIcon({ tintColor, md }),
+    headerRight: ({ tintColor }) => MarkdownIcon({ tintColor, md }),
   });
 
   return (

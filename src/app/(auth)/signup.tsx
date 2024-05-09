@@ -1,7 +1,12 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text } from "react-native";
+
+import { useConstantTheme } from "@/hooks/use-theme";
 
 export default function SignUpScreen() {
+  const { styles } = useConstantTheme();
   return (
-      <Text>Hello Sign Up</Text>
+    <ScrollView style={styles.bg} contentInsetAdjustmentBehavior="automatic">
+      <Text style={styles.fg}></Text>
+    </ScrollView>
   );
 }
