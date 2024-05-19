@@ -2,6 +2,7 @@ import { Text, TextInput, View } from "react-native";
 import { type Control, useController } from "react-hook-form";
 
 import { type SignUpType, type LoginType } from "@/schema/auth";
+import { useTheme, useConstantTheme } from "@/hooks/use-theme";
 
 type InputProps = {
   title: string;
@@ -23,24 +24,35 @@ export default function Input({
     name: name,
     defaultValue: "",
   });
+  const { setTheme } = useTheme();
+  const { foregroundColor, backgroundColor } = useConstantTheme();
 
   return (
-    <View className="w-[85%]">
-      <Text className="absolute -top-3 left-3 z-10 rounded-full bg-black px-2 font-[Inder] text-base text-white">
+    <View className="w-full">
+      <Text
+        style={{
+          color: foregroundColor,
+          backgroundColor,
+        }}
+        className="absolute -top-3 left-3 z-10 rounded-full px-2 font-[Inder] text-base"
+      >
         {title}
       </Text>
       <TextInput
-        ref={field.ref}
-        className="h-14 w-full rounded-md border border-white bg-black p-4 font-[Inder] text-base text-white"
-        cursorColor="#fff"
-        placeholderTextColor="#4f4f4f"
+        style={{
+          borderColor: foregroundColor,
+          backgroundColor,
+          color: foregroundColor,
+        }}
+        className="h-14 w-full items-center justify-center rounded-md border px-4 font-[Inder] text-base"
+        cursorColor={setTheme("#fff", "#000")}
+        placeholderTextColor={"#4f4f4f"}
         placeholder={placeholder}
         onChangeText={field.onChange}
-        onBlur={field.onBlur}
         aria-disabled={field.disabled}
         value={field.value}
       />
-      <Text className="text-sm text-red-500">
+      <Text className="pl-2 pt-1 font-[Ubuntu-Nerd] text-[14px] text-red-500">
         {fieldState.error && fieldState.error.message}
       </Text>
     </View>

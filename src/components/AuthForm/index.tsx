@@ -1,63 +1,91 @@
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { signUpSchema, type SignUpType } from "@/schema/auth";
+import { useConstantTheme } from "@/hooks/use-theme";
 
 import Input from "../Input";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { useConstantTheme } from "@/hooks/use-theme";
+
+type FieldType = {
+  title: string;
+  placeholder: string;
+  name: "fullName" | "username" | "email" | "password";
+  signUpOnly: boolean;
+};
+
+const fields: FieldType[] = [
+  {
+    title: "Full Name",
+    placeholder: "John Doe",
+    name: "fullName",
+    signUpOnly: true,
+  },
+  {
+    title: "Username",
+    placeholder: "john-doe",
+    name: "username",
+    signUpOnly: true,
+  },
+  {
+    title: "Email",
+    placeholder: "johndoe@example.com",
+    name: "email",
+    signUpOnly: false,
+  },
+  {
+    title: "Password",
+    placeholder: "********",
+    name: "password",
+    signUpOnly: false,
+  },
+];
 
 type AuthFormType = {
   type: "login" | "sign-up";
 };
 
 export default function AuthForm({ type }: AuthFormType) {
-  const { styles } = useConstantTheme();
+  const { styles, foregroundColor } = useConstantTheme();
 
   const {
-    handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    handleSubmit,
+    formState: { isSubmitting },
   } = useForm<SignUpType>({
     resolver: zodResolver(signUpSchema),
   });
 
   return (
-    <View className="w-full items-center justify-center gap-6 py-4">
-      {type === "sign-up" && (
-        <>
-          <Input
-            title="Full Name"
-            placeholder="John Doe"
-            name="fullName"
-            control={control}
-          />
-          <Input
-            title="Username"
-            placeholder="john-doe"
-            name="username"
-            control={control}
-          />
-        </>
+    <View className="w-[85%] items-center justify-center gap-6 py-4">
+      {fields.map(
+        (field, idx) =>
+          ((type === "login" && !field.signUpOnly) || type === "sign-up") && (
+            <Input
+              key={idx}
+              title={field.title}
+              control={control}
+              name={field.name}
+              placeholder={field.placeholder}
+            />
+          ),
       )}
-      <Input
-        title="Email"
-        placeholder="johndoe@example.com"
-        name="email"
-        control={control}
-      />
-      <Input
-        title="Password"
-        placeholder="*******"
-        name="password"
-        control={control}
-      />
       <TouchableOpacity
-        className="w-full bg-red-500 flex-row items-center justify-center gap-3 rounded-xl py-4"
+        disabled={isSubmitting}
+        aria-disabled={isSubmitting}
+        className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
+        style={[
+          styles.btnOutlineBg,
+          { backgroundColor: foregroundColor, opacity: 1 },
+        ]}
+        onPress={handleSubmit(
+          (val) => console.log(val),
+          (e) => console.log(e),
+        )}
       >
         <Text
           style={styles.btnText}
-          className="w-full bg-red-500 text-center font-['Poppins'] text-xl"
+          className="text-center font-['Poppins'] text-2xl"
         >
           Submit
         </Text>

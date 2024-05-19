@@ -28,7 +28,7 @@ export default function AuthLayout() {
   const { width } = useWindowDimensions();
 
   return (
-    <SafeAreaView className="flex-1 bg-neutral-400">
+    <SafeAreaView className="flex-1">
       <MaterialTopTabs
         screenOptions={{
           tabBarActiveTintColor: foregroundColor,
