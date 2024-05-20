@@ -2,7 +2,12 @@ import { Text, View, TouchableOpacity } from "react-native";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { signUpSchema, type SignUpType } from "@/schema/auth";
+import {
+  signUpSchema,
+  loginSchema,
+  type LoginType,
+  type SignUpType,
+} from "@/schema/auth";
 import { useConstantTheme } from "@/hooks/use-theme";
 
 import Input from "../Input";
@@ -52,8 +57,8 @@ export default function AuthForm({ type }: AuthFormType) {
     control,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<SignUpType>({
-    resolver: zodResolver(signUpSchema),
+  } = useForm<LoginType | SignUpType>({
+    resolver: zodResolver(type === "login" ? loginSchema : signUpSchema),
   });
 
   return (
@@ -78,10 +83,7 @@ export default function AuthForm({ type }: AuthFormType) {
           styles.btnOutlineBg,
           { backgroundColor: foregroundColor, opacity: 1 },
         ]}
-        onPress={handleSubmit(
-          (val) => console.log(val),
-          (e) => console.log(e),
-        )}
+        onPress={handleSubmit((val) => console.log(val))}
       >
         <Text
           style={styles.btnText}
