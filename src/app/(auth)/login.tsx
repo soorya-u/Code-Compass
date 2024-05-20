@@ -1,4 +1,9 @@
-import { ScrollView, Text, View, KeyboardAvoidingView } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  KeyboardAvoidingView,
+} from "react-native";
 import { useConstantTheme } from "@/hooks/use-theme";
 
 import AuthProviders from "@/components/AuthProviders";
@@ -10,10 +15,10 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
-        contentContainerClassName="flex-1 py-4 justify-start items-center"
+        contentContainerClassName="flex-1 items-center justify-start py-4 min-h-[92vh]"
         style={styles.bg}
       >
-        <View className="my-6 w-[85%]">
+        <View className="w-[85%] py-5">
           <Text className="text-center font-['Poppins'] text-2xl text-black dark:text-white">
             Enter your Credentials to Login
           </Text>

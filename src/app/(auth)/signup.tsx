@@ -9,9 +9,8 @@ export default function SignUpScreen() {
   return (
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
-        contentContainerClassName="flex-1 py-4 justify-start items-center"
+        contentContainerClassName="flex-1 py-4 justify-start items-center min-h-[118vh]"
         style={styles.bg}
-        keyboardDismissMode="interactive"
       >
         <View className="w-[85%] py-5">
           <Text className="text-center font-['Poppins'] text-2xl text-black dark:text-white">
