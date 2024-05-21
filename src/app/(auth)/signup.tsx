@@ -1,4 +1,10 @@
-import { ScrollView, Text, View, KeyboardAvoidingView } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  useWindowDimensions,
+} from "react-native";
 
 import { useConstantTheme } from "@/hooks/use-theme";
 import AuthProviders from "@/components/AuthProviders";
@@ -6,10 +12,14 @@ import AuthForm from "@/components/AuthForm";
 
 export default function SignUpScreen() {
   const { styles } = useConstantTheme();
+  const { height } = useWindowDimensions();
   return (
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
-        contentContainerClassName="flex-1 py-4 justify-start items-center min-h-[118vh]"
+        contentContainerStyle={{
+          minHeight: height*1.183,
+        }}
+        contentContainerClassName="flex-1 py-4 justify-start items-center"
         style={styles.bg}
       >
         <View className="w-[85%] py-5">

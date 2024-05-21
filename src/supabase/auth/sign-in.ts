@@ -4,6 +4,7 @@ import * as WebBrowser from "expo-web-browser";
 
 import { supabase } from "..";
 import { IProviders } from "@/types/auth";
+import { LoginType, SignUpType, signUpSchema } from "@/schema/auth";
 
 const redirectTo = makeRedirectUri();
 
@@ -23,7 +24,7 @@ export const createSessionFromUrl = async (url: string) => {
   return data.session;
 };
 
-export const signIn = async (provider: IProviders) => {
+export const signInWithOAuth = async (provider: IProviders) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {

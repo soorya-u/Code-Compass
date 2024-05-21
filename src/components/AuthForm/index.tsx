@@ -1,6 +1,8 @@
 import { Text, View, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FontAwesome } from "@expo/vector-icons";
 
 import {
   signUpSchema,
@@ -11,6 +13,8 @@ import {
 import { useConstantTheme } from "@/hooks/use-theme";
 
 import Input from "../Input";
+import { signUpWithCredentials } from "@/supabase/auth/sign-up";
+import { useState } from "react";
 
 type FieldType = {
   title: string;
@@ -51,6 +55,8 @@ type AuthFormType = {
 };
 
 export default function AuthForm({ type }: AuthFormType) {
+  const [err, setErr] = useState<string>("asd");
+  const router = useRouter();
   const { styles, foregroundColor } = useConstantTheme();
 
   const {
@@ -60,6 +66,14 @@ export default function AuthForm({ type }: AuthFormType) {
   } = useForm<LoginType | SignUpType>({
     resolver: zodResolver(type === "login" ? loginSchema : signUpSchema),
   });
+
+  const authFunction = async (val: SignUpType | LoginType) => {
+    if (type === "sign-up") {
+      await signUpWithCredentials(val as SignUpType)
+        .then(() => router.replace("/"))
+        .catch((err: { message: string }) => setErr(err.message));
+    }
+  };
 
   return (
     <View className="w-[85%] items-center justify-center gap-6 py-4">
@@ -75,6 +89,14 @@ export default function AuthForm({ type }: AuthFormType) {
             />
           ),
       )}
+      {err && (
+        <View className="w-full items-center justify-center rounded-md border-[3px] border-red-500 bg-red-400">
+          <FontAwesome name="stop-circle" />
+          <Text className="self-start text-black">
+            {type === "login" ? "Login" : "Registration"} Failed
+          </Text>
+        </View>
+      )}
       <TouchableOpacity
         disabled={isSubmitting}
         aria-disabled={isSubmitting}
@@ -83,7 +105,7 @@ export default function AuthForm({ type }: AuthFormType) {
           styles.btnOutlineBg,
           { backgroundColor: foregroundColor, opacity: 1 },
         ]}
-        onPress={handleSubmit((val) => console.log(val))}
+        onPress={handleSubmit(authFunction)}
       >
         <Text
           style={styles.btnText}
