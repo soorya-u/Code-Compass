@@ -52,9 +52,11 @@ export default function Input({
         aria-disabled={field.disabled}
         value={field.value}
       />
-      <Text className="pl-2 pt-1 font-[Ubuntu-Nerd] text-[14px] text-red-500">
-        {fieldState.error && fieldState.error.message}
-      </Text>
+      {fieldState.error && fieldState.error.message && (
+        <Text className="pl-2 pt-1 font-[Ubuntu-Nerd] text-[14px] text-red-500">
+          {fieldState.error && fieldState.error.message}
+        </Text>
+      )}
     </View>
   );
 }

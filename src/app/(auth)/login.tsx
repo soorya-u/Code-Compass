@@ -18,7 +18,7 @@ export default function LoginScreen() {
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
         contentContainerStyle={{
-          minHeight: height * 0.92,
+          minHeight: height * 0.90,
         }}
         contentContainerClassName="flex-1 items-center justify-start py-4"
         style={styles.bg}
@@ -29,7 +29,7 @@ export default function LoginScreen() {
           </Text>
         </View>
         <AuthForm type="login" />
-        <View className="mb-6 mt-2 w-[85%] flex-row items-center justify-center gap-3">
+        <View className="my-6 w-[85%] flex-row items-center justify-center gap-3">
           <View className="h-1 w-[85%] flex-1 rounded bg-[#a3acb9] dark:bg-[#33373b]" />
           <Text className="font-[Inder] text-xl text-[#a3acb9] dark:text-[#33373b]">
             OR

@@ -1,20 +1,9 @@
 import { Text, View, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FontAwesome } from "@expo/vector-icons";
 
-import {
-  signUpSchema,
-  loginSchema,
-  type LoginType,
-  type SignUpType,
-} from "@/schema/auth";
 import { useConstantTheme } from "@/hooks/use-theme";
 
 import Input from "../Input";
-import { signUpWithCredentials } from "@/supabase/auth/sign-up";
-import { useState } from "react";
+import { useAuth } from "@/hooks/use-auth";
 
 type FieldType = {
   title: string;
@@ -55,28 +44,11 @@ type AuthFormType = {
 };
 
 export default function AuthForm({ type }: AuthFormType) {
-  const [err, setErr] = useState<string>("asd");
-  const router = useRouter();
   const { styles, foregroundColor } = useConstantTheme();
-
-  const {
-    control,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<LoginType | SignUpType>({
-    resolver: zodResolver(type === "login" ? loginSchema : signUpSchema),
-  });
-
-  const authFunction = async (val: SignUpType | LoginType) => {
-    if (type === "sign-up") {
-      await signUpWithCredentials(val as SignUpType)
-        .then(() => router.replace("/"))
-        .catch((err: { message: string }) => setErr(err.message));
-    }
-  };
+  const { control, error, handleSubmit, isSubmitting } = useAuth(type);
 
   return (
-    <View className="w-[85%] items-center justify-center gap-6 py-4">
+    <View className="w-[85%] items-center justify-center gap-6 pt-4">
       {fields.map(
         (field, idx) =>
           ((type === "login" && !field.signUpOnly) || type === "sign-up") && (
@@ -89,23 +61,21 @@ export default function AuthForm({ type }: AuthFormType) {
             />
           ),
       )}
-      {err && (
-        <View className="w-full items-center justify-center rounded-md border-[3px] border-red-500 bg-red-400">
-          <FontAwesome name="stop-circle" />
-          <Text className="self-start text-black">
-            {type === "login" ? "Login" : "Registration"} Failed
+      {error && (
+        <View className="w-full flex-row items-center justify-center rounded-md border-2 border-red-500 bg-red-400 py-2 opacity-85">
+          <Text className="self-start text-base text-black">
+            {type === "login" ? "Login" : "Registration"} Failed: {error}
           </Text>
         </View>
       )}
       <TouchableOpacity
         disabled={isSubmitting}
-        aria-disabled={isSubmitting}
         className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
         style={[
           styles.btnOutlineBg,
           { backgroundColor: foregroundColor, opacity: 1 },
         ]}
-        onPress={handleSubmit(authFunction)}
+        onPress={handleSubmit}
       >
         <Text
           style={styles.btnText}

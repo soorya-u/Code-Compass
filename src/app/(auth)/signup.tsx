@@ -17,7 +17,7 @@ export default function SignUpScreen() {
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
         contentContainerStyle={{
-          minHeight: height*1.183,
+          minHeight: height*1.05,
         }}
         contentContainerClassName="flex-1 py-4 justify-start items-center"
         style={styles.bg}
