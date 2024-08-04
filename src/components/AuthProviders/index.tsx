@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { signIn } from "@/supabase/auth/sign-in";
+import { signInWithOAuth } from "@/supabase/auth/sign-in";
 import { useConstantTheme } from "@/hooks/use-theme";
 import { IProviders } from "@/types/auth";
 import { FontAwesome } from "@expo/vector-icons";
@@ -17,7 +17,7 @@ export default function AuthProviders() {
       {providers.map((elem, idx) => (
         <TouchableOpacity
           onPress={async () =>
-            await signIn(elem.toLowerCase() as IProviders).then(() =>
+            await signInWithOAuth(elem.toLowerCase() as IProviders).then(() =>
               router.replace("/(drawer)/(stack)/(tabs)/browse"),
             )
           }

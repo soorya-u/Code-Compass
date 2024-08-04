@@ -20,6 +20,19 @@ export default function UserButtons({
 
   return (
     <>
+      <TouchableOpacity
+        onPress={async () => await SignOut().then(afterSignOut)}
+        className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
+        style={styles.btnBg}
+      >
+        <Text
+          style={styles.btnText}
+          className="text-center font-['Poppins'] text-xl"
+        >
+          Logout
+        </Text>
+        <Ionicons name="log-out-outline" color={backgroundColor} size={25} />
+      </TouchableOpacity>
       <Link href="/(drawer)/(stack)/(tabs)/browse" asChild>
         <TouchableOpacity
           className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
@@ -38,19 +51,6 @@ export default function UserButtons({
           </Text>
         </TouchableOpacity>
       </Link>
-      <TouchableOpacity
-        onPress={async () => await SignOut().then(afterSignOut)}
-        className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
-        style={styles.btnBg}
-      >
-        <Text
-          style={styles.btnText}
-          className="text-center font-['Poppins'] text-xl"
-        >
-          Logout
-        </Text>
-        <Ionicons name="log-out-outline" color={backgroundColor} size={25} />
-      </TouchableOpacity>
     </>
   );
 }
