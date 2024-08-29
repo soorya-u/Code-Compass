@@ -33,7 +33,7 @@ export default function UserButtons({
         </Text>
         <Ionicons name="log-out-outline" color={backgroundColor} size={25} />
       </TouchableOpacity>
-      <Link href="/(drawer)/(stack)/(tabs)/browse" asChild>
+      <Link href="/browse" asChild>
         <TouchableOpacity
           className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
           style={styles.btnBg}

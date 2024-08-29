@@ -18,7 +18,7 @@ export default function AuthProviders() {
         <TouchableOpacity
           onPress={async () =>
             await signInWithOAuth(elem.toLowerCase() as IProviders).then(() =>
-              router.replace("/(drawer)/(stack)/(tabs)/browse"),
+              router.replace("/browse"),
             )
           }
           key={idx}

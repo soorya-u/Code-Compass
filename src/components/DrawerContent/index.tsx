@@ -10,7 +10,7 @@ import Animated from "react-native-reanimated";
 import { useConstantTheme } from "@/hooks/use-theme";
 import { usePlatform } from "@/hooks/use-platform";
 
-import logo from "@/assets/icons/icon.png";
+import logo from "@/assets/icons/logo.png";
 
 const uri = Image.resolveAssetSource(logo).uri;
 

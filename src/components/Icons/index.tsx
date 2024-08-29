@@ -5,7 +5,7 @@ import { DrawerActions } from "@react-navigation/native";
 import { useNavigation } from "expo-router";
 import Animated from "react-native-reanimated";
 
-import logo from "@/assets/icons/icon.png";
+import logo from "@/assets/icons/logo.png";
 
 const uri = Image.resolveAssetSource(logo).uri;
 

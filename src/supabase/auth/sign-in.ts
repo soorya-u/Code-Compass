@@ -4,7 +4,7 @@ import * as WebBrowser from "expo-web-browser";
 
 import { supabase } from "..";
 import { IProviders } from "@/types/auth";
-import { LoginType, SignUpType, signUpSchema } from "@/schema/auth";
+import { LoginType, loginSchema } from "@/schema/auth";
 
 const redirectTo = makeRedirectUri();
 
@@ -41,4 +41,17 @@ export const signInWithOAuth = async (provider: IProviders) => {
   );
 
   if (res.type === "success") await createSessionFromUrl(res.url);
+};
+
+export const signInWithCredentials = async (payload: LoginType) => {
+  const parsedPayload = await loginSchema.safeParseAsync(payload);
+  if (parsedPayload.error) throw new Error(parsedPayload.error.message);
+
+  const credentials = parsedPayload.data;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    ...credentials,
+  });
+
+  if (error) throw new Error(error.message);
 };

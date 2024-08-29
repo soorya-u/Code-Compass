@@ -1,6 +1,6 @@
 import { Image } from "react-native";
 
-import logo from "@/assets/icons/icon.png";
+import logo from "@/assets/icons/logo.png";
 import markdown from "@/assets/img/markdown.png";
 import upload from "@/assets/img/upload.png";
 import download from "@/assets/img/download.png";
