@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "scheme": "dev.soorya-u",
     "orientation": "portrait",
-    "icon": "./src/assets/icons/icon.png",
+    "icon": "./src/assets/icons/logo.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./src/assets/icons/splash.png",
