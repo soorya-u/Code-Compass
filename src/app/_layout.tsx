@@ -22,12 +22,8 @@ export default function RootLayout() {
       <StatusBar style={setTheme("light", "dark")} />
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Stack screenOptions={stackOptions}>
-          <Stack.Screen
-            name="index"
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
           <Stack.Screen
             name="(auth)"
             options={{
