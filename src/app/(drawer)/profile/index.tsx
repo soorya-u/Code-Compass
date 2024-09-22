@@ -11,7 +11,7 @@ export default function Profile() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      setUser(user);
+      if (user) setUser(user);
     };
 
     getUser();
