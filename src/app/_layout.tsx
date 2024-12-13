@@ -18,9 +18,8 @@ export default function RootLayout() {
   if (!fontLoaded) return null;
 
   return (
-    <>
-      <StatusBar style={setTheme("light", "dark")} />
       <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar style={setTheme("light", "dark")} />
         <Stack screenOptions={stackOptions}>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
@@ -38,6 +37,5 @@ export default function RootLayout() {
           />
         </Stack>
       </GestureHandlerRootView>
-    </>
   );
 }

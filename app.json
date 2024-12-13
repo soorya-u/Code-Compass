@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "dev.soorya-u.code-compass"
+      "bundleIdentifier": "dev.soorya_u.code_compass"
     },
     "android": {
       "adaptiveIcon": {

@@ -28,12 +28,12 @@ export default function SignUpScreen() {
           </Text>
         </View>
         <AuthForm type="sign-up" />
-        <View className="mb-6 mt-2 w-[85%] flex-row items-center justify-center gap-3">
-          <View className="h-1 w-[85%] flex-1 rounded bg-stone-300 dark:bg-neutral-600" />
-          <Text className="font-[Inder] text-xl text-stone-300 dark:text-neutral-600">
+        <View className="my-6 w-[85%] flex-row items-center justify-center gap-3">
+          <View className="h-1 w-[85%] flex-1 rounded bg-[#a3acb9] dark:bg-[#33373b]" />
+          <Text className="font-[Inder] text-xl text-[#a3acb9] dark:text-[#33373b]">
             OR
           </Text>
-          <View className="h-1 w-[85%] flex-1 rounded bg-stone-300 dark:bg-neutral-600" />
+          <View className="h-1 w-[85%] flex-1 rounded bg-[#a3acb9] dark:bg-[#33373b]" />
         </View>
         <View className="mb-6 w-[85%]">
           <Text className="text-center font-['Poppins'] text-2xl text-black dark:text-white">
