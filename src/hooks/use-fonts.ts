@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import { useFonts as useFont } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 
 export const useFonts = () => {
   const [fontsLoaded] = useFont({
