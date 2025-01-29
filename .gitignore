@@ -25,3 +25,5 @@ android
 .metro-health-check*
 
 .vscode
+
+src/content
