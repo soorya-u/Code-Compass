@@ -1,4 +1,4 @@
-import { extHeadingMap, extLangMap } from "@/constants/extensionMap";
+import { extHeadingMap, extLangMap } from "@/constants/extension-map";
 
 export const extensionLanguagesMapper = (ext: string) => {
   const extention = ext.toLowerCase();
