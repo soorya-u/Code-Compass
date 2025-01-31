@@ -6,21 +6,16 @@ import {
   useWindowDimensions,
 } from "react-native";
 
-import { useConstantTheme } from "@/hooks/use-theme";
-import AuthProviders from "@/components/AuthProviders";
-import AuthForm from "@/components/AuthForm";
+import AuthProviders from "@/components/auth-providers";
+import AuthForm from "@/components/auth-form";
 
 export default function SignUpScreen() {
-  const { styles } = useConstantTheme();
   const { height } = useWindowDimensions();
   return (
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
-        contentContainerStyle={{
-          minHeight: height*1.05,
-        }}
-        contentContainerClassName="flex-1 py-4 justify-start items-center"
-        style={styles.bg}
+        contentContainerStyle={{ minHeight: height * 1.05 }}
+        contentContainerClassName="flex-1 py-4 justify-start items-center bg-primary"
       >
         <View className="w-[85%] py-5">
           <Text className="text-center font-['Poppins'] text-2xl text-black dark:text-white">

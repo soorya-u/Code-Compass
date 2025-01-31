@@ -7,14 +7,12 @@ export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const getUser = async () => {
+    (async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) setUser(user);
-    };
-
-    getUser();
+    })();
   });
 
   if (!user) return;

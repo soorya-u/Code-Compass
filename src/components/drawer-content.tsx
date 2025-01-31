@@ -7,24 +7,21 @@ import {
 import { useRouter } from "expo-router";
 import Animated from "react-native-reanimated";
 
-import { useConstantTheme } from "@/hooks/use-theme";
-import { usePlatform } from "@/hooks/use-platform";
+import { setPlatformSettings } from "@/utils/setters";
+import { theme } from "@/constants/theme";
 
 import logo from "@/assets/icons/logo.png";
 
 export default function DrawerContent(props: any) {
   const router = useRouter();
-  const { activeBackground, backgroundColor, foregroundColor } =
-    useConstantTheme();
-  const { setPlatformSettings } = usePlatform();
 
   return (
     <DrawerContentScrollView
       contentContainerStyle={{
         flex: 1,
         backgroundColor: setPlatformSettings({
-          ios: activeBackground,
-          android: backgroundColor,
+          ios: theme.primaryActive,
+          android: theme.primary,
         }),
       }}
       scrollEnabled={false}
@@ -35,7 +32,7 @@ export default function DrawerContent(props: any) {
         label={() => (
           <View className="mt-10 flex-row items-center justify-start gap-4 pl-2">
             <Animated.Image
-              style={{ tintColor: foregroundColor }}
+              style={{ tintColor: theme.secondary }}
               className="aspect-square size-[65px]"
               source={logo}
               alt="logo"

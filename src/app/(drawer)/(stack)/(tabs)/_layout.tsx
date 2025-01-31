@@ -1,13 +1,11 @@
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
-import { useConstantTabOptions } from "@/hooks/use-screen-options";
+import { tabOptions } from "@/constants/options";
 
 export default function TabsLayout() {
-  const { tabContainerStyle, tabOptions } = useConstantTabOptions();
-
   return (
-    <Tabs screenOptions={{ ...tabOptions, sceneStyle: tabContainerStyle }}>
+    <Tabs screenOptions={tabOptions}>
       <Tabs.Screen
         name="browse"
         options={{

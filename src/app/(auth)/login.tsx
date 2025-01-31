@@ -5,23 +5,18 @@ import {
   KeyboardAvoidingView,
   useWindowDimensions,
 } from "react-native";
-import { useConstantTheme } from "@/hooks/use-theme";
 
-import AuthProviders from "@/components/AuthProviders";
-import AuthForm from "@/components/AuthForm";
+import AuthProviders from "@/components/auth-providers";
+import AuthForm from "@/components/auth-form";
 
 export default function LoginScreen() {
   const { height } = useWindowDimensions();
-  const { styles } = useConstantTheme();
 
   return (
     <KeyboardAvoidingView className="flex-1">
       <ScrollView
-        contentContainerStyle={{
-          minHeight: height * 0.90,
-        }}
-        contentContainerClassName="flex-1 items-center justify-start py-4"
-        style={styles.bg}
+        contentContainerStyle={{ minHeight: height * 0.9 }}
+        contentContainerClassName="flex-1 items-center justify-start py-4 bg-primary"
       >
         <View className="w-[85%] py-5">
           <Text className="text-center font-['Poppins'] text-2xl text-black dark:text-white">

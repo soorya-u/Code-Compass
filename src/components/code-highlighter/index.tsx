@@ -7,13 +7,14 @@ import {
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import RNH from "./RNSyntaxHighlighter";
+import RNH from "./syntax-highlighter";
 
-import { useTheme } from "@/hooks/use-theme";
 import {
   extensionLanguagesMapper,
   extensionHeadingMapper,
-} from "@/utils/exLangMapper";
+} from "@/utils/extention-mapper";
+
+import { setTheme } from "@/utils/setters";
 
 export default function CodeHighlighter({
   code,
@@ -22,8 +23,6 @@ export default function CodeHighlighter({
   code: string;
   ext: string | undefined;
 }) {
-  const { setTheme } = useTheme();
-
   const [showCopied, setShowCopied] = useState(false);
 
   useEffect(() => {

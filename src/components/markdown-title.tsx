@@ -3,12 +3,10 @@ import { Link } from "expo-router";
 import { Text, View, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 
-import { useTheme } from "@/hooks/use-theme";
 import { Markdown } from "@/types/markdown";
+import { setTheme } from "@/utils/setters";
 
 function MarkdownTitle({ item }: { item: Markdown }) {
-  const { setTheme } = useTheme();
-
   return (
     <Link
       href={{

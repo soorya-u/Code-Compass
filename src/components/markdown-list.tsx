@@ -1,13 +1,13 @@
 import { FlatList, View, Text } from "react-native";
 
-import MarkdownTitle from "../MarkdownTitle";
+import MarkdownTitle from "./markdown-title";
 
 import { techTypeHeadings } from "@/constants/markdown";
 import { Markdown, TechType } from "@/types/markdown";
 
 type MarkdownListProps =
   | {
-      data: Record<TechType, Markdown[]>;
+      data: Partial<Record<TechType, Markdown[]>>;
       iterativeKeys: TechType;
     }
   | {

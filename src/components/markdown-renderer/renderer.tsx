@@ -8,12 +8,11 @@ import {
   FlatList,
   Platform,
   TouchableOpacity,
-  Linking,
 } from "react-native";
 import { Renderer, type RendererInterface } from "react-native-marked";
 
-import CodeHighlighter from "../CodeHighlighter";
-import { openLink } from "@/utils/markdownLinks";
+import CodeHighlighter from "../code-highlighter";
+import { openLink } from "@/utils/markdown-links";
 
 export class CustomRenderer extends Renderer implements RendererInterface {
   private flatListRef: React.RefObject<FlatList<React.ReactNode>>;

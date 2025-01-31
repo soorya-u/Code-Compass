@@ -6,14 +6,12 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 
-import { useConstantTheme } from "@/hooks/use-theme";
 import { sections } from "@/constants/about";
+import { theme } from "@/constants/theme";
 
 import logo from "@/assets/icons/logo.png";
 
 export default function About() {
-  const { styles } = useConstantTheme();
-
   const rotation = useSharedValue<number>(0);
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export default function About() {
         <Animated.Image
           source={logo}
           className="size-16"
-          style={[styles.monochromeImage, animatedImageStyle]}
+          style={[{ tintColor: theme.secondary }, animatedImageStyle]}
           alt="logo"
           sharedTransitionTag="logo"
         />
