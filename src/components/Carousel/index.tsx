@@ -1,12 +1,11 @@
 import { useRef, useState } from "react";
-import { Text, View, useWindowDimensions } from "react-native";
+import { Image, Text, View, useWindowDimensions } from "react-native";
 import CarouselElement, {
   type ICarouselInstance,
 } from "react-native-reanimated-carousel";
 
 import { carouselContent } from "@/constants/carousel";
 import { useConstantTheme } from "@/hooks/use-theme";
-import Animated from "react-native-reanimated";
 
 export default function Carousel() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -18,18 +17,16 @@ export default function Carousel() {
     <View className="relative flex-1 items-center justify-center">
       <CarouselElement
         ref={carouselRef}
-        style={{
-          position: "relative",
-        }}
+        style={{ position: "relative" }}
         onProgressChange={(_, idx) => setCurrentSlideIndex(+idx.toFixed() % 4)}
         autoPlay
         autoPlayInterval={3000}
         mode="parallax"
-        width={width}
+        width={width * 1.1}
         data={carouselContent}
         renderItem={({ item }) => (
           <View className="w-full flex-1 items-center justify-center gap-4">
-            <Animated.Image
+            <Image
               className="size-[60px]"
               style={styles.monochromeImage}
               src={item.image}
@@ -45,24 +42,14 @@ export default function Carousel() {
       />
       <View
         style={{ top: height / 2 - 50 }}
-        className="absolute flex-row items-center gap-2"
+        className="absolute mt-3 flex-row items-center gap-3"
       >
-        {carouselContent.map((_, idx) => (
+        {carouselContent.map((_c, index) => (
           <View
-            onTouchEndCapture={() =>
-              carouselRef.current?.scrollTo({
-                index: idx,
-              })
-            }
-            key={idx}
-            style={[
-              styles.btnBg,
-              {
-                opacity: currentSlideIndex === idx ? 1 : 0.25,
-                width: currentSlideIndex === idx ? 10 : 8,
-              },
-            ]}
-            className="aspect-square rounded-full"
+            onTouchEndCapture={() => carouselRef.current?.scrollTo({ index })}
+            key={index}
+            style={[styles.btnBg]}
+            className={`aspect-square rounded-full ${currentSlideIndex === index ? "w-2.5 opacity-100" : "w-2 opacity-80"}`}
           />
         ))}
       </View>

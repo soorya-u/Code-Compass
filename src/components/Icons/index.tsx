@@ -7,8 +7,6 @@ import Animated from "react-native-reanimated";
 
 import logo from "@/assets/icons/logo.png";
 
-const uri = Image.resolveAssetSource(logo).uri;
-
 type IconProps = {
   color: string | undefined;
 };
@@ -40,12 +38,8 @@ export function MarkdownIcon({
     <TouchableOpacity>
       <Animated.Image
         className="size-[30px]"
-        src={md.uri}
-        style={
-          md.canInvert && {
-            tintColor,
-          }
-        }
+        source={md.uri}
+        style={md.canInvert && { tintColor }}
         alt={md.name}
         sharedTransitionTag={md.name}
       />
@@ -56,14 +50,11 @@ export function MarkdownIcon({
 export function LogoIcon({ tintColor }: { tintColor: string | undefined }) {
   return (
     <TouchableOpacity>
-      <Animated.Image
+      <Image
+        source={logo}
         className="size-9"
-        src={uri}
-        style={{
-          tintColor,
-        }}
+        style={{ tintColor }}
         alt="logo"
-        sharedTransitionTag="logo"
       />
     </TouchableOpacity>
   );

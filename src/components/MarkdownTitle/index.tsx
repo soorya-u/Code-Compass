@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 
 import { useTheme } from "@/hooks/use-theme";
@@ -21,7 +21,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
         <View className="flex-row items-center gap-[10] p-[10]">
           <Animated.Image
             className="size-[35px]"
-            src={item.uri}
+            source={item.uri}
             style={
               item.canInvert && {
                 tintColor: setTheme("white", "black"),

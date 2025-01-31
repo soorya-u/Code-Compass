@@ -29,7 +29,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./src/assets/icons/favicon.png"
+      "favicon": "./src/assets/icons/logo.png"
     },
     "plugins": ["expo-router", "expo-secure-store"],
     "experiments": {

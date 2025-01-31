@@ -7,7 +7,7 @@ export default function TabsLayout() {
   const { tabContainerStyle, tabOptions } = useConstantTabOptions();
 
   return (
-    <Tabs sceneContainerStyle={tabContainerStyle} screenOptions={tabOptions}>
+    <Tabs screenOptions={{ ...tabOptions, sceneStyle: tabContainerStyle }}>
       <Tabs.Screen
         name="browse"
         options={{

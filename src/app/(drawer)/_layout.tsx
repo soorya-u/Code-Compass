@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { useConstantTheme } from "@/hooks/use-theme";
 import { usePlatform } from "@/hooks/use-platform";
@@ -26,9 +25,9 @@ export default function DrawerLayout() {
         drawerInactiveTintColor: foregroundColor,
         drawerActiveBackgroundColor: foregroundColor,
         drawerActiveTintColor: bgColor,
-        drawerContentContainerStyle: {
-          flex: 1,
-        },
+        drawerStatusBarAnimation: "fade",
+        drawerItemStyle: { borderRadius: 15 },
+        drawerContentContainerStyle: { flex: 1 },
         drawerLabelStyle: {
           marginLeft: -20,
           fontSize: 18,
@@ -42,7 +41,7 @@ export default function DrawerLayout() {
           drawerLabel: "Home",
           headerTitle: "Home",
           drawerIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Ionicons className="mr-5" name="home" color={color} size={size} />
           ),
         }}
       />
@@ -52,7 +51,12 @@ export default function DrawerLayout() {
           drawerLabel: "Upload",
           headerTitle: "Upload",
           drawerIcon: ({ color, size }) => (
-            <Ionicons name="cloud-upload" color={color} size={size} />
+            <Ionicons
+              className="mr-5"
+              name="cloud-upload"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -62,7 +66,12 @@ export default function DrawerLayout() {
           drawerLabel: "Profile",
           headerTitle: "Profile",
           drawerIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
+            <Ionicons
+              className="mr-5"
+              name="person"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -72,7 +81,12 @@ export default function DrawerLayout() {
           drawerLabel: "About",
           headerTitle: "About",
           drawerIcon: ({ color, size }) => (
-            <Ionicons name="information-circle" color={color} size={size} />
+            <Ionicons
+              className="mr-5"
+              name="information-circle"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
