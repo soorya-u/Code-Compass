@@ -71,7 +71,7 @@ export default function AuthForm({ type }: AuthFormType) {
         className="border-secondary bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl border-2 py-4"
         onPress={handleSubmit}
       >
-        <Text className="text-primary text-center font-['Poppins'] text-2xl">
+        <Text className="text-primary text-center font-poppins text-2xl">
           Submit
         </Text>
       </TouchableOpacity>

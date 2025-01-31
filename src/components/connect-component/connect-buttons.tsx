@@ -15,7 +15,7 @@ export default function SignInButtons() {
         className="border-secondary w-full flex-row items-center justify-center gap-3 rounded-xl border-2 bg-transparent py-4 opacity-85"
       >
         <FontAwesome6 name="globe" color={theme.secondary} size={20} />
-        <Text className="text-secondary text-center font-['Poppins'] text-xl">
+        <Text className="text-secondary text-center font-poppins text-xl">
           Visit our Site
         </Text>
       </TouchableOpacity>
@@ -24,7 +24,7 @@ export default function SignInButtons() {
         className="bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
       >
         <FontAwesome6 name="link" color={theme.primary} size={20} />
-        <Text className="text-primary text-center font-['Poppins'] text-xl">
+        <Text className="text-primary text-center font-poppins text-xl">
           Connect with Us
         </Text>
       </TouchableOpacity>

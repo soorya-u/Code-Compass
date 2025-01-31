@@ -28,7 +28,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
             alt={item.name}
             sharedTransitionTag={item.name}
           />
-          <Text className="flex-1 pl-1 font-['Inder'] text-[16px] text-black dark:text-white">
+          <Text className="flex-1 pl-1 font-inder text-[16px] text-black dark:text-white">
             {item.name}
           </Text>
           <Ionicons

@@ -36,7 +36,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
       >
         <Text
           style={styles}
-          className="mb-1 px-3 font-['Poppins'] text-[23px] text-black dark:text-white"
+          className="mb-1 px-3 font-poppins text-[23px] text-black dark:text-white"
         >
           {text}
         </Text>
@@ -53,7 +53,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
         {children.map((elem, idx) => (
           <Text
             key={idx}
-            className="font-['Ubuntu-Nerd'] text-black dark:text-white"
+            className="font-ubuntu text-black dark:text-white"
           >
             {elem}
           </Text>

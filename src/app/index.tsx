@@ -9,11 +9,11 @@ export default function Root() {
     <SafeAreaView>
       <View className="bg-primary h-full w-full items-center justify-between py-[30]">
         <View className="gap-3">
-          <Text className="text-secondary text-center font-['Jersey'] text-7xl">
+          <Text className="text-secondary font-jersey text-center text-7xl">
             Code Compass
           </Text>
           <View>
-            <Text className="text-secondary px-5 text-center font-['Jersey'] text-3xl">
+            <Text className="text-secondary font-jersey px-5 text-center text-3xl">
               Unleash the Power at your Fingertips!
             </Text>
           </View>

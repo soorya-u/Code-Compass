@@ -33,12 +33,12 @@ export default function Input({
           color: theme.secondary,
           backgroundColor: theme.primary,
         }}
-        className="absolute -top-3 left-3 z-10 rounded-full px-2 font-[Inder] text-base"
+        className="absolute -top-3 left-3 z-10 rounded-full px-2 font-inder text-base"
       >
         {title}
       </Text>
       <TextInput
-        className="border-secondary bg-primary text-secondary h-14 w-full items-center justify-center rounded-md border px-4 font-[Inder] text-base"
+        className="border-secondary bg-primary text-secondary h-14 w-full items-center justify-center rounded-md border px-4 font-inder text-base"
         cursorColor={setTheme("#fff", "#000")}
         placeholderTextColor="#4f4f4f"
         placeholder={placeholder}
@@ -47,7 +47,7 @@ export default function Input({
         value={field.value}
       />
       {fieldState.error && fieldState.error.message && (
-        <Text className="pl-2 pt-1 font-[Ubuntu-Nerd] text-[14px] text-red-500">
+        <Text className="pl-2 pt-1 font-ubuntu text-[14px] text-red-500">
           {fieldState.error && fieldState.error.message}
         </Text>
       )}

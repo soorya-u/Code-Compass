@@ -30,10 +30,10 @@ export default function Carousel() {
               style={{ tintColor: theme.secondary }}
               src={item.image}
             />
-            <Text className="px-5 font-['Poppins'] text-4xl text-black dark:text-white">
+            <Text className="px-5 font-poppins text-4xl text-black dark:text-white">
               {item.heading}
             </Text>
-            <Text className="text-pretty px-6 font-['Inder'] text-xl leading-6 text-black dark:text-white">
+            <Text className="text-pretty px-6 font-inder text-xl leading-6 text-black dark:text-white">
               {item.paragraph}
             </Text>
           </View>

@@ -30,7 +30,7 @@ export default function AuthProviders() {
             color={theme.primary}
             size={25}
           />
-          <Text className="text-primary text-center font-['Poppins'] text-xl">
+          <Text className="text-primary text-center font-poppins text-xl">
             Continue with {elem}
           </Text>
         </TouchableOpacity>

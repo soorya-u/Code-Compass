@@ -38,10 +38,10 @@ export default function DrawerContent(props: any) {
               alt="logo"
             />
             <View className="">
-              <Text className="font-['Jersey'] text-[40px] text-black dark:text-white">
+              <Text className="font-jersey text-[40px] text-black dark:text-white">
                 Code
               </Text>
-              <Text className="font-['Jersey'] text-[40px] text-black dark:text-white">
+              <Text className="font-jersey text-[40px] text-black dark:text-white">
                 Compass
               </Text>
             </View>

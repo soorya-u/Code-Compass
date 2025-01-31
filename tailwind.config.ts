@@ -6,7 +6,15 @@ const config: Config = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        jetbrains: ["Jetbrains-Mono-Nerd"],
+        poppins: ["Poppins"],
+        ubuntu: ["Ubuntu-Nerd"],
+        inder: ["Inder"],
+        jersey: ["Jersey"],
+        "chakra-petch": ["Chakra-Petch"],
+        audiowide: ["Audiowide"],
+      },
       colors: {
         primary: {
           DEFAULT: "var(--primary)",

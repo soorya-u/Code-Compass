@@ -24,7 +24,7 @@ export default function UserButtons({
         onPress={async () => await signOut().then(afterSignOut)}
         className="bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
       >
-        <Text className="text-primary text-center font-['Poppins'] text-xl">
+        <Text className="text-primary text-center font-poppins text-xl">
           Logout
         </Text>
         <Ionicons name="log-out-outline" color={theme.primary} size={25} />
@@ -35,7 +35,7 @@ export default function UserButtons({
             src={image}
             className="border-primary aspect-square size-[30px] rounded-full border"
           />
-          <Text className="text-primary text-center font-['Poppins'] text-xl">
+          <Text className="text-primary text-center font-poppins text-xl">
             Contiue as {name}
           </Text>
         </TouchableOpacity>
