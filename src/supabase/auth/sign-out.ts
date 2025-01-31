@@ -1,5 +1,5 @@
 import { supabase } from "..";
 
-export const SignOut = async () => {
+export const signOut = async () => {
   await supabase.auth.signOut();
 };

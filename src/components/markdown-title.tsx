@@ -3,12 +3,10 @@ import { Link } from "expo-router";
 import { Text, View, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 
-import { useTheme } from "@/hooks/use-theme";
 import { Markdown } from "@/types/markdown";
+import { setTheme } from "@/utils/setters";
 
 function MarkdownTitle({ item }: { item: Markdown }) {
-  const { setTheme } = useTheme();
-
   return (
     <Link
       href={{
@@ -30,7 +28,7 @@ function MarkdownTitle({ item }: { item: Markdown }) {
             alt={item.name}
             sharedTransitionTag={item.name}
           />
-          <Text className="flex-1 pl-1 font-['Inder'] text-[16px] text-black dark:text-white">
+          <Text className="flex-1 pl-1 font-inder text-[16px] text-black dark:text-white">
             {item.name}
           </Text>
           <Ionicons

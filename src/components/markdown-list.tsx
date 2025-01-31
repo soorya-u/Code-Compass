@@ -1,13 +1,13 @@
 import { FlatList, View, Text } from "react-native";
 
-import MarkdownTitle from "../MarkdownTitle";
+import MarkdownTitle from "./markdown-title";
 
 import { techTypeHeadings } from "@/constants/markdown";
 import { Markdown, TechType } from "@/types/markdown";
 
 type MarkdownListProps =
   | {
-      data: Record<TechType, Markdown[]>;
+      data: Partial<Record<TechType, Markdown[]>>;
       iterativeKeys: TechType;
     }
   | {
@@ -18,7 +18,7 @@ export default function MarkdownList(props: MarkdownListProps) {
   if ("iterativeKeys" in props)
     return (
       <View className="gap-y-2">
-        <Text className="pl-5 font-['Poppins'] text-lg text-black dark:text-white">
+        <Text className="pl-5 font-poppins text-lg text-black dark:text-white">
           {techTypeHeadings[props.iterativeKeys]}
         </Text>
         <View className="m-4 rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
@@ -37,7 +37,7 @@ export default function MarkdownList(props: MarkdownListProps) {
   return (
     <View className="mt-6">
       {!props.data.length && (
-        <Text className="pl-5 text-center font-['Poppins'] text-2xl text-black dark:text-white">
+        <Text className="pl-5 text-center font-poppins text-2xl text-black dark:text-white">
           No Records were Found
         </Text>
       )}

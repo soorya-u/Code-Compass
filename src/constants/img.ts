@@ -1,5 +1,3 @@
-import { Image } from "react-native";
-
 import angular from "../assets/img/angular.png";
 import bash from "../assets/img/bash.png";
 import css from "../assets/img/css.png";

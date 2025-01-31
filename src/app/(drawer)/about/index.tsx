@@ -6,14 +6,12 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 
-import { useConstantTheme } from "@/hooks/use-theme";
 import { sections } from "@/constants/about";
+import { theme } from "@/constants/theme";
 
 import logo from "@/assets/icons/logo.png";
 
 export default function About() {
-  const { styles } = useConstantTheme();
-
   const rotation = useSharedValue<number>(0);
 
   useEffect(() => {
@@ -37,20 +35,20 @@ export default function About() {
         <Animated.Image
           source={logo}
           className="size-16"
-          style={[styles.monochromeImage, animatedImageStyle]}
+          style={[{ tintColor: theme.secondary }, animatedImageStyle]}
           alt="logo"
           sharedTransitionTag="logo"
         />
-        <Text className="font-['Jersey'] text-5xl text-black dark:text-white">
+        <Text className="font-jersey text-5xl text-black dark:text-white">
           Code Compass
         </Text>
       </View>
       {sections.map((section, idx) => (
         <View key={idx} className="gap-2 px-4">
-          <Text className="font-['Poppins'] text-2xl text-black dark:text-white">
+          <Text className="font-poppins text-2xl text-black dark:text-white">
             {section.heading}
           </Text>
-          <Text className="pl-3 font-['Inder'] text-lg leading-tight text-black dark:text-white">
+          <Text className="pl-3 font-inder text-lg leading-tight text-black dark:text-white">
             {section.paragraph}
           </Text>
         </View>

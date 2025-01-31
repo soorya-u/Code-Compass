@@ -1,18 +1,10 @@
+import { stackOptions } from "@/constants/options";
 import { Stack } from "expo-router";
 
-import { useConstantStackOptions } from "@/hooks/use-screen-options";
-
 export default function LibraryLayout() {
-  const stackOptions = useConstantStackOptions();
-
   return (
     <Stack screenOptions={stackOptions}>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerTitle: "Library",
-        }}
-      />
+      <Stack.Screen name="index" options={{ headerTitle: "Library" }} />
     </Stack>
   );
 }

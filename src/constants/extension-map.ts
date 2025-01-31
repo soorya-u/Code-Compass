@@ -1,4 +1,7 @@
-import { type HeadingType } from "@/types/extentionMapper";
+export type HeadingType = {
+  headingName: string;
+  headingIcon: string;
+};
 
 export const extLangMap = new Map<string, string>([
   ["js", "javascript"],

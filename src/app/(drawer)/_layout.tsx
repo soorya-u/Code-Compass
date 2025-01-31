@@ -1,19 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
 
-import { useConstantTheme } from "@/hooks/use-theme";
-import { usePlatform } from "@/hooks/use-platform";
+import DrawerContent from "@/components/drawer-content";
 
-import DrawerContent from "@/components/DrawerContent";
+import { theme } from "@/constants/theme";
+
+import { setPlatformSettings } from "@/utils/setters";
 
 export default function DrawerLayout() {
-  const { activeBackground, backgroundColor, foregroundColor } =
-    useConstantTheme();
-  const { setPlatformSettings } = usePlatform();
-
   const bgColor = setPlatformSettings({
-    ios: activeBackground,
-    android: backgroundColor,
+    ios: theme.primaryActive,
+    android: theme.primary,
   });
 
   return (
@@ -22,8 +19,8 @@ export default function DrawerLayout() {
       screenOptions={{
         headerShown: false,
         drawerInactiveBackgroundColor: bgColor,
-        drawerInactiveTintColor: foregroundColor,
-        drawerActiveBackgroundColor: foregroundColor,
+        drawerInactiveTintColor: theme.secondary,
+        drawerActiveBackgroundColor: theme.secondary,
         drawerActiveTintColor: bgColor,
         drawerStatusBarAnimation: "fade",
         drawerItemStyle: { borderRadius: 15 },

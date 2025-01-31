@@ -3,15 +3,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import { type FlatList, TouchableOpacity } from "react-native";
 
-import MarkdownRenderer from "@/components/MarkdownRenderer";
+import MarkdownRenderer from "@/components/markdown-renderer";
 import { markdown } from "@/constants/markdown";
 import { useScreenOptions } from "@/hooks/use-screen-options";
-import { useTheme } from "@/hooks/use-theme";
-import { MarkdownIcon } from "@/components/Icons";
+import { MarkdownIcon } from "@/components/icons";
+import { setTheme } from "@/utils/setters";
 
 export default function MarkdownContent() {
-  const { setTheme } = useTheme();
-
   const flatListRef = useRef<FlatList<React.ReactNode>>(null);
 
   const { file: id } = useLocalSearchParams<{ file: string }>();

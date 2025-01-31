@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FlatList, ScrollView, View } from "react-native";
 
-import MarkdownList from "@/components/MarkdownList";
+import MarkdownList from "@/components/markdown-list";
 import { markdown } from "@/constants/markdown";
+import { theme } from "@/constants/theme";
 import { useScreenOptions } from "@/hooks/use-screen-options";
-import { useConstantTheme } from "@/hooks/use-theme";
 import { Markdown } from "@/types/markdown";
-import {
-  markdownSorter,
-  markdownSearcher,
-} from "@/utils/markdownSorterAndSearcher";
+import { markdownSorter, markdownSearcher } from "@/utils/markdown-helpers";
 
 export default function BrowseScreen() {
-  const { foregroundColor } = useConstantTheme();
   const [searchText, setSearchText] = useState("");
 
   const [filteredList, setFilteredList] = useState<Markdown[]>([]);
@@ -25,16 +21,19 @@ export default function BrowseScreen() {
 
   useScreenOptions({
     headerSearchBarOptions: {
-      textColor: foregroundColor,
-      headerIconColor: foregroundColor,
-      tintColor: foregroundColor,
-      hintTextColor: foregroundColor,
+      textColor: theme.secondary,
+      headerIconColor: theme.secondary,
+      tintColor: theme.secondary,
+      hintTextColor: theme.secondary,
       placeholder: "Search",
       onChangeText: (e) => setSearchText(e.nativeEvent.text),
     },
   });
 
-  const { sortedMd, keys } = markdownSorter(markdown);
+  const { sortedMd, keys } = useMemo(
+    () => markdownSorter(markdown),
+    [markdown],
+  );
 
   return !searchText ? (
     <FlatList

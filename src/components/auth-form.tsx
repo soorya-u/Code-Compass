@@ -1,9 +1,8 @@
 import { Text, View, TouchableOpacity } from "react-native";
 
-import { useConstantTheme } from "@/hooks/use-theme";
 import { useAuth } from "@/hooks/use-auth";
 
-import Input from "../Input";
+import Input from "./input";
 
 type FieldType = {
   title: string;
@@ -44,7 +43,6 @@ type AuthFormType = {
 };
 
 export default function AuthForm({ type }: AuthFormType) {
-  const { styles, foregroundColor } = useConstantTheme();
   const { control, error, handleSubmit, isSubmitting } = useAuth(type);
 
   return (
@@ -70,17 +68,10 @@ export default function AuthForm({ type }: AuthFormType) {
       )}
       <TouchableOpacity
         disabled={isSubmitting}
-        className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
-        style={[
-          styles.btnOutlineBg,
-          { backgroundColor: foregroundColor, opacity: 1 },
-        ]}
+        className="border-secondary bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl border-2 py-4"
         onPress={handleSubmit}
       >
-        <Text
-          style={styles.btnText}
-          className="text-center font-['Poppins'] text-2xl"
-        >
+        <Text className="text-primary text-center font-poppins text-2xl">
           Submit
         </Text>
       </TouchableOpacity>

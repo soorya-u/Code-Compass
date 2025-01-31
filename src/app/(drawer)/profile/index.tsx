@@ -7,14 +7,12 @@ export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const getUser = async () => {
+    (async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
       if (user) setUser(user);
-    };
-
-    getUser();
+    })();
   });
 
   if (!user) return;
@@ -27,10 +25,10 @@ export default function Profile() {
           src={user.user_metadata["avatar_url"]}
         />
         <View>
-          <Text className="font-['Poppins'] text-xl text-black dark:text-white">
+          <Text className="font-poppins text-xl text-black dark:text-white">
             {user.user_metadata["name"]}
           </Text>
-          <Text className="font-['Poppins'] text-base text-black/50 dark:text-white/50">
+          <Text className="font-poppins text-base text-black/50 dark:text-white/50">
             {user.user_metadata["email"]}
           </Text>
         </View>

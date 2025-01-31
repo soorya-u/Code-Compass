@@ -5,8 +5,8 @@ import { User } from "@supabase/supabase-js";
 
 import { supabase } from "@/supabase";
 import { createSessionFromUrl } from "@/supabase/auth/sign-in";
-import UserButtons from "./UserButtons";
-import ConnectButtons from "./ConnectButtons";
+import UserButtons from "./user-buttons";
+import ConnectButtons from "./connect-buttons";
 
 export default function ConnectComponent() {
   const url = Linking.useURL();

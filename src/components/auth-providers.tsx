@@ -1,15 +1,16 @@
 import { Text, TouchableOpacity, View } from "react-native";
+import { useRouter } from "expo-router";
+import { FontAwesome } from "@expo/vector-icons";
 
 import { signInWithOAuth } from "@/supabase/auth/sign-in";
-import { useConstantTheme } from "@/hooks/use-theme";
+
+import { theme } from "@/constants/theme";
+
 import { IProviders } from "@/types/auth";
-import { FontAwesome } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 
 const providers = ["Google", "Github"];
 
 export default function AuthProviders() {
-  const { styles, backgroundColor } = useConstantTheme();
   const router = useRouter();
 
   return (
@@ -22,18 +23,14 @@ export default function AuthProviders() {
             )
           }
           key={idx}
-          className="w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
-          style={styles.btnBg}
+          className="bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
         >
           <FontAwesome
             name={elem.toLowerCase() as IProviders}
-            color={backgroundColor}
+            color={theme.primary}
             size={25}
           />
-          <Text
-            style={styles.btnText}
-            className="text-center font-['Poppins'] text-xl"
-          >
+          <Text className="text-primary text-center font-poppins text-xl">
             Continue with {elem}
           </Text>
         </TouchableOpacity>

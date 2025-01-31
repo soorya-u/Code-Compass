@@ -2,15 +2,13 @@ import { forwardRef } from "react";
 import { FlatList, View } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
-import { CustomRenderer } from "./Renderer";
+import { CustomRenderer } from "./renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
 
-import { useTheme } from "@/hooks/use-theme";
+import { setTheme } from "@/utils/setters";
 
 const MarkdownRenderer = forwardRef(
   ({ content }: { content: string }, ref: any) => {
-    const { setTheme } = useTheme();
-
     const options: useMarkdownHookOptions = {
       colorScheme: setTheme("dark", "light"),
       renderer: new CustomRenderer(ref),
