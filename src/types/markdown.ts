@@ -13,7 +13,7 @@ export enum TechType {
 export type Markdown = {
   name: string;
   content: string;
-  uri: string;
+  uri: any;
   route: string;
   canInvert?: boolean;
   type: TechType;

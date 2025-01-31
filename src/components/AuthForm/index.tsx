@@ -1,9 +1,9 @@
 import { Text, View, TouchableOpacity } from "react-native";
 
 import { useConstantTheme } from "@/hooks/use-theme";
+import { useAuth } from "@/hooks/use-auth";
 
 import Input from "../Input";
-import { useAuth } from "@/hooks/use-auth";
 
 type FieldType = {
   title: string;

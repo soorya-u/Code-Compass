@@ -27,10 +27,7 @@ export const createSessionFromUrl = async (url: string) => {
 export const signInWithOAuth = async (provider: IProviders) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
-    options: {
-      redirectTo,
-      skipBrowserRedirect: true,
-    },
+    options: { redirectTo, skipBrowserRedirect: true },
   });
 
   if (error) throw error;
@@ -41,6 +38,7 @@ export const signInWithOAuth = async (provider: IProviders) => {
   );
 
   if (res.type === "success") await createSessionFromUrl(res.url);
+  else throw new Error("OAuth has been Cancelled");
 };
 
 export const signInWithCredentials = async (payload: LoginType) => {

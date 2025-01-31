@@ -12,8 +12,6 @@ import { usePlatform } from "@/hooks/use-platform";
 
 import logo from "@/assets/icons/logo.png";
 
-const uri = Image.resolveAssetSource(logo).uri;
-
 export default function DrawerContent(props: any) {
   const router = useRouter();
   const { activeBackground, backgroundColor, foregroundColor } =
@@ -37,13 +35,10 @@ export default function DrawerContent(props: any) {
         label={() => (
           <View className="mt-10 flex-row items-center justify-start gap-4 pl-2">
             <Animated.Image
-              style={{
-                tintColor: foregroundColor,
-              }}
+              style={{ tintColor: foregroundColor }}
               className="aspect-square size-[65px]"
-              source={{ uri }}
+              source={logo}
               alt="logo"
-              sharedTransitionTag="logo"
             />
             <View className="">
               <Text className="font-['Jersey'] text-[40px] text-black dark:text-white">

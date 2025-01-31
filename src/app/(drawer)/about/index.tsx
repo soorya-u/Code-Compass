@@ -1,4 +1,5 @@
-import { Image, ScrollView, Text, View } from "react-native";
+import { useEffect } from "react";
+import { ScrollView, Text, View } from "react-native";
 
 import Animated, {
   useAnimatedStyle,
@@ -9,9 +10,6 @@ import { useConstantTheme } from "@/hooks/use-theme";
 import { sections } from "@/constants/about";
 
 import logo from "@/assets/icons/logo.png";
-import { useEffect } from "react";
-
-const uri = Image.resolveAssetSource(logo).uri;
 
 export default function About() {
   const { styles } = useConstantTheme();
@@ -37,7 +35,7 @@ export default function About() {
     >
       <View className="flex-row items-center justify-center gap-3">
         <Animated.Image
-          src={uri}
+          source={logo}
           className="size-16"
           style={[styles.monochromeImage, animatedImageStyle]}
           alt="logo"

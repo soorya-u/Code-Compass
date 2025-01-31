@@ -27,3 +27,5 @@ android
 .vscode
 
 src/content
+src/assets/img
+src/extras

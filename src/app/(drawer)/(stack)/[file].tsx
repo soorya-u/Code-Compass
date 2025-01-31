@@ -1,6 +1,6 @@
+import React, { useMemo, useRef } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
-import { useMemo, useRef } from "react";
 import { type FlatList, TouchableOpacity } from "react-native";
 
 import MarkdownRenderer from "@/components/MarkdownRenderer";
@@ -9,7 +9,7 @@ import { useScreenOptions } from "@/hooks/use-screen-options";
 import { useTheme } from "@/hooks/use-theme";
 import { MarkdownIcon } from "@/components/Icons";
 
-function MarkdownContent() {
+export default function MarkdownContent() {
   const { setTheme } = useTheme();
 
   const flatListRef = useRef<FlatList<React.ReactNode>>(null);
@@ -47,5 +47,3 @@ function MarkdownContent() {
     </>
   );
 }
-
-export default MarkdownContent;
