@@ -14,11 +14,10 @@ export const useFonts = () => {
   });
 
   useEffect(() => {
-    async function init() {
+    (async () => {
       await SplashScreen.preventAutoHideAsync();
       if (fontsLoaded) await SplashScreen.hideAsync();
-    }
-    init();
+    })();
   }, [fontsLoaded]);
 
   return [fontsLoaded];

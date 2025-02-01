@@ -25,18 +25,14 @@ export const styles: MarkedStyles = {
     fontStyle: "normal",
     fontFamily: "Inder",
     fontSize: 17,
-    marginTop: 3,
   },
   em: {
     fontFamily: "Ubuntu-Nerd",
     fontStyle: "italic",
   },
-  li: {
-    fontFamily: "Ubuntu-Nerd",
-  },
-  text: {
-    fontFamily: "Ubuntu-Nerd",
-  },
+  li: { fontFamily: "Ubuntu-Nerd" },
+  text: { fontFamily: "Ubuntu-Nerd" },
+  list: { borderWidth: 100 },
 };
 
 const spacing: Record<SpacingKeysType, number> = {

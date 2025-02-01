@@ -8,23 +8,13 @@ import { setTheme } from "@/utils/setters";
 
 function MarkdownTitle({ item }: { item: Markdown }) {
   return (
-    <Link
-      href={{
-        pathname: "/[file]",
-        params: { file: item.route },
-      }}
-      asChild
-    >
+    <Link href={{ pathname: "/[file]", params: { file: item.route } }} asChild>
       <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
         <View className="flex-row items-center gap-[10] p-[10]">
           <Animated.Image
             className="size-[35px]"
             source={item.uri}
-            style={
-              item.canInvert && {
-                tintColor: setTheme("white", "black"),
-              }
-            }
+            style={item.canInvert && { tintColor: setTheme("white", "black") }}
             alt={item.name}
             sharedTransitionTag={item.name}
           />

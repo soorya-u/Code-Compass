@@ -27,15 +27,11 @@ const MarkdownRenderer = forwardRef(
         ItemSeparatorComponent={() => <View className="my-3" />}
         maxToRenderPerBatch={32}
         initialNumToRender={32}
-        style={{
-          backgroundColor: setTheme("rgb(10 10 10)", "rgb(229 231 235)"),
-        }}
-        onScrollToIndexFailed={() => {
-          ref.current?.scrollToIndex({
-            animated: true,
-            index: 0,
-          });
-        }}
+        className="min-w-full bg-primary"
+        contentContainerClassName="min-w-full border-2 border-blue-500"
+        onScrollToIndexFailed={() =>
+          ref.current?.scrollToIndex({ animated: true, index: 0 })
+        }
       />
     );
   },
