@@ -51,10 +51,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     return (
       <View key={randomUUID()} className="px-3">
         {children.map((elem, idx) => (
-          <Text
-            key={idx}
-            className="font-ubuntu text-black dark:text-white"
-          >
+          <Text key={idx} className="font-ubuntu text-black dark:text-white">
             {elem}
           </Text>
         ))}
@@ -65,10 +62,11 @@ export class CustomRenderer extends Renderer implements RendererInterface {
   listItem(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
       <FlatList
+        style={{ width: "95%" }}
         key={randomUUID()}
         data={children}
         renderItem={({ item }) => (
-          <View className="mr-3 w-full max-w-[320px]">{item}</View>
+          <View className="w-full border-2 border-blue-500">{item}</View>
         )}
       />
     );

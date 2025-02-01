@@ -216,8 +216,8 @@ function nativeRenderer({
 }
 
 function NativeSyntaxHighlighter({
-  fontFamily,
-  fontSize,
+  fontFamily = "Jetbrains-Mono-Nerd",
+  fontSize = 13,
   children,
   highlighter = "highlightjs",
   language,
@@ -243,28 +243,20 @@ function NativeSyntaxHighlighter({
       language={language}
       style={transformedStyle}
       horizontal
-      codeTagProps={{
-        style: {
-          width: "100%",
-        },
-      }}
+      lineProps={{ style: { paddingRight: 30 } }}
+      codeTagProps={{ style: { width: "100%", margin: 0, padding: 0 } }}
       renderer={nativeRenderer({
         defaultColor,
         fontFamily,
         fontSize,
       })}
+      PreTag={ScrollView}
+      CodeTag={View}
       {...rest}
     >
       {children}
     </Highlighter>
   );
 }
-
-NativeSyntaxHighlighter.defaultProps = {
-  fontFamily: "Jetbrains-Mono-Nerd",
-  fontSize: 13,
-  PreTag: ScrollView,
-  CodeTag: View,
-};
 
 export default NativeSyntaxHighlighter;
