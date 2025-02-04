@@ -8,8 +8,9 @@ import {
 } from "@react-navigation/material-top-tabs";
 import { ParamListBase, TabNavigationState } from "@react-navigation/native";
 
-import { theme } from "@/constants/theme";
-import { setPlatformSettings, setTheme } from "@/utils/setters";
+import { useTheme } from "@/hooks/use-theme";
+
+import { setPlatformSettings } from "@/utils/platform";
 
 const { Navigator } = createMaterialTopTabNavigator();
 
@@ -22,6 +23,8 @@ export const MaterialTopTabs = withLayoutContext<
 
 export default function AuthLayout() {
   const { width } = useWindowDimensions();
+
+  const { setTheme, theme } = useTheme();
 
   return (
     <SafeAreaView className="flex-1">

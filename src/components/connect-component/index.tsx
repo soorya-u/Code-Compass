@@ -1,28 +1,17 @@
 import { useLayoutEffect, useState } from "react";
 import { View } from "react-native";
-import * as Linking from "expo-linking";
 import { User } from "@supabase/supabase-js";
 
 import { supabase } from "@/supabase";
-import { createSessionFromUrl } from "@/supabase/auth/sign-in";
 import UserButtons from "./user-buttons";
 import ConnectButtons from "./connect-buttons";
 
 export default function ConnectComponent() {
-  const url = Linking.useURL();
-  if (url) createSessionFromUrl(url);
-
   const [user, setUser] = useState<User | null>();
 
   useLayoutEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-    };
-
-    getUser();
+    // fetch from db
+    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
   }, []);
 
   return (

@@ -1,43 +1,23 @@
-import { useEffect } from "react";
-import { ScrollView, Text, View } from "react-native";
-
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-} from "react-native-reanimated";
+import { Image, ScrollView, Text, View } from "react-native";
 
 import { sections } from "@/constants/about";
-import { theme } from "@/constants/theme";
 
 import logo from "@/assets/icons/logo.png";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function About() {
-  const rotation = useSharedValue<number>(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      rotation.value += 10;
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const animatedImageStyle = useAnimatedStyle(() => ({
-    transform: [{ rotate: `${rotation.value}deg` }],
-  }));
-
+  const { theme } = useTheme();
   return (
     <ScrollView
       contentContainerClassName="flex-1 py-4 gap-10"
       contentInsetAdjustmentBehavior="automatic"
     >
       <View className="flex-row items-center justify-center gap-3">
-        <Animated.Image
+        <Image
           source={logo}
           className="size-16"
-          style={[{ tintColor: theme.secondary }, animatedImageStyle]}
+          style={{ tintColor: theme.secondary }}
           alt="logo"
-          sharedTransitionTag="logo"
         />
         <Text className="font-jersey text-5xl text-black dark:text-white">
           Code Compass

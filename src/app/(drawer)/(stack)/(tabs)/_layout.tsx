@@ -2,10 +2,12 @@ import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 import { tabOptions } from "@/constants/options";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function TabsLayout() {
+  const theme = useTheme();
   return (
-    <Tabs screenOptions={tabOptions}>
+    <Tabs screenOptions={tabOptions(theme)}>
       <Tabs.Screen
         name="browse"
         options={{

@@ -1,20 +1,24 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 import { FlatList, View } from "react-native";
 import { useMarkdown, useMarkdownHookOptions } from "react-native-marked";
 
 import { CustomRenderer } from "./renderer";
 import { styles, lightTheme, darkTheme } from "./styles";
-
-import { setTheme } from "@/utils/setters";
+import { useTheme } from "@/hooks/use-theme";
 
 const MarkdownRenderer = forwardRef(
   ({ content }: { content: string }, ref: any) => {
-    const options: useMarkdownHookOptions = {
-      colorScheme: setTheme("dark", "light"),
-      renderer: new CustomRenderer(ref),
-      styles,
-      theme: setTheme(darkTheme, lightTheme),
-    };
+    const { setTheme } = useTheme();
+
+    const options: useMarkdownHookOptions = useMemo(
+      () => ({
+        colorScheme: setTheme("dark", "light"),
+        renderer: new CustomRenderer(ref),
+        styles,
+        theme: setTheme(darkTheme, lightTheme),
+      }),
+      [setTheme],
+    );
 
     const mdElements = useMarkdown(content, options);
 

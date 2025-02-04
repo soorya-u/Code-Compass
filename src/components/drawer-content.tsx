@@ -7,14 +7,14 @@ import {
 import { useRouter } from "expo-router";
 import Animated from "react-native-reanimated";
 
-import { setPlatformSettings } from "@/utils/setters";
-import { theme } from "@/constants/theme";
+import { setPlatformSettings } from "@/utils/platform";
 
 import logo from "@/assets/icons/logo.png";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function DrawerContent(props: any) {
   const router = useRouter();
-
+  const { theme } = useTheme();
   return (
     <DrawerContentScrollView
       contentContainerStyle={{

@@ -13,8 +13,7 @@ import {
   extensionLanguagesMapper,
   extensionHeadingMapper,
 } from "@/utils/extention-mapper";
-
-import { setTheme } from "@/utils/setters";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function CodeHighlighter({
   code,
@@ -24,6 +23,8 @@ export default function CodeHighlighter({
   ext: string | undefined;
 }) {
   const [showCopied, setShowCopied] = useState(false);
+
+  const { setTheme } = useTheme();
 
   useEffect(() => {
     showCopied && setTimeout(() => setShowCopied(false), 2000);
@@ -75,6 +76,7 @@ export default function CodeHighlighter({
           ))}
         </View>
         <RNH
+          fontSize={13}
           language={extensionLanguagesMapper(ext!)}
           style={setTheme(oneDark, oneLight)}
           highlighter="prism"
