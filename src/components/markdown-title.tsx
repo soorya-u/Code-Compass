@@ -4,9 +4,10 @@ import { Text, View, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 
 import { Markdown } from "@/types/markdown";
-import { setTheme } from "@/utils/setters";
+import { useTheme } from "@/hooks/use-theme";
 
-function MarkdownTitle({ item }: { item: Markdown }) {
+export default function MarkdownTitle({ item }: { item: Markdown }) {
+  const { setTheme } = useTheme();
   return (
     <Link href={{ pathname: "/[file]", params: { file: item.route } }} asChild>
       <TouchableOpacity className="rounded-[10px] bg-neutral-50 dark:bg-[rgb(30_30_30)]">
@@ -31,5 +32,3 @@ function MarkdownTitle({ item }: { item: Markdown }) {
     </Link>
   );
 }
-
-export default MarkdownTitle;

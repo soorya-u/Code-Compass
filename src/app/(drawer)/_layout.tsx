@@ -3,11 +3,12 @@ import { Drawer } from "expo-router/drawer";
 
 import DrawerContent from "@/components/drawer-content";
 
-import { theme } from "@/constants/theme";
-
-import { setPlatformSettings } from "@/utils/setters";
+import { setPlatformSettings } from "@/utils/platform";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function DrawerLayout() {
+  const { theme } = useTheme();
+
   const bgColor = setPlatformSettings({
     ios: theme.primaryActive,
     android: theme.primary,

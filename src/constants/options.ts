@@ -1,11 +1,18 @@
 import { DrawerIcon } from "@/components/icons";
-import { setPlatformSettings, setTheme } from "@/utils/setters";
-import { theme } from "@/constants/theme";
+import { setPlatformSettings } from "@/utils/platform";
 
 import { type BottomTabNavigationOptions } from "@react-navigation/bottom-tabs/src/types";
 import { type NativeStackNavigationOptions } from "@react-navigation/native-stack/src/types";
 
-export const stackOptions: NativeStackNavigationOptions = {
+type ThemeContextType = {
+  setTheme: <T>(darkSetting: T, lightSetting: T) => T;
+  theme: { primary: string; secondary: string; primaryActive: string };
+};
+
+export const stackOptions = ({
+  theme,
+  setTheme,
+}: ThemeContextType): NativeStackNavigationOptions => ({
   headerLeft: ({ tintColor: color }) => DrawerIcon({ color }),
   headerTransparent: setPlatformSettings({ ios: true }),
   headerLargeTitle: true,
@@ -19,9 +26,12 @@ export const stackOptions: NativeStackNavigationOptions = {
     }),
   },
   headerBlurEffect: setTheme("dark", "light"),
-};
+});
 
-export const tabOptions: BottomTabNavigationOptions = {
+export const tabOptions = ({
+  theme,
+  setTheme,
+}: ThemeContextType): BottomTabNavigationOptions => ({
   sceneStyle: { backgroundColor: theme.primary },
   headerShown: false,
   tabBarStyle: {
@@ -33,4 +43,4 @@ export const tabOptions: BottomTabNavigationOptions = {
   tabBarInactiveBackgroundColor: theme.primary,
   headerTintColor: theme.secondary,
   headerShadowVisible: false,
-};
+});

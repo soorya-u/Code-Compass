@@ -3,15 +3,17 @@ import { FlatList, ScrollView, View } from "react-native";
 
 import MarkdownList from "@/components/markdown-list";
 import { markdown } from "@/constants/markdown";
-import { theme } from "@/constants/theme";
 import { useScreenOptions } from "@/hooks/use-screen-options";
 import { Markdown } from "@/types/markdown";
 import { markdownSorter, markdownSearcher } from "@/utils/markdown-helpers";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function BrowseScreen() {
   const [searchText, setSearchText] = useState("");
 
   const [filteredList, setFilteredList] = useState<Markdown[]>([]);
+
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (searchText) {

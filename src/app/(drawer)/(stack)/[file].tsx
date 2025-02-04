@@ -4,12 +4,12 @@ import { useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useScreenOptions } from "@/hooks/use-screen-options";
+import { useTheme } from "@/hooks/use-theme";
+
 import { markdown } from "@/constants/markdown";
 
 import MarkdownRenderer from "@/components/markdown-renderer";
 import { MarkdownIcon } from "@/components/icons";
-
-import { setTheme } from "@/utils/setters";
 
 export default function MarkdownContent() {
   const flatListRef = useRef<FlatList<React.ReactNode>>(null);
@@ -20,6 +20,8 @@ export default function MarkdownContent() {
     () => markdown.filter((file) => file.route === id)[0],
     [id],
   );
+
+  const { setTheme } = useTheme();
 
   useScreenOptions({
     headerTitle: md.name,

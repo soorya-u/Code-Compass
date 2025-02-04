@@ -1,4 +1,3 @@
-import { randomUUID } from "expo-crypto";
 import { ReactNode } from "react";
 import {
   View,
@@ -31,7 +30,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     return (
       <View
         id={id as string}
-        key={randomUUID()}
+        key={this.getKey()}
         className="w-full justify-center"
       >
         <Text
@@ -49,7 +48,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
 
   paragraph(children: ReactNode[], styles?: ViewStyle | undefined): ReactNode {
     return (
-      <View key={randomUUID()} className="px-3">
+      <View key={this.getKey()} className="px-3">
         {children.map((elem, idx) => (
           <Text key={idx} className="font-ubuntu text-black dark:text-white">
             {elem}
@@ -63,10 +62,10 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     return (
       <FlatList
         style={{ width: "95%" }}
-        key={randomUUID()}
+        key={this.getKey()}
         data={children}
         renderItem={({ item }) => (
-          <View className="w-full border-2 border-blue-500">{item}</View>
+          <View className="w-full border-2">{item}</View>
         )}
       />
     );
@@ -78,7 +77,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
     containerStyle?: ViewStyle | undefined,
     textStyle?: TextStyle | undefined,
   ): ReactNode {
-    return <CodeHighlighter key={randomUUID()} code={text} ext={_language} />;
+    return <CodeHighlighter key={this.getKey()} code={text} ext={_language} />;
   }
 
   hr(styles?: ViewStyle | undefined): ReactNode {
@@ -94,7 +93,7 @@ export class CustomRenderer extends Renderer implements RendererInterface {
   ): ReactNode {
     return (
       <TouchableOpacity
-        key={randomUUID()}
+        key={this.getKey()}
         onPress={() => openLink(href, this.flatListRef)}
       >
         <Text style={styles}>{children}</Text>

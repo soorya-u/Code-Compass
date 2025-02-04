@@ -4,14 +4,15 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import { signInWithOAuth } from "@/supabase/auth/sign-in";
 
-import { theme } from "@/constants/theme";
-
 import { IProviders } from "@/types/auth";
+import { useTheme } from "@/hooks/use-theme";
 
 const providers = ["Google", "Github"];
 
 export default function AuthProviders() {
   const router = useRouter();
+
+  const { theme } = useTheme();
 
   return (
     <View className="w-[90%] items-center justify-center gap-y-2">
@@ -23,14 +24,14 @@ export default function AuthProviders() {
             )
           }
           key={idx}
-          className="bg-secondary w-full flex-row items-center justify-center gap-3 rounded-xl py-4"
+          className="w-full flex-row items-center justify-center gap-3 rounded-xl bg-secondary py-4"
         >
           <FontAwesome
             name={elem.toLowerCase() as IProviders}
             color={theme.primary}
             size={25}
           />
-          <Text className="text-primary text-center font-poppins text-xl">
+          <Text className="text-center font-poppins text-xl text-primary">
             Continue with {elem}
           </Text>
         </TouchableOpacity>

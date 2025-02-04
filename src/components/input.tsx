@@ -2,8 +2,7 @@ import { Text, TextInput, View } from "react-native";
 import { type Control, useController } from "react-hook-form";
 
 import { type SignUpType, type LoginType } from "@/schema/auth";
-import { setTheme } from "@/utils/setters";
-import { theme } from "@/constants/theme";
+import { useTheme } from "@/hooks/use-theme";
 
 type InputProps = {
   title: string;
@@ -19,6 +18,8 @@ export default function Input({
   control,
   name,
 }: InputProps) {
+  const { theme, setTheme } = useTheme();
+
   const { field, fieldState } = useController<SignUpType | LoginType>({
     // @ts-ignore
     control,
@@ -38,7 +39,7 @@ export default function Input({
         {title}
       </Text>
       <TextInput
-        className="border-secondary bg-primary text-secondary h-14 w-full items-center justify-center rounded-md border px-4 font-inder text-base"
+        className="h-14 w-full items-center justify-center rounded-md border border-secondary bg-primary px-4 font-inder text-base text-secondary"
         cursorColor={setTheme("#fff", "#000")}
         placeholderTextColor="#4f4f4f"
         placeholder={placeholder}

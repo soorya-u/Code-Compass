@@ -4,13 +4,15 @@ import CarouselElement, {
   type ICarouselInstance,
 } from "react-native-reanimated-carousel";
 
-import { theme } from "@/constants/theme";
 import { carouselContent } from "@/constants/carousel";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function Carousel() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const carouselRef = useRef<ICarouselInstance>(null);
   const { width, height } = useWindowDimensions();
+
+  const { theme } = useTheme();
 
   return (
     <View className="relative flex-1 items-center justify-center">
@@ -47,7 +49,7 @@ export default function Carousel() {
           <View
             onTouchEndCapture={() => carouselRef.current?.scrollTo({ index })}
             key={index}
-            className={`bg-secondary aspect-square rounded-full ${currentSlideIndex === index ? "w-2.5 opacity-100" : "w-2 opacity-80"}`}
+            className={`aspect-square rounded-full bg-secondary ${currentSlideIndex === index ? "w-2.5 opacity-100" : "w-2 opacity-80"}`}
           />
         ))}
       </View>

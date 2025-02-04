@@ -1,21 +1,16 @@
 "use dom";
 
+import "@/global.css";
+import { useColorScheme } from "nativewind";
+
 export default function UploadScreen() {
+  const { colorScheme, setColorScheme } = useColorScheme();
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1,
-        borderWidth: 1,
-        borderColor: "blue",
-      }}
-    >
-      <h1 className="text-sm" style={{ color: "red", fontSize: "0.875rem" }}>
+    <div>
+      <h1 className="text-3xl text-red-500 dark:text-blue-500">
         Upload Screen
       </h1>
-      ;
     </div>
   );
 }

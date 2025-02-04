@@ -1,12 +1,13 @@
 import { supabase } from "@/supabase";
 import { User } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 
 export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
+  // Change this logic
+  useLayoutEffect(() => {
     (async () => {
       const {
         data: { user },
